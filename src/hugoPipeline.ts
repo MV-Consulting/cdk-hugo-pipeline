@@ -10,7 +10,7 @@ import {
 import { Construct } from 'constructs';
 import { HugoHosting } from './hugoHosting';
 
-interface HugoHostingStackProps extends StackProps {
+export interface HugoHostingStackProps extends StackProps {
   readonly buildStage: string;
   readonly domainName: string;
   readonly siteSubDomain?: string;
@@ -32,7 +32,7 @@ export class HugoHostingStack extends Stack {
   }
 }
 
-interface HugoPageStageProps extends StageProps {
+export interface HugoPageStageProps extends StageProps {
   readonly buildStage: string;
   readonly domainName: string;
   readonly siteSubDomain?: string;
@@ -66,21 +66,21 @@ export interface HugoPipelineProps {
    *
    * @default - john
    */
-  basicAuthUsername?: string;
+  readonly basicAuthUsername?: string;
 
   /**
    * The password for basic auth on the development site
    *
    * @default - doe
    */
-  basicAuthPassword?: string;
+  readonly basicAuthPassword?: string;
 
   /**
    * The subdomain to host the development site on, for example 'dev'
    *
    * @default - dev
    */
-  siteSubDomain?: string;
+  readonly siteSubDomain?: string;
 }
 
 export class HugoPipeline extends Construct {
