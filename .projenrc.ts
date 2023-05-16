@@ -18,4 +18,5 @@ const project = new awscdk.AwsCdkConstructLibrary({
   ],
   // packageName: undefined,  /* The "name" in package.json. */
 });
+project.package.setScript('prepare', 'husky install');
 project.synth();
