@@ -278,7 +278,7 @@ function handler(event) {
               apk update && apk add hugo=${alpineHugoVersion} &&
               npm --version && hugo version &&
               npm i && npm run build -- --environment ${this.buildStage} &&
-              mkdir -p /asset-output && cp -r public-${this.buildStage}/* /asset-output
+              mkdir -p /asset-output && pwd && ls -las && cp -r public-${this.buildStage}/* /asset-output
               `,
             ],
             user: 'root',

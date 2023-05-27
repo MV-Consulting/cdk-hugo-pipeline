@@ -76,14 +76,21 @@ export interface HugoPipelineProps {
   readonly basicAuthPassword?: string;
 
   /**
+   * Name of the domain to host the site on
+   */
+  domainName: string;
+
+  /**
    * The subdomain to host the development site on, for example 'dev'
    *
    * @default - dev
    */
-  readonly siteSubDomain?: string;
+  readonly siteSubDomain: string;
 }
 
 export class HugoPipeline extends Construct {
+  public readonly domainName: string;
+  public readonly siteSubDomain: string;
 
   constructor(scope: Construct, id: string, props: HugoPipelineProps) {
     super(scope, id);
@@ -92,6 +99,8 @@ export class HugoPipeline extends Construct {
     const basicAuthUsername = props.basicAuthUsername || 'john';
     const basicAuthPassword = props.basicAuthPassword || 'doe';
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
+    this.domainName = props.domainName;
+    this.siteSubDomain = props.siteSubDomain;
 
     const repository = codecommit.Repository.fromRepositoryName(this, 'hugo-blog-repo', props.name || 'hugo-blog');
     const pipepline = new pipelines.CodePipeline(this, 'hugo-blog-pipeline', {
@@ -118,8 +127,8 @@ export class HugoPipeline extends Construct {
 
     const hugoPageDevStage = new HugoPageStage(this, 'dev-stage', {
       buildStage: 'development',
-      siteSubDomain: 'dev',
-      domainName: 'manuel-vogel.de',
+      siteSubDomain: this.siteSubDomain,
+      domainName: this.domainName,
     });
 
     pipepline.addStage(hugoPageDevStage, {
@@ -137,7 +146,7 @@ export class HugoPipeline extends Construct {
 
     const hugoPageProdStage = new HugoPageStage(this, 'prod-stage', {
       buildStage: 'production',
-      domainName: 'manuel-vogel.de',
+      domainName: this.domainName,
     });
 
     pipepline.addStage(hugoPageProdStage, {
