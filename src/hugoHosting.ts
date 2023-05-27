@@ -102,7 +102,7 @@ export class HugoHosting extends Construct {
     const http403ResponsePagePath = props.http403ResponsePagePath || '/en/404.html';
     const http404ResponsePagePath = props.http404ResponsePagePath || '/en/404.html';
     const hugoProjectPath = props.hugoProjectPath || '../frontend';
-    const alpineHugoVersion = props.alpineHugoVersion || '0.106.0-r3';
+    const alpineHugoVersion = props.alpineHugoVersion || '0.106.0-r4';
 
     const zone = props.zone
       ? props.zone
