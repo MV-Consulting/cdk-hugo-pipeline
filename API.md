@@ -49,6 +49,160 @@ export class MyStack extends Stack {
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
+### HugoHosting <a name="HugoHosting" id="cdk-hugo-pipeline.HugoHosting"></a>
+
+#### Initializers <a name="Initializers" id="cdk-hugo-pipeline.HugoHosting.Initializer"></a>
+
+```typescript
+import { HugoHosting } from 'cdk-hugo-pipeline'
+
+new HugoHosting(scope: Construct, id: string, props: HugoHostingProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-hugo-pipeline.HugoHostingProps">HugoHostingProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="cdk-hugo-pipeline.HugoHosting.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="cdk-hugo-pipeline.HugoHosting.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-hugo-pipeline.HugoHosting.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-hugo-pipeline.HugoHostingProps">HugoHostingProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="cdk-hugo-pipeline.HugoHosting.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="cdk-hugo-pipeline.HugoHosting.isConstruct"></a>
+
+```typescript
+import { HugoHosting } from 'cdk-hugo-pipeline'
+
+HugoHosting.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="cdk-hugo-pipeline.HugoHosting.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.siteDomain">siteDomain</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="cdk-hugo-pipeline.HugoHosting.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `buildStage`<sup>Required</sup> <a name="buildStage" id="cdk-hugo-pipeline.HugoHosting.property.buildStage"></a>
+
+```typescript
+public readonly buildStage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `domainName`<sup>Required</sup> <a name="domainName" id="cdk-hugo-pipeline.HugoHosting.property.domainName"></a>
+
+```typescript
+public readonly domainName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `siteDomain`<sup>Required</sup> <a name="siteDomain" id="cdk-hugo-pipeline.HugoHosting.property.siteDomain"></a>
+
+```typescript
+public readonly siteDomain: string;
+```
+
+- *Type:* string
+
+---
+
+##### `siteSubDomain`<sup>Required</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoHosting.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
+
+---
+
+##### `staticSiteURL`<sup>Required</sup> <a name="staticSiteURL" id="cdk-hugo-pipeline.HugoHosting.property.staticSiteURL"></a>
+
+```typescript
+public readonly staticSiteURL: CfnOutput;
+```
+
+- *Type:* aws-cdk-lib.CfnOutput
+
+---
+
+
 ### HugoHostingStack <a name="HugoHostingStack" id="cdk-hugo-pipeline.HugoHostingStack"></a>
 
 #### Initializers <a name="Initializers" id="cdk-hugo-pipeline.HugoHostingStack.Initializer"></a>
@@ -1152,6 +1306,8 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdk-hugo-pipeline.HugoPipeline.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipeline.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPipeline.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -1164,6 +1320,26 @@ public readonly node: Node;
 - *Type:* constructs.Node
 
 The tree node.
+
+---
+
+##### `domainName`<sup>Required</sup> <a name="domainName" id="cdk-hugo-pipeline.HugoPipeline.property.domainName"></a>
+
+```typescript
+public readonly domainName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `siteSubDomain`<sup>Required</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoPipeline.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -1268,6 +1444,163 @@ The tree node.
 
 
 ## Structs <a name="Structs" id="Structs"></a>
+
+### HugoHostingProps <a name="HugoHostingProps" id="cdk-hugo-pipeline.HugoHostingProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-hugo-pipeline.HugoHostingProps.Initializer"></a>
+
+```typescript
+import { HugoHostingProps } from 'cdk-hugo-pipeline'
+
+const hugoHostingProps: HugoHostingProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.buildStage">buildStage</a></code> | <code>string</code> | Name of the stage to deploy to. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.domainName">domainName</a></code> | <code>string</code> | Name of the domain to host the site on. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.alpineHugoVersion">alpineHugoVersion</a></code> | <code>string</code> | The hugo version to use in the alpine docker image. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | The path to the 403 error page. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | The path to the 404 error page. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.zone">zone</a></code> | <code>aws-cdk-lib.aws_route53.HostedZone</code> | Zone the Domain Name is created in. |
+
+---
+
+##### `buildStage`<sup>Required</sup> <a name="buildStage" id="cdk-hugo-pipeline.HugoHostingProps.property.buildStage"></a>
+
+```typescript
+public readonly buildStage: string;
+```
+
+- *Type:* string
+- *Default:* production
+
+Name of the stage to deploy to.
+
+Should be 'development' or 'production'
+
+---
+
+##### `domainName`<sup>Required</sup> <a name="domainName" id="cdk-hugo-pipeline.HugoHostingProps.property.domainName"></a>
+
+```typescript
+public readonly domainName: string;
+```
+
+- *Type:* string
+
+Name of the domain to host the site on.
+
+---
+
+##### `alpineHugoVersion`<sup>Optional</sup> <a name="alpineHugoVersion" id="cdk-hugo-pipeline.HugoHostingProps.property.alpineHugoVersion"></a>
+
+```typescript
+public readonly alpineHugoVersion: string;
+```
+
+- *Type:* string
+- *Default:* 0.106.0-r3
+
+The hugo version to use in the alpine docker image.
+
+---
+
+##### `basicAuthPassword`<sup>Optional</sup> <a name="basicAuthPassword" id="cdk-hugo-pipeline.HugoHostingProps.property.basicAuthPassword"></a>
+
+```typescript
+public readonly basicAuthPassword: string;
+```
+
+- *Type:* string
+- *Default:* doe
+
+The password for basic auth on the development site.
+
+---
+
+##### `basicAuthUsername`<sup>Optional</sup> <a name="basicAuthUsername" id="cdk-hugo-pipeline.HugoHostingProps.property.basicAuthUsername"></a>
+
+```typescript
+public readonly basicAuthUsername: string;
+```
+
+- *Type:* string
+- *Default:* john
+
+The username for basic auth on the development site.
+
+---
+
+##### `http403ResponsePagePath`<sup>Optional</sup> <a name="http403ResponsePagePath" id="cdk-hugo-pipeline.HugoHostingProps.property.http403ResponsePagePath"></a>
+
+```typescript
+public readonly http403ResponsePagePath: string;
+```
+
+- *Type:* string
+- *Default:* /en/404.html
+
+The path to the 403 error page.
+
+---
+
+##### `http404ResponsePagePath`<sup>Optional</sup> <a name="http404ResponsePagePath" id="cdk-hugo-pipeline.HugoHostingProps.property.http404ResponsePagePath"></a>
+
+```typescript
+public readonly http404ResponsePagePath: string;
+```
+
+- *Type:* string
+- *Default:* /en/404.html
+
+The path to the 404 error page.
+
+---
+
+##### `hugoProjectPath`<sup>Optional</sup> <a name="hugoProjectPath" id="cdk-hugo-pipeline.HugoHostingProps.property.hugoProjectPath"></a>
+
+```typescript
+public readonly hugoProjectPath: string;
+```
+
+- *Type:* string
+- *Default:* '../frontend'
+
+The path to the hugo project.
+
+---
+
+##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoHostingProps.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
+- *Default:* dev
+
+The subdomain to host the development site on, for example 'dev'.
+
+---
+
+##### `zone`<sup>Optional</sup> <a name="zone" id="cdk-hugo-pipeline.HugoHostingProps.property.zone"></a>
+
+```typescript
+public readonly zone: HostedZone;
+```
+
+- *Type:* aws-cdk-lib.aws_route53.HostedZone
+
+Zone the Domain Name is created in.
+
+---
 
 ### HugoHostingStackProps <a name="HugoHostingStackProps" id="cdk-hugo-pipeline.HugoHostingStackProps"></a>
 
@@ -1602,10 +1935,36 @@ const hugoPipelineProps: HugoPipelineProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.domainName">domainName</a></code> | <code>string</code> | Name of the domain to host the site on. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.name">name</a></code> | <code>string</code> | Name of the codecommit repository. |
-| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
+
+---
+
+##### `domainName`<sup>Required</sup> <a name="domainName" id="cdk-hugo-pipeline.HugoPipelineProps.property.domainName"></a>
+
+```typescript
+public readonly domainName: string;
+```
+
+- *Type:* string
+
+Name of the domain to host the site on.
+
+---
+
+##### `siteSubDomain`<sup>Required</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
+- *Default:* dev
+
+The subdomain to host the development site on, for example 'dev'.
 
 ---
 
@@ -1645,19 +2004,6 @@ public readonly name: string;
 - *Default:* hugo blog
 
 Name of the codecommit repository.
-
----
-
-##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain"></a>
-
-```typescript
-public readonly siteSubDomain: string;
-```
-
-- *Type:* string
-- *Default:* dev
-
-The subdomain to host the development site on, for example 'dev'.
 
 ---
 

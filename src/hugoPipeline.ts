@@ -78,7 +78,7 @@ export interface HugoPipelineProps {
   /**
    * Name of the domain to host the site on
    */
-  domainName: string;
+  readonly domainName: string;
 
   /**
    * The subdomain to host the development site on, for example 'dev'

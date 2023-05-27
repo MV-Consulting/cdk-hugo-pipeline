@@ -22,66 +22,66 @@ export interface HugoHostingProps {
    *
    * @default - production
    */
-  buildStage: string;
+  readonly buildStage: string;
 
   /**
    * The username for basic auth on the development site
    *
    * @default - john
    */
-  basicAuthUsername?: string;
+  readonly basicAuthUsername?: string;
 
   /**
    * The password for basic auth on the development site
    *
    * @default - doe
    */
-  basicAuthPassword?: string;
+  readonly basicAuthPassword?: string;
 
   /**
    * Name of the domain to host the site on
    */
-  domainName: string;
+  readonly domainName: string;
 
   /**
    * The subdomain to host the development site on, for example 'dev'
    *
    * @default - dev
    */
-  siteSubDomain?: string;
+  readonly siteSubDomain?: string;
 
   /**
    * Zone the Domain Name is created in
    */
-  zone?: route53.HostedZone;
+  readonly zone?: route53.HostedZone;
 
   /**
    * The path to the 403 error page
    *
    * @default - /en/404.html
    */
-  http403ResponsePagePath?: string;
+  readonly http403ResponsePagePath?: string;
 
   /**
    * The path to the 404 error page
    *
    * @default - /en/404.html
    */
-  http404ResponsePagePath?: string;
+  readonly http404ResponsePagePath?: string;
 
   /**
    * The path to the hugo project
    *
    * @default - '../frontend'
    */
-  hugoProjectPath?: string;
+  readonly hugoProjectPath?: string;
 
   /**
    * The hugo version to use in the alpine docker image
    *
    * @default - 0.106.0-r3
    */
-  alpineHugoVersion?: string;
+  readonly alpineHugoVersion?: string;
 }
 
 export class HugoHosting extends Construct {
