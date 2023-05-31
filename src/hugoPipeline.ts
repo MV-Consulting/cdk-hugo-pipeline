@@ -113,12 +113,10 @@ export class HugoPipeline extends Construct {
     this.domainName = props.domainName;
     this.siteSubDomain = props.siteSubDomain;
 
-    // TODO from new repository
-    // new codecommit.Repository(this, 'hugo-blog', {
-    //   repositoryName: props.name || 'hugo-blog',
-    //   description: 'host the code for the hugo blog and its infrastructure',
-    // });
-    const repository = codecommit.Repository.fromRepositoryName(this, 'hugo-blog-repo', props.name || 'hugo-blog');
+    const repository = new codecommit.Repository(this, 'hugo-blog', {
+      repositoryName: props.name || 'hugo-blog',
+      description: 'host the code for the hugo blog and its infrastructure',
+    });
     const pipepline = new pipelines.CodePipeline(this, 'hugo-blog-pipeline', {
       synth: new pipelines.ShellStep('Synth', {
         input: pipelines.CodePipelineSource.codeCommit(repository, 'master', {

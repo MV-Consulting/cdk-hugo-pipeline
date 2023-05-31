@@ -107,7 +107,7 @@ export class HugoHosting extends Construct {
     const zone = route53.HostedZone.fromLookup(this, 'Zone', {
       domainName: this.domainName,
     });
-    // const zone = route53.HostedZone.fromLookup(this, 'Zone', { domainName: props.domainName });
+
     this.siteSubDomain = props.siteSubDomain || 'dev';
     // prepend the subdomain with a '.' if present
     this.siteDomain = this.buildStage == 'production' ? props.domainName : this.siteSubDomain + '.' + props.domainName;

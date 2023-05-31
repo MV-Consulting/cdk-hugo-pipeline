@@ -25,6 +25,11 @@ test('Default pipeline', () => {
   const template = Template.fromStack(stack);
 
   // THEN
+  template.hasResource('AWS::CodeCommit::Repository', {
+    Properties: Match.objectLike({
+      RepositoryName: 'hugo-blog',
+    }),
+  });
   template.hasResource('AWS::CodePipeline::Pipeline', {
     Properties: Match.objectLike({
       RestartExecutionOnUpdate: true,
