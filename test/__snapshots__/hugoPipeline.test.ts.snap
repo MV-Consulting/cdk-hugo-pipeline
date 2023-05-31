@@ -207,7 +207,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"156811917234c08bf24000ace7c7ccd79eb097ca93e87b3a7edbb7536255c884:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"4feee255585d4056173b83a75fe9947b837c1bd73e1a7ddebcc7cd96bc3ed79c:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
@@ -247,7 +247,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-prod-stage/testStackhugoPipelineprodstagehugoblogstackE7EDD29B.assets.json\\\\\\" --verbose publish \\\\\\"3102a42077d39a211243fd90c413c1920e220e8e62f93349ec237f1de0a53e0c:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-prod-stage/testStackhugoPipelineprodstagehugoblogstackE7EDD29B.assets.json\\\\\\" --verbose publish \\\\\\"5b1a3e47d1776c6e240d74cd1e7d7a60b0c0ad6ee939dedaa7870b782e311aba:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
