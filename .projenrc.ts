@@ -11,7 +11,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   // deps: [],                /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
+  devDeps: [ /* Build dependencies for this module. */
+    '@commitlint/cli',
+    '@commitlint/config-conventional',
+    'husky',
+  ],
   // packageName: undefined,  /* The "name" in package.json. */
 });
+project.package.setScript('prepare', 'husky install');
 project.synth();

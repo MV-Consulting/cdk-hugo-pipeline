@@ -14,6 +14,16 @@ Take a look at the blog post [My blog with hugo - all on AWS](https://manuel-vog
 about all the details and learnings.
 
 ## Usage
+TBD
+
+```sh
+mkdir my-blog && cd my-blog
+npx projen new awscdk-app-ts
+# add hugo template
+git submodule add https://github.com/apvarun/blist-hugo-theme.git frontend/themes/blist
+# add fix version
+git submodule set-branch --branch v2.1.0 frontend/themes/blist
+```
 
 ### Typescript
 ```ts

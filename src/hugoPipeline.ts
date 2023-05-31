@@ -1,0 +1,208 @@
+import {
+  Stage,
+  StageProps,
+  Stack,
+  StackProps,
+  aws_codecommit as codecommit,
+  pipelines,
+  CfnOutput,
+} from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import { HugoHosting } from './hugoHosting';
+
+export interface HugoHostingStackProps extends StackProps {
+  readonly buildStage: string;
+  readonly domainName: string;
+  readonly siteSubDomain?: string;
+  readonly hugoProjectPath?: string;
+  readonly s3deployAssetHash?: string;
+}
+
+export class HugoHostingStack extends Stack {
+  public readonly staticSiteURL: CfnOutput;
+
+  constructor(scope: Construct, id: string, props: HugoHostingStackProps) {
+    super(scope, id, props);
+
+    const staticHosting = new HugoHosting(this, 'static-hosting', {
+      buildStage: props.buildStage,
+      siteSubDomain: props.siteSubDomain,
+      domainName: props.domainName,
+      hugoProjectPath: props.hugoProjectPath,
+      s3deployAssetHash: props.s3deployAssetHash,
+    });
+
+    this.staticSiteURL = staticHosting.staticSiteURL;
+  }
+}
+
+export interface HugoPageStageProps extends StageProps {
+  readonly buildStage: string;
+  readonly domainName: string;
+  readonly siteSubDomain?: string;
+  readonly hugoProjectPath?: string;
+  readonly s3deployAssetHash?: string;
+}
+export class HugoPageStage extends Stage {
+  public readonly staticSiteURL: CfnOutput;
+
+  constructor(scope: Construct, id: string, props: HugoPageStageProps) {
+    super(scope, id, props);
+
+    const hugoHostingStack = new HugoHostingStack(this, 'hugo-blog-stack', {
+      buildStage: props.buildStage,
+      siteSubDomain: props.siteSubDomain,
+      domainName: props.domainName,
+      hugoProjectPath: props.hugoProjectPath,
+      s3deployAssetHash: props.s3deployAssetHash,
+    });
+
+    this.staticSiteURL = hugoHostingStack.staticSiteURL;
+  }
+}
+
+export interface HugoPipelineProps {
+  /**
+   * Name of the codecommit repository
+   *
+   * @default - hugo blog
+   */
+  readonly name?: string;
+
+  /**
+   * The username for basic auth on the development site
+   *
+   * @default - john
+   */
+  readonly basicAuthUsername?: string;
+
+  /**
+   * The password for basic auth on the development site
+   *
+   * @default - doe
+   */
+  readonly basicAuthPassword?: string;
+
+  /**
+   * Name of the domain to host the site on
+   */
+  readonly domainName: string;
+
+  /**
+   * The subdomain to host the development site on, for example 'dev'
+   *
+   * @default - dev
+   */
+  readonly siteSubDomain: string;
+
+  /**
+   * The path to the hugo project
+   *
+   * @default - '../frontend'
+   */
+  readonly hugoProjectPath?: string;
+
+  /**
+   * The hash to use to build or rebuild the hugo page.
+   *
+   * We use it to rebuild the site every time as cdk caching is too intelligent
+   * and it did not deploy updates.
+   *
+   * For testing purposes we pass a static hash to avoid updates of the snapshot tests.
+   *
+   * @default - `${Number(Math.random())}-${props.buildStage}`
+   */
+  readonly s3deployAssetHash?: string;
+}
+
+export class HugoPipeline extends Construct {
+  public readonly domainName: string;
+  public readonly siteSubDomain: string;
+
+  constructor(scope: Construct, id: string, props: HugoPipelineProps) {
+    super(scope, id);
+
+    // TODO helper class
+    const basicAuthUsername = props.basicAuthUsername || 'john';
+    const basicAuthPassword = props.basicAuthPassword || 'doe';
+    const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
+    this.domainName = props.domainName;
+    this.siteSubDomain = props.siteSubDomain;
+
+    const repository = new codecommit.Repository(this, 'hugo-blog', {
+      repositoryName: props.name || 'hugo-blog',
+      description: 'host the code for the hugo blog and its infrastructure',
+    });
+    const pipepline = new pipelines.CodePipeline(this, 'hugo-blog-pipeline', {
+      synth: new pipelines.ShellStep('Synth', {
+        input: pipelines.CodePipelineSource.codeCommit(repository, 'master', {
+          codeBuildCloneOutput: true, // we need this to preserve the git history
+        }),
+        // not implemented on 2022-12-28: https://github.com/aws/aws-cdk/issues/11399
+        // so we clone submodules manually
+        commands: [
+          'npm ci',
+          'git submodule update --init',
+          'npm run build',
+          'npm run synth',
+        ],
+      }),
+      // NOTE: as we build the hugo blog in a docker container
+      // see https://github.com/aws/aws-cdk/tree/v2.56.1/packages/%40aws-cdk/pipelines#using-bundled-file-assets
+      dockerEnabledForSynth: true,
+      // codeBuildDefaults: {
+      //   timeout: Duration.minutes(20),
+      // },
+    });
+
+    const hugoPageDevStage = new HugoPageStage(this, 'dev-stage', {
+      env: {
+        account: Stack.of(this).account, // TODO understand, as we run in the same account
+        region: Stack.of(this).region,
+      },
+      buildStage: 'development', //  TODO make constant
+      siteSubDomain: this.siteSubDomain,
+      domainName: this.domainName,
+      hugoProjectPath: props.hugoProjectPath,
+      s3deployAssetHash: props.s3deployAssetHash,
+    });
+
+    pipepline.addStage(hugoPageDevStage, {
+      post: [
+        new pipelines.ShellStep('HitDevEndpoint', {
+          envFromCfnOutputs: {
+            // Make the address available as $URL inside the commands
+            URL: hugoPageDevStage.staticSiteURL,
+          },
+          // TODO add header to allow request to call
+          commands: [`curl -Ssf -H "Authorization: Basic ${basicAuthBase64}" $URL`],
+        }),
+      ],
+    });
+
+    const hugoPageProdStage = new HugoPageStage(this, 'prod-stage', {
+      env: {
+        account: Stack.of(this).account, // TODO understand, as we run in the same account
+        region: Stack.of(this).region,
+      },
+      buildStage: 'production',
+      domainName: this.domainName,
+      hugoProjectPath: props.hugoProjectPath,
+      s3deployAssetHash: props.s3deployAssetHash,
+    });
+
+    pipepline.addStage(hugoPageProdStage, {
+      pre: [
+        new pipelines.ManualApprovalStep('PromoteToProd'),
+      ],
+      post: [
+        new pipelines.ShellStep('HitProdEndpoint', {
+          envFromCfnOutputs: {
+            URL: hugoPageProdStage.staticSiteURL,
+          },
+          commands: ['curl -Ssf $URL'],
+        }),
+      ],
+    });
+  }
+}

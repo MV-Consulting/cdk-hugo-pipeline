@@ -14,6 +14,16 @@ Take a look at the blog post [My blog with hugo - all on AWS](https://manuel-vog
 about all the details and learnings.
 
 ## Usage
+TBD
+
+```sh
+mkdir my-blog && cd my-blog
+npx projen new awscdk-app-ts
+# add hugo template
+git submodule add https://github.com/apvarun/blist-hugo-theme.git frontend/themes/blist
+# add fix version
+git submodule set-branch --branch v2.1.0 frontend/themes/blist
+```
 
 ### Typescript
 ```ts
@@ -37,22 +47,41 @@ export class MyStack extends Stack {
 
 # API Reference <a name="API Reference" id="api-reference"></a>
 
+## Constructs <a name="Constructs" id="Constructs"></a>
 
+### HugoHosting <a name="HugoHosting" id="cdk-hugo-pipeline.HugoHosting"></a>
 
-## Classes <a name="Classes" id="Classes"></a>
-
-### Hello <a name="Hello" id="cdk-hugo-pipeline.Hello"></a>
-
-#### Initializers <a name="Initializers" id="cdk-hugo-pipeline.Hello.Initializer"></a>
+#### Initializers <a name="Initializers" id="cdk-hugo-pipeline.HugoHosting.Initializer"></a>
 
 ```typescript
-import { Hello } from 'cdk-hugo-pipeline'
+import { HugoHosting } from 'cdk-hugo-pipeline'
 
-new Hello()
+new HugoHosting(scope: Construct, id: string, props: HugoHostingProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-hugo-pipeline.HugoHostingProps">HugoHostingProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="cdk-hugo-pipeline.HugoHosting.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="cdk-hugo-pipeline.HugoHosting.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-hugo-pipeline.HugoHosting.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-hugo-pipeline.HugoHostingProps">HugoHostingProps</a>
 
 ---
 
@@ -60,17 +89,1920 @@ new Hello()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#cdk-hugo-pipeline.Hello.sayHello">sayHello</a></code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.toString">toString</a></code> | Returns a string representation of this construct. |
 
 ---
 
-##### `sayHello` <a name="sayHello" id="cdk-hugo-pipeline.Hello.sayHello"></a>
+##### `toString` <a name="toString" id="cdk-hugo-pipeline.HugoHosting.toString"></a>
 
 ```typescript
-public sayHello(): string
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="cdk-hugo-pipeline.HugoHosting.isConstruct"></a>
+
+```typescript
+import { HugoHosting } from 'cdk-hugo-pipeline'
+
+HugoHosting.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="cdk-hugo-pipeline.HugoHosting.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.siteDomain">siteDomain</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHosting.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="cdk-hugo-pipeline.HugoHosting.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `buildStage`<sup>Required</sup> <a name="buildStage" id="cdk-hugo-pipeline.HugoHosting.property.buildStage"></a>
+
+```typescript
+public readonly buildStage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `domainName`<sup>Required</sup> <a name="domainName" id="cdk-hugo-pipeline.HugoHosting.property.domainName"></a>
+
+```typescript
+public readonly domainName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `siteDomain`<sup>Required</sup> <a name="siteDomain" id="cdk-hugo-pipeline.HugoHosting.property.siteDomain"></a>
+
+```typescript
+public readonly siteDomain: string;
+```
+
+- *Type:* string
+
+---
+
+##### `siteSubDomain`<sup>Required</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoHosting.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
+
+---
+
+##### `staticSiteURL`<sup>Required</sup> <a name="staticSiteURL" id="cdk-hugo-pipeline.HugoHosting.property.staticSiteURL"></a>
+
+```typescript
+public readonly staticSiteURL: CfnOutput;
+```
+
+- *Type:* aws-cdk-lib.CfnOutput
+
+---
+
+
+### HugoHostingStack <a name="HugoHostingStack" id="cdk-hugo-pipeline.HugoHostingStack"></a>
+
+#### Initializers <a name="Initializers" id="cdk-hugo-pipeline.HugoHostingStack.Initializer"></a>
+
+```typescript
+import { HugoHostingStack } from 'cdk-hugo-pipeline'
+
+new HugoHostingStack(scope: Construct, id: string, props: HugoHostingStackProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps">HugoHostingStackProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="cdk-hugo-pipeline.HugoHostingStack.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="cdk-hugo-pipeline.HugoHostingStack.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-hugo-pipeline.HugoHostingStack.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-hugo-pipeline.HugoHostingStackProps">HugoHostingStackProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a value. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.formatArn">formatArn</a></code> | Creates an ARN from components. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.renameLogicalId">renameLogicalId</a></code> | Rename a generated logical identities. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.reportMissingContextKey">reportMissingContextKey</a></code> | Indicate that a context key was expected. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
+
+---
+
+##### `toString` <a name="toString" id="cdk-hugo-pipeline.HugoHostingStack.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addDependency` <a name="addDependency" id="cdk-hugo-pipeline.HugoHostingStack.addDependency"></a>
+
+```typescript
+public addDependency(target: Stack, reason?: string): void
+```
+
+Add a dependency between this stack and another stack.
+
+This can be used to define dependencies between any two stacks within an
+app, and also supports nested stacks.
+
+###### `target`<sup>Required</sup> <a name="target" id="cdk-hugo-pipeline.HugoHostingStack.addDependency.parameter.target"></a>
+
+- *Type:* aws-cdk-lib.Stack
+
+---
+
+###### `reason`<sup>Optional</sup> <a name="reason" id="cdk-hugo-pipeline.HugoHostingStack.addDependency.parameter.reason"></a>
+
+- *Type:* string
+
+---
+
+##### `addTransform` <a name="addTransform" id="cdk-hugo-pipeline.HugoHostingStack.addTransform"></a>
+
+```typescript
+public addTransform(transform: string): void
+```
+
+Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template.
+
+Duplicate values are removed when stack is synthesized.
+
+> [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-section-structure.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-section-structure.html)
+
+*Example*
+
+```typescript
+declare const stack: Stack;
+
+stack.addTransform('AWS::Serverless-2016-10-31')
 ```
 
 
+###### `transform`<sup>Required</sup> <a name="transform" id="cdk-hugo-pipeline.HugoHostingStack.addTransform.parameter.transform"></a>
+
+- *Type:* string
+
+The transform to add.
+
+---
+
+##### `exportValue` <a name="exportValue" id="cdk-hugo-pipeline.HugoHostingStack.exportValue"></a>
+
+```typescript
+public exportValue(exportedValue: any, options?: ExportValueOptions): string
+```
+
+Create a CloudFormation Export for a value.
+
+Returns a string representing the corresponding `Fn.importValue()`
+expression for this Export. You can control the name for the export by
+passing the `name` option.
+
+If you don't supply a value for `name`, the value you're exporting must be
+a Resource attribute (for example: `bucket.bucketName`) and it will be
+given the same name as the automatic cross-stack reference that would be created
+if you used the attribute in another Stack.
+
+One of the uses for this method is to *remove* the relationship between
+two Stacks established by automatic cross-stack references. It will
+temporarily ensure that the CloudFormation Export still exists while you
+remove the reference from the consuming stack. After that, you can remove
+the resource and the manual export.
+
+## Example
+
+Here is how the process works. Let's say there are two stacks,
+`producerStack` and `consumerStack`, and `producerStack` has a bucket
+called `bucket`, which is referenced by `consumerStack` (perhaps because
+an AWS Lambda Function writes into it, or something like that).
+
+It is not safe to remove `producerStack.bucket` because as the bucket is being
+deleted, `consumerStack` might still be using it.
+
+Instead, the process takes two deployments:
+
+### Deployment 1: break the relationship
+
+- Make sure `consumerStack` no longer references `bucket.bucketName` (maybe the consumer
+   stack now uses its own bucket, or it writes to an AWS DynamoDB table, or maybe you just
+   remove the Lambda Function altogether).
+- In the `ProducerStack` class, call `this.exportValue(this.bucket.bucketName)`. This
+   will make sure the CloudFormation Export continues to exist while the relationship
+   between the two stacks is being broken.
+- Deploy (this will effectively only change the `consumerStack`, but it's safe to deploy both).
+
+### Deployment 2: remove the bucket resource
+
+- You are now free to remove the `bucket` resource from `producerStack`.
+- Don't forget to remove the `exportValue()` call as well.
+- Deploy again (this time only the `producerStack` will be changed -- the bucket will be deleted).
+
+###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="cdk-hugo-pipeline.HugoHostingStack.exportValue.parameter.exportedValue"></a>
+
+- *Type:* any
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="cdk-hugo-pipeline.HugoHostingStack.exportValue.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.ExportValueOptions
+
+---
+
+##### `formatArn` <a name="formatArn" id="cdk-hugo-pipeline.HugoHostingStack.formatArn"></a>
+
+```typescript
+public formatArn(components: ArnComponents): string
+```
+
+Creates an ARN from components.
+
+If `partition`, `region` or `account` are not specified, the stack's
+partition, region and account will be used.
+
+If any component is the empty string, an empty string will be inserted
+into the generated ARN at the location that component corresponds to.
+
+The ARN will be formatted as follows:
+
+   arn:{partition}:{service}:{region}:{account}:{resource}{sep}}{resource-name}
+
+The required ARN pieces that are omitted will be taken from the stack that
+the 'scope' is attached to. If all ARN pieces are supplied, the supplied scope
+can be 'undefined'.
+
+###### `components`<sup>Required</sup> <a name="components" id="cdk-hugo-pipeline.HugoHostingStack.formatArn.parameter.components"></a>
+
+- *Type:* aws-cdk-lib.ArnComponents
+
+---
+
+##### `getLogicalId` <a name="getLogicalId" id="cdk-hugo-pipeline.HugoHostingStack.getLogicalId"></a>
+
+```typescript
+public getLogicalId(element: CfnElement): string
+```
+
+Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource.
+
+This method is called when a `CfnElement` is created and used to render the
+initial logical identity of resources. Logical ID renames are applied at
+this stage.
+
+This method uses the protected method `allocateLogicalId` to render the
+logical ID for an element. To modify the naming scheme, extend the `Stack`
+class and override this method.
+
+###### `element`<sup>Required</sup> <a name="element" id="cdk-hugo-pipeline.HugoHostingStack.getLogicalId.parameter.element"></a>
+
+- *Type:* aws-cdk-lib.CfnElement
+
+The CloudFormation element for which a logical identity is needed.
+
+---
+
+##### `renameLogicalId` <a name="renameLogicalId" id="cdk-hugo-pipeline.HugoHostingStack.renameLogicalId"></a>
+
+```typescript
+public renameLogicalId(oldId: string, newId: string): void
+```
+
+Rename a generated logical identities.
+
+To modify the naming scheme strategy, extend the `Stack` class and
+override the `allocateLogicalId` method.
+
+###### `oldId`<sup>Required</sup> <a name="oldId" id="cdk-hugo-pipeline.HugoHostingStack.renameLogicalId.parameter.oldId"></a>
+
+- *Type:* string
+
+---
+
+###### `newId`<sup>Required</sup> <a name="newId" id="cdk-hugo-pipeline.HugoHostingStack.renameLogicalId.parameter.newId"></a>
+
+- *Type:* string
+
+---
+
+##### `reportMissingContextKey` <a name="reportMissingContextKey" id="cdk-hugo-pipeline.HugoHostingStack.reportMissingContextKey"></a>
+
+```typescript
+public reportMissingContextKey(report: MissingContext): void
+```
+
+Indicate that a context key was expected.
+
+Contains instructions which will be emitted into the cloud assembly on how
+the key should be supplied.
+
+###### `report`<sup>Required</sup> <a name="report" id="cdk-hugo-pipeline.HugoHostingStack.reportMissingContextKey.parameter.report"></a>
+
+- *Type:* aws-cdk-lib.cloud_assembly_schema.MissingContext
+
+The set of parameters needed to obtain the context.
+
+---
+
+##### `resolve` <a name="resolve" id="cdk-hugo-pipeline.HugoHostingStack.resolve"></a>
+
+```typescript
+public resolve(obj: any): any
+```
+
+Resolve a tokenized value in the context of the current stack.
+
+###### `obj`<sup>Required</sup> <a name="obj" id="cdk-hugo-pipeline.HugoHostingStack.resolve.parameter.obj"></a>
+
+- *Type:* any
+
+---
+
+##### `splitArn` <a name="splitArn" id="cdk-hugo-pipeline.HugoHostingStack.splitArn"></a>
+
+```typescript
+public splitArn(arn: string, arnFormat: ArnFormat): ArnComponents
+```
+
+Splits the provided ARN into its components.
+
+Works both if 'arn' is a string like 'arn:aws:s3:::bucket',
+and a Token representing a dynamic CloudFormation expression
+(in which case the returned components will also be dynamic CloudFormation expressions,
+encoded as Tokens).
+
+###### `arn`<sup>Required</sup> <a name="arn" id="cdk-hugo-pipeline.HugoHostingStack.splitArn.parameter.arn"></a>
+
+- *Type:* string
+
+the ARN to split into its components.
+
+---
+
+###### `arnFormat`<sup>Required</sup> <a name="arnFormat" id="cdk-hugo-pipeline.HugoHostingStack.splitArn.parameter.arnFormat"></a>
+
+- *Type:* aws-cdk-lib.ArnFormat
+
+the expected format of 'arn' - depends on what format the service 'arn' represents uses.
+
+---
+
+##### `toJsonString` <a name="toJsonString" id="cdk-hugo-pipeline.HugoHostingStack.toJsonString"></a>
+
+```typescript
+public toJsonString(obj: any, space?: number): string
+```
+
+Convert an object, potentially containing tokens, to a JSON string.
+
+###### `obj`<sup>Required</sup> <a name="obj" id="cdk-hugo-pipeline.HugoHostingStack.toJsonString.parameter.obj"></a>
+
+- *Type:* any
+
+---
+
+###### `space`<sup>Optional</sup> <a name="space" id="cdk-hugo-pipeline.HugoHostingStack.toJsonString.parameter.space"></a>
+
+- *Type:* number
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.isStack">isStack</a></code> | Return whether the given object is a Stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.of">of</a></code> | Looks up the first stack scope in which `construct` is defined. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="cdk-hugo-pipeline.HugoHostingStack.isConstruct"></a>
+
+```typescript
+import { HugoHostingStack } from 'cdk-hugo-pipeline'
+
+HugoHostingStack.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="cdk-hugo-pipeline.HugoHostingStack.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isStack` <a name="isStack" id="cdk-hugo-pipeline.HugoHostingStack.isStack"></a>
+
+```typescript
+import { HugoHostingStack } from 'cdk-hugo-pipeline'
+
+HugoHostingStack.isStack(x: any)
+```
+
+Return whether the given object is a Stack.
+
+We do attribute detection since we can't reliably use 'instanceof'.
+
+###### `x`<sup>Required</sup> <a name="x" id="cdk-hugo-pipeline.HugoHostingStack.isStack.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `of` <a name="of" id="cdk-hugo-pipeline.HugoHostingStack.of"></a>
+
+```typescript
+import { HugoHostingStack } from 'cdk-hugo-pipeline'
+
+HugoHostingStack.of(construct: IConstruct)
+```
+
+Looks up the first stack scope in which `construct` is defined.
+
+Fails if there is no stack up the tree.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="cdk-hugo-pipeline.HugoHostingStack.of.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+The construct to start the search from.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.account">account</a></code> | <code>string</code> | The AWS account into which this stack will be deployed. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.artifactId">artifactId</a></code> | <code>string</code> | The ID of the cloud assembly artifact for this stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.availabilityZones">availabilityZones</a></code> | <code>string[]</code> | Returns the list of AZs that are available in the AWS environment (account/region) associated with this stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.dependencies">dependencies</a></code> | <code>aws-cdk-lib.Stack[]</code> | Return the stacks this stack depends on. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.environment">environment</a></code> | <code>string</code> | The environment coordinates in which this stack is deployed. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.nested">nested</a></code> | <code>boolean</code> | Indicates if this is a nested stack, in which case `parentStack` will include a reference to it's parent. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.notificationArns">notificationArns</a></code> | <code>string[]</code> | Returns the list of notification Amazon Resource Names (ARNs) for the current stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.partition">partition</a></code> | <code>string</code> | The partition in which this stack is defined. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.region">region</a></code> | <code>string</code> | The AWS region into which this stack will be deployed (e.g. `us-west-2`). |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.stackId">stackId</a></code> | <code>string</code> | The ID of the stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.stackName">stackName</a></code> | <code>string</code> | The concrete CloudFormation physical stack name. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method for this stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.tags">tags</a></code> | <code>aws-cdk-lib.TagManager</code> | Tags to be applied to the stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.templateFile">templateFile</a></code> | <code>string</code> | The name of the CloudFormation template file emitted to the output directory during synthesis. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.templateOptions">templateOptions</a></code> | <code>aws-cdk-lib.ITemplateOptions</code> | Options for CloudFormation template (like version, transform, description). |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.urlSuffix">urlSuffix</a></code> | <code>string</code> | The Amazon domain suffix for the region in which this stack is defined. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStack.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="cdk-hugo-pipeline.HugoHostingStack.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `account`<sup>Required</sup> <a name="account" id="cdk-hugo-pipeline.HugoHostingStack.property.account"></a>
+
+```typescript
+public readonly account: string;
+```
+
+- *Type:* string
+
+The AWS account into which this stack will be deployed.
+
+This value is resolved according to the following rules:
+
+1. The value provided to `env.account` when the stack is defined. This can
+    either be a concerete account (e.g. `585695031111`) or the
+    `Aws.accountId` token.
+3. `Aws.accountId`, which represents the CloudFormation intrinsic reference
+    `{ "Ref": "AWS::AccountId" }` encoded as a string token.
+
+Preferably, you should use the return value as an opaque string and not
+attempt to parse it to implement your logic. If you do, you must first
+check that it is a concerete value an not an unresolved token. If this
+value is an unresolved token (`Token.isUnresolved(stack.account)` returns
+`true`), this implies that the user wishes that this stack will synthesize
+into a **account-agnostic template**. In this case, your code should either
+fail (throw an error, emit a synth error using `Annotations.of(construct).addError()`) or
+implement some other region-agnostic behavior.
+
+---
+
+##### `artifactId`<sup>Required</sup> <a name="artifactId" id="cdk-hugo-pipeline.HugoHostingStack.property.artifactId"></a>
+
+```typescript
+public readonly artifactId: string;
+```
+
+- *Type:* string
+
+The ID of the cloud assembly artifact for this stack.
+
+---
+
+##### `availabilityZones`<sup>Required</sup> <a name="availabilityZones" id="cdk-hugo-pipeline.HugoHostingStack.property.availabilityZones"></a>
+
+```typescript
+public readonly availabilityZones: string[];
+```
+
+- *Type:* string[]
+
+Returns the list of AZs that are available in the AWS environment (account/region) associated with this stack.
+
+If the stack is environment-agnostic (either account and/or region are
+tokens), this property will return an array with 2 tokens that will resolve
+at deploy-time to the first two availability zones returned from CloudFormation's
+`Fn::GetAZs` intrinsic function.
+
+If they are not available in the context, returns a set of dummy values and
+reports them as missing, and let the CLI resolve them by calling EC2
+`DescribeAvailabilityZones` on the target environment.
+
+To specify a different strategy for selecting availability zones override this method.
+
+---
+
+##### `dependencies`<sup>Required</sup> <a name="dependencies" id="cdk-hugo-pipeline.HugoHostingStack.property.dependencies"></a>
+
+```typescript
+public readonly dependencies: Stack[];
+```
+
+- *Type:* aws-cdk-lib.Stack[]
+
+Return the stacks this stack depends on.
+
+---
+
+##### `environment`<sup>Required</sup> <a name="environment" id="cdk-hugo-pipeline.HugoHostingStack.property.environment"></a>
+
+```typescript
+public readonly environment: string;
+```
+
+- *Type:* string
+
+The environment coordinates in which this stack is deployed.
+
+In the form
+`aws://account/region`. Use `stack.account` and `stack.region` to obtain
+the specific values, no need to parse.
+
+You can use this value to determine if two stacks are targeting the same
+environment.
+
+If either `stack.account` or `stack.region` are not concrete values (e.g.
+`Aws.account` or `Aws.region`) the special strings `unknown-account` and/or
+`unknown-region` will be used respectively to indicate this stack is
+region/account-agnostic.
+
+---
+
+##### `nested`<sup>Required</sup> <a name="nested" id="cdk-hugo-pipeline.HugoHostingStack.property.nested"></a>
+
+```typescript
+public readonly nested: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if this is a nested stack, in which case `parentStack` will include a reference to it's parent.
+
+---
+
+##### `nestedStackParent`<sup>Optional</sup> <a name="nestedStackParent" id="cdk-hugo-pipeline.HugoHostingStack.property.nestedStackParent"></a>
+
+```typescript
+public readonly nestedStackParent: Stack;
+```
+
+- *Type:* aws-cdk-lib.Stack
+
+If this is a nested stack, returns it's parent stack.
+
+---
+
+##### `nestedStackResource`<sup>Optional</sup> <a name="nestedStackResource" id="cdk-hugo-pipeline.HugoHostingStack.property.nestedStackResource"></a>
+
+```typescript
+public readonly nestedStackResource: CfnResource;
+```
+
+- *Type:* aws-cdk-lib.CfnResource
+
+If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource.
+
+`undefined` for top-level (non-nested) stacks.
+
+---
+
+##### `notificationArns`<sup>Required</sup> <a name="notificationArns" id="cdk-hugo-pipeline.HugoHostingStack.property.notificationArns"></a>
+
+```typescript
+public readonly notificationArns: string[];
+```
+
+- *Type:* string[]
+
+Returns the list of notification Amazon Resource Names (ARNs) for the current stack.
+
+---
+
+##### `partition`<sup>Required</sup> <a name="partition" id="cdk-hugo-pipeline.HugoHostingStack.property.partition"></a>
+
+```typescript
+public readonly partition: string;
+```
+
+- *Type:* string
+
+The partition in which this stack is defined.
+
+---
+
+##### `region`<sup>Required</sup> <a name="region" id="cdk-hugo-pipeline.HugoHostingStack.property.region"></a>
+
+```typescript
+public readonly region: string;
+```
+
+- *Type:* string
+
+The AWS region into which this stack will be deployed (e.g. `us-west-2`).
+
+This value is resolved according to the following rules:
+
+1. The value provided to `env.region` when the stack is defined. This can
+    either be a concerete region (e.g. `us-west-2`) or the `Aws.region`
+    token.
+3. `Aws.region`, which is represents the CloudFormation intrinsic reference
+    `{ "Ref": "AWS::Region" }` encoded as a string token.
+
+Preferably, you should use the return value as an opaque string and not
+attempt to parse it to implement your logic. If you do, you must first
+check that it is a concerete value an not an unresolved token. If this
+value is an unresolved token (`Token.isUnresolved(stack.region)` returns
+`true`), this implies that the user wishes that this stack will synthesize
+into a **region-agnostic template**. In this case, your code should either
+fail (throw an error, emit a synth error using `Annotations.of(construct).addError()`) or
+implement some other region-agnostic behavior.
+
+---
+
+##### `stackId`<sup>Required</sup> <a name="stackId" id="cdk-hugo-pipeline.HugoHostingStack.property.stackId"></a>
+
+```typescript
+public readonly stackId: string;
+```
+
+- *Type:* string
+
+The ID of the stack.
+
+---
+
+*Example*
+
+```typescript
+// After resolving, looks like
+'arn:aws:cloudformation:us-west-2:123456789012:stack/teststack/51af3dc0-da77-11e4-872e-1234567db123'
+```
+
+
+##### `stackName`<sup>Required</sup> <a name="stackName" id="cdk-hugo-pipeline.HugoHostingStack.property.stackName"></a>
+
+```typescript
+public readonly stackName: string;
+```
+
+- *Type:* string
+
+The concrete CloudFormation physical stack name.
+
+This is either the name defined explicitly in the `stackName` prop or
+allocated based on the stack's location in the construct tree. Stacks that
+are directly defined under the app use their construct `id` as their stack
+name. Stacks that are defined deeper within the tree will use a hashed naming
+scheme based on the construct path to ensure uniqueness.
+
+If you wish to obtain the deploy-time AWS::StackName intrinsic,
+you can use `Aws.stackName` directly.
+
+---
+
+##### `synthesizer`<sup>Required</sup> <a name="synthesizer" id="cdk-hugo-pipeline.HugoHostingStack.property.synthesizer"></a>
+
+```typescript
+public readonly synthesizer: IStackSynthesizer;
+```
+
+- *Type:* aws-cdk-lib.IStackSynthesizer
+
+Synthesis method for this stack.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="cdk-hugo-pipeline.HugoHostingStack.property.tags"></a>
+
+```typescript
+public readonly tags: TagManager;
+```
+
+- *Type:* aws-cdk-lib.TagManager
+
+Tags to be applied to the stack.
+
+---
+
+##### `templateFile`<sup>Required</sup> <a name="templateFile" id="cdk-hugo-pipeline.HugoHostingStack.property.templateFile"></a>
+
+```typescript
+public readonly templateFile: string;
+```
+
+- *Type:* string
+
+The name of the CloudFormation template file emitted to the output directory during synthesis.
+
+Example value: `MyStack.template.json`
+
+---
+
+##### `templateOptions`<sup>Required</sup> <a name="templateOptions" id="cdk-hugo-pipeline.HugoHostingStack.property.templateOptions"></a>
+
+```typescript
+public readonly templateOptions: ITemplateOptions;
+```
+
+- *Type:* aws-cdk-lib.ITemplateOptions
+
+Options for CloudFormation template (like version, transform, description).
+
+---
+
+##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="cdk-hugo-pipeline.HugoHostingStack.property.terminationProtection"></a>
+
+```typescript
+public readonly terminationProtection: boolean;
+```
+
+- *Type:* boolean
+
+Whether termination protection is enabled for this stack.
+
+---
+
+##### `urlSuffix`<sup>Required</sup> <a name="urlSuffix" id="cdk-hugo-pipeline.HugoHostingStack.property.urlSuffix"></a>
+
+```typescript
+public readonly urlSuffix: string;
+```
+
+- *Type:* string
+
+The Amazon domain suffix for the region in which this stack is defined.
+
+---
+
+##### `staticSiteURL`<sup>Required</sup> <a name="staticSiteURL" id="cdk-hugo-pipeline.HugoHostingStack.property.staticSiteURL"></a>
+
+```typescript
+public readonly staticSiteURL: CfnOutput;
+```
+
+- *Type:* aws-cdk-lib.CfnOutput
+
+---
+
+
+### HugoPageStage <a name="HugoPageStage" id="cdk-hugo-pipeline.HugoPageStage"></a>
+
+#### Initializers <a name="Initializers" id="cdk-hugo-pipeline.HugoPageStage.Initializer"></a>
+
+```typescript
+import { HugoPageStage } from 'cdk-hugo-pipeline'
+
+new HugoPageStage(scope: Construct, id: string, props: HugoPageStageProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps">HugoPageStageProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="cdk-hugo-pipeline.HugoPageStage.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="cdk-hugo-pipeline.HugoPageStage.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-hugo-pipeline.HugoPageStage.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-hugo-pipeline.HugoPageStageProps">HugoPageStageProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.synth">synth</a></code> | Synthesize this stage into a cloud assembly. |
+
+---
+
+##### `toString` <a name="toString" id="cdk-hugo-pipeline.HugoPageStage.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `synth` <a name="synth" id="cdk-hugo-pipeline.HugoPageStage.synth"></a>
+
+```typescript
+public synth(options?: StageSynthesisOptions): CloudAssembly
+```
+
+Synthesize this stage into a cloud assembly.
+
+Once an assembly has been synthesized, it cannot be modified. Subsequent
+calls will return the same assembly.
+
+###### `options`<sup>Optional</sup> <a name="options" id="cdk-hugo-pipeline.HugoPageStage.synth.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.StageSynthesisOptions
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.isStage">isStage</a></code> | Test whether the given construct is a stage. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.of">of</a></code> | Return the stage this construct is contained with, if available. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="cdk-hugo-pipeline.HugoPageStage.isConstruct"></a>
+
+```typescript
+import { HugoPageStage } from 'cdk-hugo-pipeline'
+
+HugoPageStage.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="cdk-hugo-pipeline.HugoPageStage.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isStage` <a name="isStage" id="cdk-hugo-pipeline.HugoPageStage.isStage"></a>
+
+```typescript
+import { HugoPageStage } from 'cdk-hugo-pipeline'
+
+HugoPageStage.isStage(x: any)
+```
+
+Test whether the given construct is a stage.
+
+###### `x`<sup>Required</sup> <a name="x" id="cdk-hugo-pipeline.HugoPageStage.isStage.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `of` <a name="of" id="cdk-hugo-pipeline.HugoPageStage.of"></a>
+
+```typescript
+import { HugoPageStage } from 'cdk-hugo-pipeline'
+
+HugoPageStage.of(construct: IConstruct)
+```
+
+Return the stage this construct is contained with, if available.
+
+If called
+on a nested stage, returns its parent.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="cdk-hugo-pipeline.HugoPageStage.of.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.property.account">account</a></code> | <code>string</code> | The default account for all resources defined within this stage. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.property.artifactId">artifactId</a></code> | <code>string</code> | Artifact ID of the assembly if it is a nested stage. The root stage (app) will return an empty string. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.property.assetOutdir">assetOutdir</a></code> | <code>string</code> | The cloud assembly asset output directory. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.property.outdir">outdir</a></code> | <code>string</code> | The cloud assembly output directory. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.property.parentStage">parentStage</a></code> | <code>aws-cdk-lib.Stage</code> | The parent stage or `undefined` if this is the app. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.property.region">region</a></code> | <code>string</code> | The default region for all resources defined within this stage. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.property.stageName">stageName</a></code> | <code>string</code> | The name of the stage. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStage.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="cdk-hugo-pipeline.HugoPageStage.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `account`<sup>Optional</sup> <a name="account" id="cdk-hugo-pipeline.HugoPageStage.property.account"></a>
+
+```typescript
+public readonly account: string;
+```
+
+- *Type:* string
+
+The default account for all resources defined within this stage.
+
+---
+
+##### `artifactId`<sup>Required</sup> <a name="artifactId" id="cdk-hugo-pipeline.HugoPageStage.property.artifactId"></a>
+
+```typescript
+public readonly artifactId: string;
+```
+
+- *Type:* string
+
+Artifact ID of the assembly if it is a nested stage. The root stage (app) will return an empty string.
+
+Derived from the construct path.
+
+---
+
+##### `assetOutdir`<sup>Required</sup> <a name="assetOutdir" id="cdk-hugo-pipeline.HugoPageStage.property.assetOutdir"></a>
+
+```typescript
+public readonly assetOutdir: string;
+```
+
+- *Type:* string
+
+The cloud assembly asset output directory.
+
+---
+
+##### `outdir`<sup>Required</sup> <a name="outdir" id="cdk-hugo-pipeline.HugoPageStage.property.outdir"></a>
+
+```typescript
+public readonly outdir: string;
+```
+
+- *Type:* string
+
+The cloud assembly output directory.
+
+---
+
+##### `parentStage`<sup>Optional</sup> <a name="parentStage" id="cdk-hugo-pipeline.HugoPageStage.property.parentStage"></a>
+
+```typescript
+public readonly parentStage: Stage;
+```
+
+- *Type:* aws-cdk-lib.Stage
+
+The parent stage or `undefined` if this is the app.
+
+*
+
+---
+
+##### `region`<sup>Optional</sup> <a name="region" id="cdk-hugo-pipeline.HugoPageStage.property.region"></a>
+
+```typescript
+public readonly region: string;
+```
+
+- *Type:* string
+
+The default region for all resources defined within this stage.
+
+---
+
+##### `stageName`<sup>Required</sup> <a name="stageName" id="cdk-hugo-pipeline.HugoPageStage.property.stageName"></a>
+
+```typescript
+public readonly stageName: string;
+```
+
+- *Type:* string
+
+The name of the stage.
+
+Based on names of the parent stages separated by
+hypens.
+
+---
+
+##### `staticSiteURL`<sup>Required</sup> <a name="staticSiteURL" id="cdk-hugo-pipeline.HugoPageStage.property.staticSiteURL"></a>
+
+```typescript
+public readonly staticSiteURL: CfnOutput;
+```
+
+- *Type:* aws-cdk-lib.CfnOutput
+
+---
+
+
+### HugoPipeline <a name="HugoPipeline" id="cdk-hugo-pipeline.HugoPipeline"></a>
+
+#### Initializers <a name="Initializers" id="cdk-hugo-pipeline.HugoPipeline.Initializer"></a>
+
+```typescript
+import { HugoPipeline } from 'cdk-hugo-pipeline'
+
+new HugoPipeline(scope: Construct, id: string, props: HugoPipelineProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPipeline.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPipeline.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPipeline.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps">HugoPipelineProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="cdk-hugo-pipeline.HugoPipeline.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="cdk-hugo-pipeline.HugoPipeline.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="cdk-hugo-pipeline.HugoPipeline.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-hugo-pipeline.HugoPipelineProps">HugoPipelineProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPipeline.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="cdk-hugo-pipeline.HugoPipeline.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPipeline.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="cdk-hugo-pipeline.HugoPipeline.isConstruct"></a>
+
+```typescript
+import { HugoPipeline } from 'cdk-hugo-pipeline'
+
+HugoPipeline.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="cdk-hugo-pipeline.HugoPipeline.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPipeline.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipeline.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPipeline.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="cdk-hugo-pipeline.HugoPipeline.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `domainName`<sup>Required</sup> <a name="domainName" id="cdk-hugo-pipeline.HugoPipeline.property.domainName"></a>
+
+```typescript
+public readonly domainName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `siteSubDomain`<sup>Required</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoPipeline.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
+
+---
+
+
+## Structs <a name="Structs" id="Structs"></a>
+
+### HugoHostingProps <a name="HugoHostingProps" id="cdk-hugo-pipeline.HugoHostingProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-hugo-pipeline.HugoHostingProps.Initializer"></a>
+
+```typescript
+import { HugoHostingProps } from 'cdk-hugo-pipeline'
+
+const hugoHostingProps: HugoHostingProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.buildStage">buildStage</a></code> | <code>string</code> | Name of the stage to deploy to. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.domainName">domainName</a></code> | <code>string</code> | Name of the domain to host the site on. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.alpineHugoVersion">alpineHugoVersion</a></code> | <code>string</code> | The hugo version to use in the alpine docker image. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | The path to the 403 error page. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | The path to the 404 error page. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | The hash to use to build or rebuild the hugo page. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.zone">zone</a></code> | <code>aws-cdk-lib.aws_route53.HostedZone</code> | Zone the Domain Name is created in. |
+
+---
+
+##### `buildStage`<sup>Required</sup> <a name="buildStage" id="cdk-hugo-pipeline.HugoHostingProps.property.buildStage"></a>
+
+```typescript
+public readonly buildStage: string;
+```
+
+- *Type:* string
+- *Default:* production
+
+Name of the stage to deploy to.
+
+Should be 'development' or 'production'
+
+---
+
+##### `domainName`<sup>Required</sup> <a name="domainName" id="cdk-hugo-pipeline.HugoHostingProps.property.domainName"></a>
+
+```typescript
+public readonly domainName: string;
+```
+
+- *Type:* string
+
+Name of the domain to host the site on.
+
+---
+
+##### `alpineHugoVersion`<sup>Optional</sup> <a name="alpineHugoVersion" id="cdk-hugo-pipeline.HugoHostingProps.property.alpineHugoVersion"></a>
+
+```typescript
+public readonly alpineHugoVersion: string;
+```
+
+- *Type:* string
+- *Default:* 0.106.0-r3
+
+The hugo version to use in the alpine docker image.
+
+---
+
+##### `basicAuthPassword`<sup>Optional</sup> <a name="basicAuthPassword" id="cdk-hugo-pipeline.HugoHostingProps.property.basicAuthPassword"></a>
+
+```typescript
+public readonly basicAuthPassword: string;
+```
+
+- *Type:* string
+- *Default:* doe
+
+The password for basic auth on the development site.
+
+---
+
+##### `basicAuthUsername`<sup>Optional</sup> <a name="basicAuthUsername" id="cdk-hugo-pipeline.HugoHostingProps.property.basicAuthUsername"></a>
+
+```typescript
+public readonly basicAuthUsername: string;
+```
+
+- *Type:* string
+- *Default:* john
+
+The username for basic auth on the development site.
+
+---
+
+##### `http403ResponsePagePath`<sup>Optional</sup> <a name="http403ResponsePagePath" id="cdk-hugo-pipeline.HugoHostingProps.property.http403ResponsePagePath"></a>
+
+```typescript
+public readonly http403ResponsePagePath: string;
+```
+
+- *Type:* string
+- *Default:* /en/404.html
+
+The path to the 403 error page.
+
+---
+
+##### `http404ResponsePagePath`<sup>Optional</sup> <a name="http404ResponsePagePath" id="cdk-hugo-pipeline.HugoHostingProps.property.http404ResponsePagePath"></a>
+
+```typescript
+public readonly http404ResponsePagePath: string;
+```
+
+- *Type:* string
+- *Default:* /en/404.html
+
+The path to the 404 error page.
+
+---
+
+##### `hugoProjectPath`<sup>Optional</sup> <a name="hugoProjectPath" id="cdk-hugo-pipeline.HugoHostingProps.property.hugoProjectPath"></a>
+
+```typescript
+public readonly hugoProjectPath: string;
+```
+
+- *Type:* string
+- *Default:* '../frontend'
+
+The path to the hugo project.
+
+---
+
+##### `s3deployAssetHash`<sup>Optional</sup> <a name="s3deployAssetHash" id="cdk-hugo-pipeline.HugoHostingProps.property.s3deployAssetHash"></a>
+
+```typescript
+public readonly s3deployAssetHash: string;
+```
+
+- *Type:* string
+- *Default:* `${Number(Math.random())}-${props.buildStage}`
+
+The hash to use to build or rebuild the hugo page.
+
+We use it to rebuild the site every time as cdk caching is too intelligent
+and it did not deploy updates.
+
+For testing purposes we pass a static hash to avoid updates of the snapshot tests.
+
+---
+
+##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoHostingProps.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
+- *Default:* dev
+
+The subdomain to host the development site on, for example 'dev'.
+
+---
+
+##### `zone`<sup>Optional</sup> <a name="zone" id="cdk-hugo-pipeline.HugoHostingProps.property.zone"></a>
+
+```typescript
+public readonly zone: HostedZone;
+```
+
+- *Type:* aws-cdk-lib.aws_route53.HostedZone
+
+Zone the Domain Name is created in.
+
+---
+
+### HugoHostingStackProps <a name="HugoHostingStackProps" id="cdk-hugo-pipeline.HugoHostingStackProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-hugo-pipeline.HugoHostingStackProps.Initializer"></a>
+
+```typescript
+import { HugoHostingStackProps } from 'cdk-hugo-pipeline'
+
+const hugoHostingStackProps: HugoHostingStackProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.analyticsReporting">analyticsReporting</a></code> | <code>boolean</code> | Include runtime versioning information in this Stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.description">description</a></code> | <code>string</code> | A description of the stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.env">env</a></code> | <code>aws-cdk-lib.Environment</code> | The AWS environment (account/region) where this stack will be deployed. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.stackName">stackName</a></code> | <code>string</code> | Name to deploy the stack with. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Stack tags that will be applied to all the taggable resources and the stack itself. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `analyticsReporting`<sup>Optional</sup> <a name="analyticsReporting" id="cdk-hugo-pipeline.HugoHostingStackProps.property.analyticsReporting"></a>
+
+```typescript
+public readonly analyticsReporting: boolean;
+```
+
+- *Type:* boolean
+- *Default:* `analyticsReporting` setting of containing `App`, or value of 'aws:cdk:version-reporting' context key
+
+Include runtime versioning information in this Stack.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="cdk-hugo-pipeline.HugoHostingStackProps.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+- *Default:* No description.
+
+A description of the stack.
+
+---
+
+##### `env`<sup>Optional</sup> <a name="env" id="cdk-hugo-pipeline.HugoHostingStackProps.property.env"></a>
+
+```typescript
+public readonly env: Environment;
+```
+
+- *Type:* aws-cdk-lib.Environment
+- *Default:* The environment of the containing `Stage` if available, otherwise create the stack will be environment-agnostic.
+
+The AWS environment (account/region) where this stack will be deployed.
+
+Set the `region`/`account` fields of `env` to either a concrete value to
+select the indicated environment (recommended for production stacks), or to
+the values of environment variables
+`CDK_DEFAULT_REGION`/`CDK_DEFAULT_ACCOUNT` to let the target environment
+depend on the AWS credentials/configuration that the CDK CLI is executed
+under (recommended for development stacks).
+
+If the `Stack` is instantiated inside a `Stage`, any undefined
+`region`/`account` fields from `env` will default to the same field on the
+encompassing `Stage`, if configured there.
+
+If either `region` or `account` are not set nor inherited from `Stage`, the
+Stack will be considered "*environment-agnostic*"". Environment-agnostic
+stacks can be deployed to any environment but may not be able to take
+advantage of all features of the CDK. For example, they will not be able to
+use environmental context lookups such as `ec2.Vpc.fromLookup` and will not
+automatically translate Service Principals to the right format based on the
+environment's AWS partition, and other such enhancements.
+
+---
+
+*Example*
+
+```typescript
+// Use a concrete account and region to deploy this stack to:
+// `.account` and `.region` will simply return these values.
+new Stack(app, 'Stack1', {
+  env: {
+    account: '123456789012',
+    region: 'us-east-1'
+  },
+});
+
+// Use the CLI's current credentials to determine the target environment:
+// `.account` and `.region` will reflect the account+region the CLI
+// is configured to use (based on the user CLI credentials)
+new Stack(app, 'Stack2', {
+  env: {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: process.env.CDK_DEFAULT_REGION
+  },
+});
+
+// Define multiple stacks stage associated with an environment
+const myStage = new Stage(app, 'MyStage', {
+  env: {
+    account: '123456789012',
+    region: 'us-east-1'
+  }
+});
+
+// both of these stacks will use the stage's account/region:
+// `.account` and `.region` will resolve to the concrete values as above
+new MyStack(myStage, 'Stack1');
+new YourStack(myStage, 'Stack2');
+
+// Define an environment-agnostic stack:
+// `.account` and `.region` will resolve to `{ "Ref": "AWS::AccountId" }` and `{ "Ref": "AWS::Region" }` respectively.
+// which will only resolve to actual values by CloudFormation during deployment.
+new MyStack(app, 'Stack1');
+```
+
+
+##### `stackName`<sup>Optional</sup> <a name="stackName" id="cdk-hugo-pipeline.HugoHostingStackProps.property.stackName"></a>
+
+```typescript
+public readonly stackName: string;
+```
+
+- *Type:* string
+- *Default:* Derived from construct path.
+
+Name to deploy the stack with.
+
+---
+
+##### `synthesizer`<sup>Optional</sup> <a name="synthesizer" id="cdk-hugo-pipeline.HugoHostingStackProps.property.synthesizer"></a>
+
+```typescript
+public readonly synthesizer: IStackSynthesizer;
+```
+
+- *Type:* aws-cdk-lib.IStackSynthesizer
+- *Default:* `DefaultStackSynthesizer` if the `@aws-cdk/core:newStyleStackSynthesis` feature flag is set, `LegacyStackSynthesizer` otherwise.
+
+Synthesis method to use while deploying this stack.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="cdk-hugo-pipeline.HugoHostingStackProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+- *Default:* {}
+
+Stack tags that will be applied to all the taggable resources and the stack itself.
+
+---
+
+##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="cdk-hugo-pipeline.HugoHostingStackProps.property.terminationProtection"></a>
+
+```typescript
+public readonly terminationProtection: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to enable termination protection for this stack.
+
+---
+
+##### `buildStage`<sup>Required</sup> <a name="buildStage" id="cdk-hugo-pipeline.HugoHostingStackProps.property.buildStage"></a>
+
+```typescript
+public readonly buildStage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `domainName`<sup>Required</sup> <a name="domainName" id="cdk-hugo-pipeline.HugoHostingStackProps.property.domainName"></a>
+
+```typescript
+public readonly domainName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `hugoProjectPath`<sup>Optional</sup> <a name="hugoProjectPath" id="cdk-hugo-pipeline.HugoHostingStackProps.property.hugoProjectPath"></a>
+
+```typescript
+public readonly hugoProjectPath: string;
+```
+
+- *Type:* string
+
+---
+
+##### `s3deployAssetHash`<sup>Optional</sup> <a name="s3deployAssetHash" id="cdk-hugo-pipeline.HugoHostingStackProps.property.s3deployAssetHash"></a>
+
+```typescript
+public readonly s3deployAssetHash: string;
+```
+
+- *Type:* string
+
+---
+
+##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoHostingStackProps.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
+
+---
+
+### HugoPageStageProps <a name="HugoPageStageProps" id="cdk-hugo-pipeline.HugoPageStageProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-hugo-pipeline.HugoPageStageProps.Initializer"></a>
+
+```typescript
+import { HugoPageStageProps } from 'cdk-hugo-pipeline'
+
+const hugoPageStageProps: HugoPageStageProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.env">env</a></code> | <code>aws-cdk-lib.Environment</code> | Default AWS environment (account/region) for `Stack`s in this `Stage`. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.outdir">outdir</a></code> | <code>string</code> | The output directory into which to emit synthesized artifacts. |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `env`<sup>Optional</sup> <a name="env" id="cdk-hugo-pipeline.HugoPageStageProps.property.env"></a>
+
+```typescript
+public readonly env: Environment;
+```
+
+- *Type:* aws-cdk-lib.Environment
+- *Default:* The environments should be configured on the `Stack`s.
+
+Default AWS environment (account/region) for `Stack`s in this `Stage`.
+
+Stacks defined inside this `Stage` with either `region` or `account` missing
+from its env will use the corresponding field given here.
+
+If either `region` or `account`is is not configured for `Stack` (either on
+the `Stack` itself or on the containing `Stage`), the Stack will be
+*environment-agnostic*.
+
+Environment-agnostic stacks can be deployed to any environment, may not be
+able to take advantage of all features of the CDK. For example, they will
+not be able to use environmental context lookups, will not automatically
+translate Service Principals to the right format based on the environment's
+AWS partition, and other such enhancements.
+
+---
+
+*Example*
+
+```typescript
+// Use a concrete account and region to deploy this Stage to
+new Stage(app, 'Stage1', {
+  env: { account: '123456789012', region: 'us-east-1' },
+});
+
+// Use the CLI's current credentials to determine the target environment
+new Stage(app, 'Stage2', {
+  env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+});
+```
+
+
+##### `outdir`<sup>Optional</sup> <a name="outdir" id="cdk-hugo-pipeline.HugoPageStageProps.property.outdir"></a>
+
+```typescript
+public readonly outdir: string;
+```
+
+- *Type:* string
+- *Default:* for nested stages, outdir will be determined as a relative directory to the outdir of the app. For apps, if outdir is not specified, a temporary directory will be created.
+
+The output directory into which to emit synthesized artifacts.
+
+Can only be specified if this stage is the root stage (the app). If this is
+specified and this stage is nested within another stage, an error will be
+thrown.
+
+---
+
+##### `buildStage`<sup>Required</sup> <a name="buildStage" id="cdk-hugo-pipeline.HugoPageStageProps.property.buildStage"></a>
+
+```typescript
+public readonly buildStage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `domainName`<sup>Required</sup> <a name="domainName" id="cdk-hugo-pipeline.HugoPageStageProps.property.domainName"></a>
+
+```typescript
+public readonly domainName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `hugoProjectPath`<sup>Optional</sup> <a name="hugoProjectPath" id="cdk-hugo-pipeline.HugoPageStageProps.property.hugoProjectPath"></a>
+
+```typescript
+public readonly hugoProjectPath: string;
+```
+
+- *Type:* string
+
+---
+
+##### `s3deployAssetHash`<sup>Optional</sup> <a name="s3deployAssetHash" id="cdk-hugo-pipeline.HugoPageStageProps.property.s3deployAssetHash"></a>
+
+```typescript
+public readonly s3deployAssetHash: string;
+```
+
+- *Type:* string
+
+---
+
+##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoPageStageProps.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
+
+---
+
+### HugoPipelineProps <a name="HugoPipelineProps" id="cdk-hugo-pipeline.HugoPipelineProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-hugo-pipeline.HugoPipelineProps.Initializer"></a>
+
+```typescript
+import { HugoPipelineProps } from 'cdk-hugo-pipeline'
+
+const hugoPipelineProps: HugoPipelineProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.domainName">domainName</a></code> | <code>string</code> | Name of the domain to host the site on. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.name">name</a></code> | <code>string</code> | Name of the codecommit repository. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | The hash to use to build or rebuild the hugo page. |
+
+---
+
+##### `domainName`<sup>Required</sup> <a name="domainName" id="cdk-hugo-pipeline.HugoPipelineProps.property.domainName"></a>
+
+```typescript
+public readonly domainName: string;
+```
+
+- *Type:* string
+
+Name of the domain to host the site on.
+
+---
+
+##### `siteSubDomain`<sup>Required</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
+- *Default:* dev
+
+The subdomain to host the development site on, for example 'dev'.
+
+---
+
+##### `basicAuthPassword`<sup>Optional</sup> <a name="basicAuthPassword" id="cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthPassword"></a>
+
+```typescript
+public readonly basicAuthPassword: string;
+```
+
+- *Type:* string
+- *Default:* doe
+
+The password for basic auth on the development site.
+
+---
+
+##### `basicAuthUsername`<sup>Optional</sup> <a name="basicAuthUsername" id="cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthUsername"></a>
+
+```typescript
+public readonly basicAuthUsername: string;
+```
+
+- *Type:* string
+- *Default:* john
+
+The username for basic auth on the development site.
+
+---
+
+##### `hugoProjectPath`<sup>Optional</sup> <a name="hugoProjectPath" id="cdk-hugo-pipeline.HugoPipelineProps.property.hugoProjectPath"></a>
+
+```typescript
+public readonly hugoProjectPath: string;
+```
+
+- *Type:* string
+- *Default:* '../frontend'
+
+The path to the hugo project.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="cdk-hugo-pipeline.HugoPipelineProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+- *Default:* hugo blog
+
+Name of the codecommit repository.
+
+---
+
+##### `s3deployAssetHash`<sup>Optional</sup> <a name="s3deployAssetHash" id="cdk-hugo-pipeline.HugoPipelineProps.property.s3deployAssetHash"></a>
+
+```typescript
+public readonly s3deployAssetHash: string;
+```
+
+- *Type:* string
+- *Default:* `${Number(Math.random())}-${props.buildStage}`
+
+The hash to use to build or rebuild the hugo page.
+
+We use it to rebuild the site every time as cdk caching is too intelligent
+and it did not deploy updates.
+
+For testing purposes we pass a static hash to avoid updates of the snapshot tests.
+
+---
 
 
 

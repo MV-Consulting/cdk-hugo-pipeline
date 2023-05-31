@@ -1,0 +1,1308 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot development hosting 1`] = `
+Object {
+  "Mappings": Object {
+    "AWSCloudFrontPartitionHostedZoneIdMap": Object {
+      "aws": Object {
+        "zoneId": "Z2FDTNDATAQYW2",
+      },
+      "aws-cn": Object {
+        "zoneId": "Z3RFFRIM2A3IF5",
+      },
+    },
+  },
+  "Outputs": Object {
+    "hugoDevelopmentHostingBucketC951048E": Object {
+      "Value": Object {
+        "Ref": "hugoDevelopmentHostingfrontend7784C2E7",
+      },
+    },
+    "hugoDevelopmentHostingCertificateC74FD539": Object {
+      "Value": Object {
+        "Fn::GetAtt": Array [
+          "hugoDevelopmentHostingSiteCertificateCertificateRequestorResource0385A5E7",
+          "Arn",
+        ],
+      },
+    },
+    "hugoDevelopmentHostingDistributionId560AC70C": Object {
+      "Value": Object {
+        "Ref": "hugoDevelopmentHostingfrontenddistributionAD69ACAC",
+      },
+    },
+    "hugoDevelopmentHostingSiteD31610D2": Object {
+      "Value": "https://dev.example.com",
+    },
+  },
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": Object {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": Object {
+      "DependsOn": Array [
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
+          "S3Key": "983c442a2fe823a8b4ebb18d241a5150ae15103dacbf3f038c7c6343e565aa4c.zip",
+        },
+        "Handler": "index.handler",
+        "Layers": Array [
+          Object {
+            "Ref": "hugoDevelopmentHostingfrontenddeploymentAwsCliLayer4660FEA7",
+          },
+        ],
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+            "Arn",
+          ],
+        },
+        "Runtime": "python3.7",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "arn:",
+                      Object {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":s3:::cdk-hnb659fds-assets-1234-us-east-1",
+                    ],
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "arn:",
+                      Object {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":s3:::cdk-hnb659fds-assets-1234-us-east-1/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": Array [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "hugoDevelopmentHostingfrontend7784C2E7",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "hugoDevelopmentHostingfrontend7784C2E7",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": Array [
+                "cloudfront:GetInvalidation",
+                "cloudfront:CreateInvalidation",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "Roles": Array [
+          Object {
+            "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": Object {
+      "DependsOn": Array [
+        "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
+          "S3Key": "1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1.zip",
+        },
+        "Description": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "Lambda function for auto-deleting objects in ",
+              Object {
+                "Ref": "hugoDevelopmentHostingfrontend7784C2E7",
+              },
+              " S3 bucket.",
+            ],
+          ],
+        },
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs12.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "hugoDevelopmentHostingSiteAliasRecord371F4567": Object {
+      "Properties": Object {
+        "AliasTarget": Object {
+          "DNSName": Object {
+            "Fn::GetAtt": Array [
+              "hugoDevelopmentHostingfrontenddistributionAD69ACAC",
+              "DomainName",
+            ],
+          },
+          "HostedZoneId": Object {
+            "Fn::FindInMap": Array [
+              "AWSCloudFrontPartitionHostedZoneIdMap",
+              Object {
+                "Ref": "AWS::Partition",
+              },
+              "zoneId",
+            ],
+          },
+        },
+        "HostedZoneId": "DUMMY",
+        "Name": "dev.example.com.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "hugoDevelopmentHostingSiteCertificateCertificateRequestorFunction0A65E040": Object {
+      "DependsOn": Array [
+        "hugoDevelopmentHostingSiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyDEFDFD59",
+        "hugoDevelopmentHostingSiteCertificateCertificateRequestorFunctionServiceRole0081E970",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
+          "S3Key": "7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4.zip",
+        },
+        "Handler": "index.certificateRequestHandler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "hugoDevelopmentHostingSiteCertificateCertificateRequestorFunctionServiceRole0081E970",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs12.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "hugoDevelopmentHostingSiteCertificateCertificateRequestorFunctionServiceRole0081E970": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "hugoDevelopmentHostingSiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyDEFDFD59": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "acm:RequestCertificate",
+                "acm:DescribeCertificate",
+                "acm:DeleteCertificate",
+                "acm:AddTagsToCertificate",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "route53:GetChange",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "route53:changeResourceRecordSets",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":route53:::hostedzone/DUMMY",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "hugoDevelopmentHostingSiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyDEFDFD59",
+        "Roles": Array [
+          Object {
+            "Ref": "hugoDevelopmentHostingSiteCertificateCertificateRequestorFunctionServiceRole0081E970",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "hugoDevelopmentHostingSiteCertificateCertificateRequestorResource0385A5E7": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "DomainName": "dev.example.com",
+        "HostedZoneId": "DUMMY",
+        "Region": "us-east-1",
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "hugoDevelopmentHostingSiteCertificateCertificateRequestorFunction0A65E040",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::CustomResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "hugoDevelopmentHostingcloudfrontOAI73A8B1F1": Object {
+      "Properties": Object {
+        "CloudFrontOriginAccessIdentityConfig": Object {
+          "Comment": "OAI for hugoDevelopmentHosting",
+        },
+      },
+      "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+    },
+    "hugoDevelopmentHostingfrontend7784C2E7": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "BucketName": "dev.example.com",
+        "PublicAccessBlockConfiguration": Object {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true,
+        },
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:auto-delete-objects",
+            "Value": "true",
+          },
+          Object {
+            "Key": "aws-cdk:cr-owned:af903df7",
+            "Value": "true",
+          },
+        ],
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "hugoDevelopmentHostingfrontendAutoDeleteObjectsCustomResourceBAE2EBF7": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "hugoDevelopmentHostingfrontendPolicyE4B90FF0",
+      ],
+      "Properties": Object {
+        "BucketName": Object {
+          "Ref": "hugoDevelopmentHostingfrontend7784C2E7",
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::S3AutoDeleteObjects",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "hugoDevelopmentHostingfrontendPolicyE4B90FF0": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "hugoDevelopmentHostingfrontend7784C2E7",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+              ],
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": Object {
+                  "Fn::GetAtt": Array [
+                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                    "Arn",
+                  ],
+                },
+              },
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "hugoDevelopmentHostingfrontend7784C2E7",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "hugoDevelopmentHostingfrontend7784C2E7",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Principal": Object {
+                "CanonicalUser": Object {
+                  "Fn::GetAtt": Array [
+                    "hugoDevelopmentHostingcloudfrontOAI73A8B1F1",
+                    "S3CanonicalUserId",
+                  ],
+                },
+              },
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    Object {
+                      "Fn::GetAtt": Array [
+                        "hugoDevelopmentHostingfrontend7784C2E7",
+                        "Arn",
+                      ],
+                    },
+                    "/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+    "hugoDevelopmentHostingfrontenddeploymentAwsCliLayer4660FEA7": Object {
+      "Properties": Object {
+        "Content": Object {
+          "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
+          "S3Key": "e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68.zip",
+        },
+        "Description": "/opt/awscli/aws",
+      },
+      "Type": "AWS::Lambda::LayerVersion",
+    },
+    "hugoDevelopmentHostingfrontenddeploymentCustomResourceFADC927A": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "DestinationBucketName": Object {
+          "Ref": "hugoDevelopmentHostingfrontend7784C2E7",
+        },
+        "DistributionId": Object {
+          "Ref": "hugoDevelopmentHostingfrontenddistributionAD69ACAC",
+        },
+        "DistributionPaths": Array [
+          "/*",
+        ],
+        "Prune": true,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+            "Arn",
+          ],
+        },
+        "SourceBucketNames": Array [
+          "cdk-hnb659fds-assets-1234-us-east-1",
+        ],
+        "SourceObjectKeys": Array [
+          "72cb9274a1818d0e7b717eb170b99a99e001f4b8145e53fcb67fbb93af76ab80.zip",
+        ],
+      },
+      "Type": "Custom::CDKBucketDeployment",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "hugoDevelopmentHostingfrontenddistributionAD69ACAC": Object {
+      "Properties": Object {
+        "DistributionConfig": Object {
+          "Aliases": Array [
+            "dev.example.com",
+          ],
+          "CustomErrorResponses": Array [
+            Object {
+              "ErrorCachingMinTTL": 1800,
+              "ErrorCode": 403,
+              "ResponseCode": 404,
+              "ResponsePagePath": "/en/404.html",
+            },
+            Object {
+              "ErrorCachingMinTTL": 1800,
+              "ErrorCode": 404,
+              "ResponseCode": 404,
+              "ResponsePagePath": "/en/404.html",
+            },
+          ],
+          "DefaultCacheBehavior": Object {
+            "AllowedMethods": Array [
+              "GET",
+              "HEAD",
+              "OPTIONS",
+            ],
+            "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+            "Compress": true,
+            "FunctionAssociations": Array [
+              Object {
+                "EventType": "viewer-request",
+                "FunctionARN": Object {
+                  "Fn::GetAtt": Array [
+                    "hugoDevelopmentHostingredirectrequestcf2AACF3B8",
+                    "FunctionARN",
+                  ],
+                },
+              },
+            ],
+            "TargetOriginId": "testStackhugoDevelopmentHostingfrontenddistributionOrigin1730B7960",
+            "ViewerProtocolPolicy": "redirect-to-https",
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": Array [
+            Object {
+              "DomainName": Object {
+                "Fn::GetAtt": Array [
+                  "hugoDevelopmentHostingfrontend7784C2E7",
+                  "RegionalDomainName",
+                ],
+              },
+              "Id": "testStackhugoDevelopmentHostingfrontenddistributionOrigin1730B7960",
+              "S3OriginConfig": Object {
+                "OriginAccessIdentity": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "origin-access-identity/cloudfront/",
+                      Object {
+                        "Ref": "hugoDevelopmentHostingcloudfrontOAI73A8B1F1",
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "ViewerCertificate": Object {
+            "AcmCertificateArn": Object {
+              "Fn::GetAtt": Array [
+                "hugoDevelopmentHostingSiteCertificateCertificateRequestorResource0385A5E7",
+                "Arn",
+              ],
+            },
+            "MinimumProtocolVersion": "TLSv1.2_2021",
+            "SslSupportMethod": "sni-only",
+          },
+        },
+      },
+      "Type": "AWS::CloudFront::Distribution",
+    },
+    "hugoDevelopmentHostingredirectrequestcf2AACF3B8": Object {
+      "Properties": Object {
+        "AutoPublish": true,
+        "FunctionCode": "
+function handler(event) {
+  var request = event.request;
+  var uri = request.uri;
+  var authHeaders = request.headers.authorization;
+
+  // The Base64-encoded Auth string that should be present.
+  // It is an encoding of 'Basic base64([username]:[password])'
+  // The username and password are:
+  //      Username: john
+  //      Password: foobar
+  var expected = \\"Basic am9objpkb2U=\\";
+
+  // If an Authorization header is supplied and it's an exact match, pass the
+  // request on through to CF/the origin without any modification.
+  if (authHeaders && authHeaders.value === expected) {
+    // Check whether the URI is missing a file name.
+    if (uri.endsWith('/')) {
+      request.uri += 'index.html';
+    }
+    // Check whether the URI is missing a file extension.
+    else if (!uri.includes('.')) {
+      request.uri += '/index.html';
+    }
+    return request;
+  }
+
+  // But if we get here, we must either be missing the auth header or the
+  // credentials failed to match what we expected.
+  // Request the browser present the Basic Auth dialog.
+  var response = {
+    statusCode: 401,
+    statusDescription: \\"Unauthorized\\",
+    headers: {
+      \\"www-authenticate\\": {
+        value: 'Basic realm=\\"Enter credentials for this super secure site\\"',
+      },
+    },
+  };
+
+  return response;
+}    
+      ",
+        "FunctionConfig": Object {
+          "Comment": "us-east-1testStackhugoDevelopmenHostingredirectrequestcf858EEEC8",
+          "Runtime": "cloudfront-js-1.0",
+        },
+        "Name": "us-east-1testStackhugoDevelopmenHostingredirectrequestcf858EEEC8",
+      },
+      "Type": "AWS::CloudFront::Function",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`Snapshot production hosting 1`] = `
+Object {
+  "Mappings": Object {
+    "AWSCloudFrontPartitionHostedZoneIdMap": Object {
+      "aws": Object {
+        "zoneId": "Z2FDTNDATAQYW2",
+      },
+      "aws-cn": Object {
+        "zoneId": "Z3RFFRIM2A3IF5",
+      },
+    },
+  },
+  "Outputs": Object {
+    "hugoProductionHostingBucket47E83FE9": Object {
+      "Value": Object {
+        "Ref": "hugoProductionHostingfrontend1F78A887",
+      },
+    },
+    "hugoProductionHostingCertificate7FFAB9EE": Object {
+      "Value": Object {
+        "Fn::GetAtt": Array [
+          "hugoProductionHostingSiteCertificateCertificateRequestorResourceA9225139",
+          "Arn",
+        ],
+      },
+    },
+    "hugoProductionHostingDistributionIdFB916655": Object {
+      "Value": Object {
+        "Ref": "hugoProductionHostingfrontenddistribution7701EEE8",
+      },
+    },
+    "hugoProductionHostingSiteD3C4872F": Object {
+      "Value": "https://example.com",
+    },
+  },
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": Object {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": Object {
+      "DependsOn": Array [
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
+          "S3Key": "983c442a2fe823a8b4ebb18d241a5150ae15103dacbf3f038c7c6343e565aa4c.zip",
+        },
+        "Handler": "index.handler",
+        "Layers": Array [
+          Object {
+            "Ref": "hugoProductionHostingfrontenddeploymentAwsCliLayer00756DF8",
+          },
+        ],
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+            "Arn",
+          ],
+        },
+        "Runtime": "python3.7",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "arn:",
+                      Object {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":s3:::cdk-hnb659fds-assets-1234-us-east-1",
+                    ],
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "arn:",
+                      Object {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":s3:::cdk-hnb659fds-assets-1234-us-east-1/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": Array [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "hugoProductionHostingfrontend1F78A887",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "hugoProductionHostingfrontend1F78A887",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": Array [
+                "cloudfront:GetInvalidation",
+                "cloudfront:CreateInvalidation",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "Roles": Array [
+          Object {
+            "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "hugoProductionHostingSiteAliasRecord575C7A72": Object {
+      "Properties": Object {
+        "AliasTarget": Object {
+          "DNSName": Object {
+            "Fn::GetAtt": Array [
+              "hugoProductionHostingfrontenddistribution7701EEE8",
+              "DomainName",
+            ],
+          },
+          "HostedZoneId": Object {
+            "Fn::FindInMap": Array [
+              "AWSCloudFrontPartitionHostedZoneIdMap",
+              Object {
+                "Ref": "AWS::Partition",
+              },
+              "zoneId",
+            ],
+          },
+        },
+        "HostedZoneId": "DUMMY",
+        "Name": "example.com.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "hugoProductionHostingSiteCertificateCertificateRequestorFunction40B9400C": Object {
+      "DependsOn": Array [
+        "hugoProductionHostingSiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyCAF2F6E9",
+        "hugoProductionHostingSiteCertificateCertificateRequestorFunctionServiceRole9DB5CB7F",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
+          "S3Key": "7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4.zip",
+        },
+        "Handler": "index.certificateRequestHandler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "hugoProductionHostingSiteCertificateCertificateRequestorFunctionServiceRole9DB5CB7F",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs12.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "hugoProductionHostingSiteCertificateCertificateRequestorFunctionServiceRole9DB5CB7F": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "hugoProductionHostingSiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyCAF2F6E9": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "acm:RequestCertificate",
+                "acm:DescribeCertificate",
+                "acm:DeleteCertificate",
+                "acm:AddTagsToCertificate",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "route53:GetChange",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "route53:changeResourceRecordSets",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":route53:::hostedzone/DUMMY",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "hugoProductionHostingSiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyCAF2F6E9",
+        "Roles": Array [
+          Object {
+            "Ref": "hugoProductionHostingSiteCertificateCertificateRequestorFunctionServiceRole9DB5CB7F",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "hugoProductionHostingSiteCertificateCertificateRequestorResourceA9225139": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "DomainName": "example.com",
+        "HostedZoneId": "DUMMY",
+        "Region": "us-east-1",
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "hugoProductionHostingSiteCertificateCertificateRequestorFunction40B9400C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::CustomResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "hugoProductionHostingcloudfrontOAIEB5DA94F": Object {
+      "Properties": Object {
+        "CloudFrontOriginAccessIdentityConfig": Object {
+          "Comment": "OAI for hugoProductionHosting",
+        },
+      },
+      "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+    },
+    "hugoProductionHostingfrontend1F78A887": Object {
+      "DeletionPolicy": "Retain",
+      "Properties": Object {
+        "BucketName": "example.com",
+        "PublicAccessBlockConfiguration": Object {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true,
+        },
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:cr-owned:b5bca063",
+            "Value": "true",
+          },
+        ],
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "hugoProductionHostingfrontendPolicyEA1ACFEB": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "hugoProductionHostingfrontend1F78A887",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Principal": Object {
+                "CanonicalUser": Object {
+                  "Fn::GetAtt": Array [
+                    "hugoProductionHostingcloudfrontOAIEB5DA94F",
+                    "S3CanonicalUserId",
+                  ],
+                },
+              },
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    Object {
+                      "Fn::GetAtt": Array [
+                        "hugoProductionHostingfrontend1F78A887",
+                        "Arn",
+                      ],
+                    },
+                    "/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+    "hugoProductionHostingfrontenddeploymentAwsCliLayer00756DF8": Object {
+      "Properties": Object {
+        "Content": Object {
+          "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
+          "S3Key": "e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68.zip",
+        },
+        "Description": "/opt/awscli/aws",
+      },
+      "Type": "AWS::Lambda::LayerVersion",
+    },
+    "hugoProductionHostingfrontenddeploymentCustomResource85057BB1": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "DestinationBucketName": Object {
+          "Ref": "hugoProductionHostingfrontend1F78A887",
+        },
+        "DistributionId": Object {
+          "Ref": "hugoProductionHostingfrontenddistribution7701EEE8",
+        },
+        "DistributionPaths": Array [
+          "/*",
+        ],
+        "Prune": true,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+            "Arn",
+          ],
+        },
+        "SourceBucketNames": Array [
+          "cdk-hnb659fds-assets-1234-us-east-1",
+        ],
+        "SourceObjectKeys": Array [
+          "8e5734dbd418b28e53ddc98d880280f18da1793b41f4d50e94d4f7b3d23f2e8c.zip",
+        ],
+      },
+      "Type": "Custom::CDKBucketDeployment",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "hugoProductionHostingfrontenddistribution7701EEE8": Object {
+      "Properties": Object {
+        "DistributionConfig": Object {
+          "Aliases": Array [
+            "example.com",
+          ],
+          "CustomErrorResponses": Array [
+            Object {
+              "ErrorCachingMinTTL": 1800,
+              "ErrorCode": 403,
+              "ResponseCode": 404,
+              "ResponsePagePath": "/en/404.html",
+            },
+            Object {
+              "ErrorCachingMinTTL": 1800,
+              "ErrorCode": 404,
+              "ResponseCode": 404,
+              "ResponsePagePath": "/en/404.html",
+            },
+          ],
+          "DefaultCacheBehavior": Object {
+            "AllowedMethods": Array [
+              "GET",
+              "HEAD",
+              "OPTIONS",
+            ],
+            "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+            "Compress": true,
+            "FunctionAssociations": Array [
+              Object {
+                "EventType": "viewer-request",
+                "FunctionARN": Object {
+                  "Fn::GetAtt": Array [
+                    "hugoProductionHostingredirectrequestcf9F139A70",
+                    "FunctionARN",
+                  ],
+                },
+              },
+            ],
+            "TargetOriginId": "testStackhugoProductionHostingfrontenddistributionOrigin1A706B24B",
+            "ViewerProtocolPolicy": "redirect-to-https",
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": Array [
+            Object {
+              "DomainName": Object {
+                "Fn::GetAtt": Array [
+                  "hugoProductionHostingfrontend1F78A887",
+                  "RegionalDomainName",
+                ],
+              },
+              "Id": "testStackhugoProductionHostingfrontenddistributionOrigin1A706B24B",
+              "S3OriginConfig": Object {
+                "OriginAccessIdentity": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "origin-access-identity/cloudfront/",
+                      Object {
+                        "Ref": "hugoProductionHostingcloudfrontOAIEB5DA94F",
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "ViewerCertificate": Object {
+            "AcmCertificateArn": Object {
+              "Fn::GetAtt": Array [
+                "hugoProductionHostingSiteCertificateCertificateRequestorResourceA9225139",
+                "Arn",
+              ],
+            },
+            "MinimumProtocolVersion": "TLSv1.2_2021",
+            "SslSupportMethod": "sni-only",
+          },
+        },
+      },
+      "Type": "AWS::CloudFront::Distribution",
+    },
+    "hugoProductionHostingredirectrequestcf9F139A70": Object {
+      "Properties": Object {
+        "AutoPublish": true,
+        "FunctionCode": "
+function handler(event) {
+  var request = event.request;
+  var uri = request.uri;
+
+  // Check whether the URI is missing a file name.
+  if (uri.endsWith('/')) {
+    request.uri += 'index.html';
+  }
+  // Check whether the URI is missing a file extension.
+  else if (!uri.includes('.')) {
+    request.uri += '/index.html';
+  }
+
+  return request;
+}
+      ",
+        "FunctionConfig": Object {
+          "Comment": "us-east-1testStackhugoProductionHostingredirectrequestcf5850BC27",
+          "Runtime": "cloudfront-js-1.0",
+        },
+        "Name": "us-east-1testStackhugoProductionHostingredirectrequestcf5850BC27",
+      },
+      "Type": "AWS::CloudFront::Function",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
