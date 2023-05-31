@@ -33,7 +33,69 @@ test('Default pipeline', () => {
   template.hasResource('AWS::CodePipeline::Pipeline', {
     Properties: Match.objectLike({
       RestartExecutionOnUpdate: true,
-      // Stages: Match.arrayWith(['']),
+      Stages: Match.arrayWith([
+        Match.objectLike({ Name: 'Source' }),
+        Match.objectLike({ Name: 'Build' }),
+        Match.objectLike({ Name: 'UpdatePipeline' }),
+        Match.objectLike({ Name: 'Assets' }),
+        Match.objectLike({
+          Name: 'dev-stage',
+          Actions: Match.arrayWith([
+            Match.objectLike({
+              Name: 'hugo-blog-stack.Prepare',
+              Configuration: Match.objectLike({
+                StackName: 'dev-stage-hugo-blog-stack',
+                ActionMode: 'CHANGE_SET_REPLACE',
+              }),
+              RunOrder: 1,
+            }),
+            Match.objectLike({
+              Name: 'hugo-blog-stack.Deploy',
+              Configuration: Match.objectLike({
+                StackName: 'dev-stage-hugo-blog-stack',
+                ActionMode: 'CHANGE_SET_EXECUTE',
+              }),
+              RunOrder: 2,
+            }),
+            Match.objectLike({
+              Name: 'HitDevEndpoint',
+              RunOrder: 3,
+            }),
+          ]),
+        }),
+        Match.objectLike({
+          Name: 'prod-stage',
+          Actions: Match.arrayWith([
+            Match.objectLike({
+              Name: 'PromoteToProd',
+              ActionTypeId: Match.objectLike({
+                Category: 'Approval',
+              }),
+              RunOrder: 1,
+            }),
+            Match.objectLike({
+              Name: 'hugo-blog-stack.Prepare',
+              Configuration: Match.objectLike({
+                StackName: 'prod-stage-hugo-blog-stack',
+                ActionMode: 'CHANGE_SET_REPLACE',
+              }),
+              RunOrder: 2,
+            }),
+            Match.objectLike({
+              Name: 'hugo-blog-stack.Deploy',
+              Configuration: Match.objectLike({
+                StackName: 'prod-stage-hugo-blog-stack',
+                ActionMode: 'CHANGE_SET_EXECUTE',
+              }),
+              RunOrder: 3,
+            }),
+            Match.objectLike({
+              Name: 'HitProdEndpoint',
+              RunOrder: 4,
+            }),
+          ]),
+        }),
+      ]),
     }),
   });
 });
