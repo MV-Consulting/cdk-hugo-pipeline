@@ -550,7 +550,7 @@ Object {
           "cdk-hnb659fds-assets-1234-us-east-1",
         ],
         "SourceObjectKeys": Array [
-          "672706c73028c2a4a9754aa50ca234da5bc3753ef4f0749eadbbd378f48e94f8.zip",
+          "18c21ab967bf1de295c183008545d4145a25d9426abbd19ad2bd3615d89bb722.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
@@ -1158,7 +1158,7 @@ Object {
           "cdk-hnb659fds-assets-1234-us-east-1",
         ],
         "SourceObjectKeys": Array [
-          "f53263181700861fb595fb7b3c6d093447c209b8af5ee2441e450565cbd71901.zip",
+          "7eefb49c2b4a97315b763891730f42b98ed33fa54e5c00abfc641b21b77c384e.zip",
         ],
       },
       "Type": "Custom::CDKBucketDeployment",
