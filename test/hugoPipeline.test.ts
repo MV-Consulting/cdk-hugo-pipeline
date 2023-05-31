@@ -5,6 +5,27 @@ import {
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { HugoPipeline, HugoPipelineProps } from '../src';
 
+test('Snapshot pipeline', () => {
+  const app = new App();
+  const stack = new Stack(app, 'testStack', {
+    env: {
+      region: 'us-east-1',
+      account: '1234',
+    },
+  });
+
+  const testProps: HugoPipelineProps = {
+    domainName: 'example.com',
+    siteSubDomain: 'dev',
+    hugoProjectPath: '../test/frontend-test',
+  };
+  // WHEN
+  new HugoPipeline(stack, 'hugoPipeline', testProps);
+
+  const template = Template.fromStack(stack);
+  expect(template.toJSON()).toMatchSnapshot();
+});
+
 test('Default pipeline', () => {
   const app = new App();
   const stack = new Stack(app, 'testStack', {
@@ -20,7 +41,7 @@ test('Default pipeline', () => {
     hugoProjectPath: '../test/frontend-test',
   };
   // WHEN
-  new HugoPipeline(stack, 'hugoRepository', testProps);
+  new HugoPipeline(stack, 'hugoPipeline', testProps);
 
   const template = Template.fromStack(stack);
 
