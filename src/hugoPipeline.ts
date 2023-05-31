@@ -15,6 +15,7 @@ export interface HugoHostingStackProps extends StackProps {
   readonly domainName: string;
   readonly siteSubDomain?: string;
   readonly hugoProjectPath?: string;
+  readonly s3deployAssetHash?: string;
 }
 
 export class HugoHostingStack extends Stack {
@@ -28,6 +29,7 @@ export class HugoHostingStack extends Stack {
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
       hugoProjectPath: props.hugoProjectPath,
+      s3deployAssetHash: props.s3deployAssetHash,
     });
 
     this.staticSiteURL = staticHosting.staticSiteURL;
@@ -39,6 +41,7 @@ export interface HugoPageStageProps extends StageProps {
   readonly domainName: string;
   readonly siteSubDomain?: string;
   readonly hugoProjectPath?: string;
+  readonly s3deployAssetHash?: string;
 }
 export class HugoPageStage extends Stage {
   public readonly staticSiteURL: CfnOutput;
@@ -51,6 +54,7 @@ export class HugoPageStage extends Stage {
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
       hugoProjectPath: props.hugoProjectPath,
+      s3deployAssetHash: props.s3deployAssetHash,
     });
 
     this.staticSiteURL = hugoHostingStack.staticSiteURL;
@@ -97,6 +101,18 @@ export interface HugoPipelineProps {
    * @default - '../frontend'
    */
   readonly hugoProjectPath?: string;
+
+  /**
+   * The hash to use to build or rebuild the hugo page.
+   *
+   * We use it to rebuild the site every time as cdk caching is too intelligent
+   * and it did not deploy updates.
+   *
+   * For testing purposes we pass a static hash to avoid updates of the snapshot tests.
+   *
+   * @default - `${Number(Math.random())}-${props.buildStage}`
+   */
+  readonly s3deployAssetHash?: string;
 }
 
 export class HugoPipeline extends Construct {
@@ -148,6 +164,7 @@ export class HugoPipeline extends Construct {
       siteSubDomain: this.siteSubDomain,
       domainName: this.domainName,
       hugoProjectPath: props.hugoProjectPath,
+      s3deployAssetHash: props.s3deployAssetHash,
     });
 
     pipepline.addStage(hugoPageDevStage, {
@@ -171,6 +188,7 @@ export class HugoPipeline extends Construct {
       buildStage: 'production',
       domainName: this.domainName,
       hugoProjectPath: props.hugoProjectPath,
+      s3deployAssetHash: props.s3deployAssetHash,
     });
 
     pipepline.addStage(hugoPageProdStage, {

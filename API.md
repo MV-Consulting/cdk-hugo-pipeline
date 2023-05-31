@@ -1368,6 +1368,7 @@ const hugoHostingProps: HugoHostingProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | The path to the 403 error page. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | The path to the 404 error page. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | The hash to use to build or rebuild the hugo page. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.zone">zone</a></code> | <code>aws-cdk-lib.aws_route53.HostedZone</code> | Zone the Domain Name is created in. |
 
@@ -1478,6 +1479,24 @@ The path to the hugo project.
 
 ---
 
+##### `s3deployAssetHash`<sup>Optional</sup> <a name="s3deployAssetHash" id="cdk-hugo-pipeline.HugoHostingProps.property.s3deployAssetHash"></a>
+
+```typescript
+public readonly s3deployAssetHash: string;
+```
+
+- *Type:* string
+- *Default:* `${Number(Math.random())}-${props.buildStage}`
+
+The hash to use to build or rebuild the hugo page.
+
+We use it to rebuild the site every time as cdk caching is too intelligent
+and it did not deploy updates.
+
+For testing purposes we pass a static hash to avoid updates of the snapshot tests.
+
+---
+
 ##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoHostingProps.property.siteSubDomain"></a>
 
 ```typescript
@@ -1527,6 +1546,7 @@ const hugoHostingStackProps: HugoHostingStackProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -1713,6 +1733,16 @@ public readonly hugoProjectPath: string;
 
 ---
 
+##### `s3deployAssetHash`<sup>Optional</sup> <a name="s3deployAssetHash" id="cdk-hugo-pipeline.HugoHostingStackProps.property.s3deployAssetHash"></a>
+
+```typescript
+public readonly s3deployAssetHash: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoHostingStackProps.property.siteSubDomain"></a>
 
 ```typescript
@@ -1742,6 +1772,7 @@ const hugoPageStageProps: HugoPageStageProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -1834,6 +1865,16 @@ public readonly hugoProjectPath: string;
 
 ---
 
+##### `s3deployAssetHash`<sup>Optional</sup> <a name="s3deployAssetHash" id="cdk-hugo-pipeline.HugoPageStageProps.property.s3deployAssetHash"></a>
+
+```typescript
+public readonly s3deployAssetHash: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoPageStageProps.property.siteSubDomain"></a>
 
 ```typescript
@@ -1864,6 +1905,7 @@ const hugoPipelineProps: HugoPipelineProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.name">name</a></code> | <code>string</code> | Name of the codecommit repository. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | The hash to use to build or rebuild the hugo page. |
 
 ---
 
@@ -1941,6 +1983,24 @@ public readonly name: string;
 - *Default:* hugo blog
 
 Name of the codecommit repository.
+
+---
+
+##### `s3deployAssetHash`<sup>Optional</sup> <a name="s3deployAssetHash" id="cdk-hugo-pipeline.HugoPipelineProps.property.s3deployAssetHash"></a>
+
+```typescript
+public readonly s3deployAssetHash: string;
+```
+
+- *Type:* string
+- *Default:* `${Number(Math.random())}-${props.buildStage}`
+
+The hash to use to build or rebuild the hugo page.
+
+We use it to rebuild the site every time as cdk caching is too intelligent
+and it did not deploy updates.
+
+For testing purposes we pass a static hash to avoid updates of the snapshot tests.
 
 ---
 

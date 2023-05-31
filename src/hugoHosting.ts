@@ -82,6 +82,18 @@ export interface HugoHostingProps {
    * @default - 0.106.0-r3
    */
   readonly alpineHugoVersion?: string;
+
+  /**
+   * The hash to use to build or rebuild the hugo page.
+   *
+   * We use it to rebuild the site every time as cdk caching is too intelligent
+   * and it did not deploy updates.
+   *
+   * For testing purposes we pass a static hash to avoid updates of the snapshot tests.
+   *
+   * @default - `${Number(Math.random())}-${props.buildStage}`
+   */
+  readonly s3deployAssetHash?: string;
 }
 
 export class HugoHosting extends Construct {
@@ -103,6 +115,7 @@ export class HugoHosting extends Construct {
     const http404ResponsePagePath = props.http404ResponsePagePath || '/en/404.html';
     const hugoProjectPath = props.hugoProjectPath || '../frontend';
     const alpineHugoVersion = props.alpineHugoVersion || '0.106.0-r4';
+    const s3deployAssetHash = props.s3deployAssetHash || `${Number(Math.random())}-${props.buildStage}`;
 
     const zone = route53.HostedZone.fromLookup(this, 'Zone', {
       domainName: this.domainName,
@@ -265,7 +278,7 @@ function handler(event) {
       sources: [
         s3deploy.Source.asset(path.join(__dirname, hugoProjectPath), {
           // Note: to avoid mismatch between builds, we build the assets each time
-          assetHash: `${Number(Math.random())}-${props.buildStage}`,
+          assetHash: s3deployAssetHash,
           assetHashType: AssetHashType.CUSTOM,
           bundling: {
             image: DockerImage.fromRegistry('public.ecr.aws/docker/library/node:lts-alpine'),

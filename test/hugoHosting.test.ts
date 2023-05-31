@@ -19,6 +19,7 @@ test('Snapshot development hosting', () => {
     domainName: 'example.com',
     buildStage: 'development',
     hugoProjectPath: '../test/frontend-test',
+    s3deployAssetHash: '1',
   };
   // WHEN
   new HugoHosting(stack, 'hugoDevelopmentHosting', testProps);
@@ -41,6 +42,7 @@ test('Development hosting', () => {
     domainName: 'example.com',
     buildStage: 'development',
     hugoProjectPath: '../test/frontend-test',
+    s3deployAssetHash: '1',
   };
   // WHEN
   new HugoHosting(stack, 'hugoDevelopmentHosting', testProps);
@@ -127,6 +129,7 @@ test('Snapshot production hosting', () => {
     domainName: 'example.com',
     buildStage: 'production',
     hugoProjectPath: '../test/frontend-test',
+    s3deployAssetHash: '2',
   };
   // WHEN
   new HugoHosting(stack, 'hugoProductionHosting', testProps);
@@ -148,6 +151,7 @@ test('Production hosting', () => {
     domainName: 'example.com',
     buildStage: 'production',
     hugoProjectPath: '../test/frontend-test',
+    s3deployAssetHash: '2',
   };
   // WHEN
   new HugoHosting(stack, 'hugoProductionHosting', testProps);

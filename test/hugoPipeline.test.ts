@@ -18,6 +18,7 @@ test('Snapshot pipeline', () => {
     domainName: 'example.com',
     siteSubDomain: 'dev',
     hugoProjectPath: '../test/frontend-test',
+    s3deployAssetHash: '3',
   };
   // WHEN
   new HugoPipeline(stack, 'hugoPipeline', testProps);
@@ -39,6 +40,7 @@ test('Default pipeline', () => {
     domainName: 'example.com',
     siteSubDomain: 'dev',
     hugoProjectPath: '../test/frontend-test',
+    s3deployAssetHash: '3',
   };
   // WHEN
   new HugoPipeline(stack, 'hugoPipeline', testProps);
