@@ -1625,6 +1625,7 @@ const hugoHostingStackProps: HugoHostingStackProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -1801,6 +1802,16 @@ public readonly domainName: string;
 
 ---
 
+##### `hugoProjectPath`<sup>Optional</sup> <a name="hugoProjectPath" id="cdk-hugo-pipeline.HugoHostingStackProps.property.hugoProjectPath"></a>
+
+```typescript
+public readonly hugoProjectPath: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoHostingStackProps.property.siteSubDomain"></a>
 
 ```typescript
@@ -1829,6 +1840,7 @@ const hugoPageStageProps: HugoPageStageProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.outdir">outdir</a></code> | <code>string</code> | The output directory into which to emit synthesized artifacts. |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -1911,6 +1923,16 @@ public readonly domainName: string;
 
 ---
 
+##### `hugoProjectPath`<sup>Optional</sup> <a name="hugoProjectPath" id="cdk-hugo-pipeline.HugoPageStageProps.property.hugoProjectPath"></a>
+
+```typescript
+public readonly hugoProjectPath: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="cdk-hugo-pipeline.HugoPageStageProps.property.siteSubDomain"></a>
 
 ```typescript
@@ -1939,6 +1961,7 @@ const hugoPipelineProps: HugoPipelineProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.name">name</a></code> | <code>string</code> | Name of the codecommit repository. |
 
 ---
@@ -1991,6 +2014,19 @@ public readonly basicAuthUsername: string;
 - *Default:* john
 
 The username for basic auth on the development site.
+
+---
+
+##### `hugoProjectPath`<sup>Optional</sup> <a name="hugoProjectPath" id="cdk-hugo-pipeline.HugoPipelineProps.property.hugoProjectPath"></a>
+
+```typescript
+public readonly hugoProjectPath: string;
+```
+
+- *Type:* string
+- *Default:* '../frontend'
+
+The path to the hugo project.
 
 ---
 

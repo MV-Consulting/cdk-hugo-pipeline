@@ -14,6 +14,7 @@ export interface HugoHostingStackProps extends StackProps {
   readonly buildStage: string;
   readonly domainName: string;
   readonly siteSubDomain?: string;
+  readonly hugoProjectPath?: string;
 }
 
 export class HugoHostingStack extends Stack {
@@ -26,6 +27,7 @@ export class HugoHostingStack extends Stack {
       buildStage: props.buildStage,
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
+      hugoProjectPath: props.hugoProjectPath,
     });
 
     this.staticSiteURL = staticHosting.staticSiteURL;
@@ -36,6 +38,7 @@ export interface HugoPageStageProps extends StageProps {
   readonly buildStage: string;
   readonly domainName: string;
   readonly siteSubDomain?: string;
+  readonly hugoProjectPath?: string;
 }
 export class HugoPageStage extends Stage {
   public readonly staticSiteURL: CfnOutput;
@@ -47,6 +50,7 @@ export class HugoPageStage extends Stage {
       buildStage: props.buildStage,
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
+      hugoProjectPath: props.hugoProjectPath,
     });
 
     this.staticSiteURL = hugoHostingStack.staticSiteURL;
@@ -86,6 +90,13 @@ export interface HugoPipelineProps {
    * @default - dev
    */
   readonly siteSubDomain: string;
+
+  /**
+   * The path to the hugo project
+   *
+   * @default - '../frontend'
+   */
+  readonly hugoProjectPath?: string;
 }
 
 export class HugoPipeline extends Construct {
@@ -102,6 +113,11 @@ export class HugoPipeline extends Construct {
     this.domainName = props.domainName;
     this.siteSubDomain = props.siteSubDomain;
 
+    // TODO from new repository
+    // new codecommit.Repository(this, 'hugo-blog', {
+    //   repositoryName: props.name || 'hugo-blog',
+    //   description: 'host the code for the hugo blog and its infrastructure',
+    // });
     const repository = codecommit.Repository.fromRepositoryName(this, 'hugo-blog-repo', props.name || 'hugo-blog');
     const pipepline = new pipelines.CodePipeline(this, 'hugo-blog-pipeline', {
       synth: new pipelines.ShellStep('Synth', {
@@ -126,9 +142,14 @@ export class HugoPipeline extends Construct {
     });
 
     const hugoPageDevStage = new HugoPageStage(this, 'dev-stage', {
-      buildStage: 'development',
+      env: {
+        account: Stack.of(this).account, // TODO understand, as we run in the same account
+        region: Stack.of(this).region,
+      },
+      buildStage: 'development', //  TODO make constant
       siteSubDomain: this.siteSubDomain,
       domainName: this.domainName,
+      hugoProjectPath: props.hugoProjectPath,
     });
 
     pipepline.addStage(hugoPageDevStage, {
@@ -145,8 +166,13 @@ export class HugoPipeline extends Construct {
     });
 
     const hugoPageProdStage = new HugoPageStage(this, 'prod-stage', {
+      env: {
+        account: Stack.of(this).account, // TODO understand, as we run in the same account
+        region: Stack.of(this).region,
+      },
       buildStage: 'production',
       domainName: this.domainName,
+      hugoProjectPath: props.hugoProjectPath,
     });
 
     pipepline.addStage(hugoPageProdStage, {

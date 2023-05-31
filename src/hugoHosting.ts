@@ -104,11 +104,9 @@ export class HugoHosting extends Construct {
     const hugoProjectPath = props.hugoProjectPath || '../frontend';
     const alpineHugoVersion = props.alpineHugoVersion || '0.106.0-r4';
 
-    const zone = props.zone
-      ? props.zone
-      : route53.HostedZone.fromLookup(this, 'Zone', {
-        domainName: this.domainName,
-      });
+    const zone = route53.HostedZone.fromLookup(this, 'Zone', {
+      domainName: this.domainName,
+    });
     // const zone = route53.HostedZone.fromLookup(this, 'Zone', { domainName: props.domainName });
     this.siteSubDomain = props.siteSubDomain || 'dev';
     // prepend the subdomain with a '.' if present
