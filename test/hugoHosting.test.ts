@@ -5,6 +5,28 @@ import {
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { HugoHosting, HugoHostingProps } from '../src';
 
+test('Snapshot development hosting', () => {
+  const app = new App();
+  const stack = new Stack(app, 'testStack', {
+    env: {
+      region: 'us-east-1',
+      account: '1234',
+    },
+  });
+
+  const testProps: HugoHostingProps = {
+    siteSubDomain: 'dev',
+    domainName: 'example.com',
+    buildStage: 'development',
+    hugoProjectPath: '../test/frontend-test',
+  };
+  // WHEN
+  new HugoHosting(stack, 'hugoDevelopmentHosting', testProps);
+
+  const template = Template.fromStack(stack);
+  expect(template.toJSON()).toMatchSnapshot();
+});
+
 test('Development hosting', () => {
   const app = new App();
   const stack = new Stack(app, 'testStack', {
@@ -21,7 +43,7 @@ test('Development hosting', () => {
     hugoProjectPath: '../test/frontend-test',
   };
   // WHEN
-  new HugoHosting(stack, 'hugoHosting', testProps);
+  new HugoHosting(stack, 'hugoDevelopmentHosting', testProps);
 
   const template = Template.fromStack(stack);
 
@@ -42,7 +64,7 @@ test('Development hosting', () => {
 
   template.hasResourceProperties('AWS::CloudFront::CloudFrontOriginAccessIdentity', {
     CloudFrontOriginAccessIdentityConfig: Match.objectLike({
-      Comment: 'OAI for hugoHosting',
+      Comment: 'OAI for hugoDevelopmentHosting',
     }),
   });
 
@@ -92,6 +114,27 @@ test('Development hosting', () => {
   });
 });
 
+test('Snapshot production hosting', () => {
+  const app = new App();
+  const stack = new Stack(app, 'testStack', {
+    env: {
+      region: 'us-east-1',
+      account: '1234',
+    },
+  });
+
+  const testProps: HugoHostingProps = {
+    domainName: 'example.com',
+    buildStage: 'production',
+    hugoProjectPath: '../test/frontend-test',
+  };
+  // WHEN
+  new HugoHosting(stack, 'hugoProductionHosting', testProps);
+
+  const template = Template.fromStack(stack);
+  expect(template.toJSON()).toMatchSnapshot();
+});
+
 test('Production hosting', () => {
   const app = new App();
   const stack = new Stack(app, 'testStack', {
@@ -107,7 +150,7 @@ test('Production hosting', () => {
     hugoProjectPath: '../test/frontend-test',
   };
   // WHEN
-  new HugoHosting(stack, 'hugoHosting', testProps);
+  new HugoHosting(stack, 'hugoProductionHosting', testProps);
 
   const template = Template.fromStack(stack);
 
@@ -128,7 +171,7 @@ test('Production hosting', () => {
 
   template.hasResourceProperties('AWS::CloudFront::CloudFrontOriginAccessIdentity', {
     CloudFrontOriginAccessIdentityConfig: Match.objectLike({
-      Comment: 'OAI for hugoHosting',
+      Comment: 'OAI for hugoProductionHosting',
     }),
   });
 
