@@ -79,7 +79,7 @@ export interface HugoHostingProps {
   /**
    * The hugo version to use in the alpine docker image
    *
-   * @default - 0.106.0-r3
+   * @default - 0.106.0-r4
    */
   readonly alpineHugoVersion?: string;
 
