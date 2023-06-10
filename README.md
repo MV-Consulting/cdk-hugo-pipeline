@@ -18,11 +18,38 @@ TBD
 
 ```sh
 mkdir my-blog && cd my-blog
-npx projen new awscdk-app-ts
+npx projen new awscdk-app-ts --github false --no-git
 # add hugo template
 git submodule add https://github.com/apvarun/blist-hugo-theme.git frontend/themes/blist
 # add fix version
 git submodule set-branch --branch v2.1.0 frontend/themes/blist
+# copy the example site
+cp -r frontend/themes/blist/exampleSite/*  frontend/
+# fix the config urls
+mkdir -p frontend/config/_default frontend/config/development frontend/config/production
+mv frontend/config.toml frontend/config/_default/config.toml
+sed -i '1d' frontend/config/_default/config.toml # TODO dynamic with grep
+#
+cat <<EOF > frontend/config/development
+baseurl = "https://dev.mavogel.xyz"
+publishDir = "public-development"
+EOF
+cat <<EOF > frontend/config/production
+baseurl = "https://mavogel.xyz"
+publishDir = "public-production"
+EOF
+# ignore output folders
+cat <<EOF > frontend/.gitignore
+public-*
+resources/_gen
+node_modules
+.DS_Store
+*.bak
+.hugo_build.lock
+EOF
+# additionally copy package.jsons
+cp frontend/themes/blist/package.json frontend/package.json
+cp frontend/themes/blist/package-lock.json frontend/package-lock.json
 ```
 
 ### Typescript
