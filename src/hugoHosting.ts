@@ -79,7 +79,7 @@ export interface HugoHostingProps {
   /**
    * The hugo version to use in the alpine docker image
    *
-   * @default - 0.106.0-r4
+   * @default - '',  meaning the latest version. You can specify a specific version, for example '=0.106.0-r4'
    */
   readonly alpineHugoVersion?: string;
 
@@ -114,7 +114,7 @@ export class HugoHosting extends Construct {
     const http403ResponsePagePath = props.http403ResponsePagePath || '/en/404.html';
     const http404ResponsePagePath = props.http404ResponsePagePath || '/en/404.html';
     const hugoProjectPath = props.hugoProjectPath || '../frontend';
-    const alpineHugoVersion = props.alpineHugoVersion || '0.106.0-r4';
+    const alpineHugoVersion = props.alpineHugoVersion || '';
     const s3deployAssetHash = props.s3deployAssetHash || `${Number(Math.random())}-${props.buildStage}`;
 
     const zone = route53.HostedZone.fromLookup(this, 'Zone', {
@@ -286,7 +286,7 @@ function handler(event) {
             command: [
               'sh', '-c',
               `
-              apk update && apk add hugo=${alpineHugoVersion} &&
+              apk update && apk add hugo${alpineHugoVersion} &&
               npm --version && hugo version &&
               npm i && npm run build -- --environment ${this.buildStage} &&
               mkdir -p /asset-output && cp -r public-${this.buildStage}/* /asset-output
