@@ -1408,7 +1408,7 @@ public readonly alpineHugoVersion: string;
 ```
 
 - *Type:* string
-- *Default:* 0.106.0-r3
+- *Default:* '',  meaning the latest version. You can specify a specific version, for example '=0.106.0-r4'
 
 The hugo version to use in the alpine docker image.
 
