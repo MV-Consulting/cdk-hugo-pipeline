@@ -464,7 +464,7 @@ Object {
                   "Version": "1",
                 },
                 "Configuration": Object {
-                  "EnvironmentVariables": "[{\\"name\\":\\"_PROJECT_CONFIG_HASH\\",\\"type\\":\\"PLAINTEXT\\",\\"value\\":\\"08cb0d51b09350759138cb15eb6c31977e8110279404fa753068ff4fca485e58\\"}]",
+                  "EnvironmentVariables": "[{\\"name\\":\\"_PROJECT_CONFIG_HASH\\",\\"type\\":\\"PLAINTEXT\\",\\"value\\":\\"a4b8bc4bad6313ccf3a2009ed38d4062450fbe4f5bd2eae2738a2140114e2d78\\"}]",
                   "ProjectName": Object {
                     "Ref": "hugoPipelinehugoblogpipelinePipelineBuildSynthCdkBuildProject21258FA6",
                   },
@@ -1368,7 +1368,7 @@ Object {
   \\"phases\\": {
     \\"build\\": {
       \\"commands\\": [
-        \\"npm ci\\",
+        \\"npm ci || yarn install --check-files --frozen-lockfile\\",
         \\"git submodule update --init\\",
         \\"npm run build\\",
         \\"npm run synth\\"
