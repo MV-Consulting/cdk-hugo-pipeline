@@ -50,7 +50,26 @@ EOF
 # additionally copy package.jsons
 cp frontend/themes/blist/package.json frontend/package.json
 cp frontend/themes/blist/package-lock.json frontend/package-lock.json
+# make file
+cat <<EOF > Makefile
+.DEFAULT_GOAL := run
+
+clean:
+	rm -rf frontend/public || true
+
+build:
+	cd frontend && npm i && hugo -D --gc
+
+run:
+	cd frontend && npm i && hugo server --watch --buildFuture --cleanDestinationDir
+EOF
 ```
+
+Next steps:
+- build it locally via `npx cdk synth`
+- deploy the repo and the pipeline once via `npx cdk deploy`
+- add the created `codecommit` as remote and switch branch `git branch -m master main`
+- push to the repo and wait until the pipeline is passed!
 
 ### Typescript
 ```ts
