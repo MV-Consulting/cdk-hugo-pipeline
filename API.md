@@ -1365,8 +1365,10 @@ const hugoHostingProps: HugoHostingProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.alpineHugoVersion">alpineHugoVersion</a></code> | <code>string</code> | The hugo version to use in the alpine docker image. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | The docker image to use to build the hugo page. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | The path to the 403 error page. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | The path to the 404 error page. |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | The build command for the hugo site on which the '--environment' flag is appended. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | The hash to use to build or rebuild the hugo page. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
@@ -1440,6 +1442,21 @@ The username for basic auth on the development site.
 
 ---
 
+##### `dockerImage`<sup>Optional</sup> <a name="dockerImage" id="cdk-hugo-pipeline.HugoHostingProps.property.dockerImage"></a>
+
+```typescript
+public readonly dockerImage: string;
+```
+
+- *Type:* string
+- *Default:* 'public.ecr.aws/docker/library/node:lts-alpine'
+
+The docker image to use to build the hugo page.
+
+Note: you need to use the 'apk' package manager
+
+---
+
 ##### `http403ResponsePagePath`<sup>Optional</sup> <a name="http403ResponsePagePath" id="cdk-hugo-pipeline.HugoHostingProps.property.http403ResponsePagePath"></a>
 
 ```typescript
@@ -1463,6 +1480,19 @@ public readonly http404ResponsePagePath: string;
 - *Default:* /en/404.html
 
 The path to the 404 error page.
+
+---
+
+##### `hugoBuildCommand`<sup>Optional</sup> <a name="hugoBuildCommand" id="cdk-hugo-pipeline.HugoHostingProps.property.hugoBuildCommand"></a>
+
+```typescript
+public readonly hugoBuildCommand: string;
+```
+
+- *Type:* string
+- *Default:* 'hugo --gc --minify --cleanDestinationDir'
+
+The build command for the hugo site on which the '--environment' flag is appended.
 
 ---
 
