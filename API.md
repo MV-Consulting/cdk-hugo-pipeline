@@ -25,6 +25,11 @@ git submodule add https://github.com/apvarun/blist-hugo-theme.git frontend/theme
 git submodule set-branch --branch v2.1.0 frontend/themes/blist
 ```
 
+If you use [hugo modules](https://gohugo.io/hugo-modules/) add them as git submodules in the `themes` directory, so they
+can be pulled by the same git command in the codepipeline.
+
+If with `npm test` you get the error `docker exited with status 1`, then clean the docker layers and re-run the tests via `docker system prune -f`.
+
 ### Typescript
 ```ts
 import { App, Stack, StackProps } from 'aws-cdk-lib';
@@ -1575,6 +1580,8 @@ const hugoHostingStackProps: HugoHostingStackProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoHostingStackProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
@@ -1753,6 +1760,26 @@ public readonly domainName: string;
 
 ---
 
+##### `dockerImage`<sup>Optional</sup> <a name="dockerImage" id="cdk-hugo-pipeline.HugoHostingStackProps.property.dockerImage"></a>
+
+```typescript
+public readonly dockerImage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `hugoBuildCommand`<sup>Optional</sup> <a name="hugoBuildCommand" id="cdk-hugo-pipeline.HugoHostingStackProps.property.hugoBuildCommand"></a>
+
+```typescript
+public readonly hugoBuildCommand: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `hugoProjectPath`<sup>Optional</sup> <a name="hugoProjectPath" id="cdk-hugo-pipeline.HugoHostingStackProps.property.hugoProjectPath"></a>
 
 ```typescript
@@ -1801,6 +1828,8 @@ const hugoPageStageProps: HugoPageStageProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.outdir">outdir</a></code> | <code>string</code> | The output directory into which to emit synthesized artifacts. |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#cdk-hugo-pipeline.HugoPageStageProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
@@ -1885,6 +1914,26 @@ public readonly domainName: string;
 
 ---
 
+##### `dockerImage`<sup>Optional</sup> <a name="dockerImage" id="cdk-hugo-pipeline.HugoPageStageProps.property.dockerImage"></a>
+
+```typescript
+public readonly dockerImage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `hugoBuildCommand`<sup>Optional</sup> <a name="hugoBuildCommand" id="cdk-hugo-pipeline.HugoPageStageProps.property.hugoBuildCommand"></a>
+
+```typescript
+public readonly hugoBuildCommand: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `hugoProjectPath`<sup>Optional</sup> <a name="hugoProjectPath" id="cdk-hugo-pipeline.HugoPageStageProps.property.hugoProjectPath"></a>
 
 ```typescript
@@ -1933,6 +1982,8 @@ const hugoPipelineProps: HugoPipelineProps = { ... }
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | The docker image to use to build the hugo page. |
+| <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | The build command for the hugo site on which the '--environment' flag is appended. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.name">name</a></code> | <code>string</code> | Name of the codecommit repository. |
 | <code><a href="#cdk-hugo-pipeline.HugoPipelineProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | The hash to use to build or rebuild the hugo page. |
@@ -1987,6 +2038,34 @@ public readonly basicAuthUsername: string;
 - *Default:* john
 
 The username for basic auth on the development site.
+
+---
+
+##### `dockerImage`<sup>Optional</sup> <a name="dockerImage" id="cdk-hugo-pipeline.HugoPipelineProps.property.dockerImage"></a>
+
+```typescript
+public readonly dockerImage: string;
+```
+
+- *Type:* string
+- *Default:* 'public.ecr.aws/docker/library/node:lts-alpine'
+
+The docker image to use to build the hugo page.
+
+Note: you need to use the 'apk' package manager
+
+---
+
+##### `hugoBuildCommand`<sup>Optional</sup> <a name="hugoBuildCommand" id="cdk-hugo-pipeline.HugoPipelineProps.property.hugoBuildCommand"></a>
+
+```typescript
+public readonly hugoBuildCommand: string;
+```
+
+- *Type:* string
+- *Default:* 'hugo --gc --minify --cleanDestinationDir'
+
+The build command for the hugo site on which the '--environment' flag is appended.
 
 ---
 
