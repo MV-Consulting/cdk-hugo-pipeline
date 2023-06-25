@@ -15,6 +15,8 @@ export interface HugoHostingStackProps extends StackProps {
   readonly domainName: string;
   readonly siteSubDomain?: string;
   readonly hugoProjectPath?: string;
+  readonly dockerImage?: string;
+  readonly hugoBuildCommand?: string;
   readonly s3deployAssetHash?: string;
 }
 
@@ -29,6 +31,8 @@ export class HugoHostingStack extends Stack {
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
       hugoProjectPath: props.hugoProjectPath,
+      hugoBuildCommand: props.hugoBuildCommand,
+      dockerImage: props.dockerImage,
       s3deployAssetHash: props.s3deployAssetHash,
     });
 
@@ -41,6 +45,8 @@ export interface HugoPageStageProps extends StageProps {
   readonly domainName: string;
   readonly siteSubDomain?: string;
   readonly hugoProjectPath?: string;
+  readonly dockerImage?: string;
+  readonly hugoBuildCommand?: string;
   readonly s3deployAssetHash?: string;
 }
 export class HugoPageStage extends Stage {
@@ -54,6 +60,8 @@ export class HugoPageStage extends Stage {
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
       hugoProjectPath: props.hugoProjectPath,
+      hugoBuildCommand: props.hugoBuildCommand,
+      dockerImage: props.dockerImage,
       s3deployAssetHash: props.s3deployAssetHash,
     });
 
@@ -103,6 +111,20 @@ export interface HugoPipelineProps {
   readonly hugoProjectPath?: string;
 
   /**
+   * The docker image to use to build the hugo page. Note: you need to use the 'apk' package manager
+   *
+   * @default - 'public.ecr.aws/docker/library/node:lts-alpine'
+   */
+  readonly dockerImage?: string;
+
+  /**
+   * The build command for the hugo site on which the '--environment' flag is appended
+   *
+   * @default - 'hugo --gc --minify --cleanDestinationDir'
+   */
+  readonly hugoBuildCommand?: string;
+
+  /**
    * The hash to use to build or rebuild the hugo page.
    *
    * We use it to rebuild the site every time as cdk caching is too intelligent
@@ -126,6 +148,8 @@ export class HugoPipeline extends Construct {
     const basicAuthUsername = props.basicAuthUsername || 'john';
     const basicAuthPassword = props.basicAuthPassword || 'doe';
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
+    const dockerImage = props.dockerImage || 'public.ecr.aws/docker/library/node:lts-alpine';
+    const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     this.domainName = props.domainName;
     this.siteSubDomain = props.siteSubDomain;
 
@@ -164,6 +188,8 @@ export class HugoPipeline extends Construct {
       siteSubDomain: this.siteSubDomain,
       domainName: this.domainName,
       hugoProjectPath: props.hugoProjectPath,
+      dockerImage: dockerImage,
+      hugoBuildCommand: hugoBuildCommand,
       s3deployAssetHash: props.s3deployAssetHash,
     });
 

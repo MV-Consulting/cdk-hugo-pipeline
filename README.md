@@ -25,6 +25,11 @@ git submodule add https://github.com/apvarun/blist-hugo-theme.git frontend/theme
 git submodule set-branch --branch v2.1.0 frontend/themes/blist
 ```
 
+If you use [hugo modules](https://gohugo.io/hugo-modules/) add them as git submodules in the `themes` directory, so they
+can be pulled by the same git command in the codepipeline.
+
+If with `npm test` you get the error `docker exited with status 1`, then clean the docker layers and re-run the tests via `docker system prune -f`.
+
 ### Typescript
 ```ts
 import { App, Stack, StackProps } from 'aws-cdk-lib';

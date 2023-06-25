@@ -199,7 +199,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
-          "S3Key": "103d857034d8b85be8029f30e73242c8ef5a8e3e625bdcfc24fab1790dbff3b4.zip",
+          "S3Key": "1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1.zip",
         },
         "Description": Object {
           "Fn::Join": Array [
