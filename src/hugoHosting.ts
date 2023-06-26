@@ -77,6 +77,20 @@ export interface HugoHostingProps {
   readonly hugoProjectPath?: string;
 
   /**
+   * The docker image to use to build the hugo page. Note: you need to use the 'apk' package manager
+   *
+   * @default - 'public.ecr.aws/docker/library/node:lts-alpine'
+   */
+  readonly dockerImage?: string;
+
+  /**
+   * The build command for the hugo site on which the '--environment' flag is appended
+   *
+   * @default - 'hugo --gc --minify --cleanDestinationDir'
+   */
+  readonly hugoBuildCommand?: string;
+
+  /**
    * The hugo version to use in the alpine docker image
    *
    * @default - '',  meaning the latest version. You can specify a specific version, for example '=0.106.0-r4'
@@ -114,6 +128,8 @@ export class HugoHosting extends Construct {
     const http403ResponsePagePath = props.http403ResponsePagePath || '/en/404.html';
     const http404ResponsePagePath = props.http404ResponsePagePath || '/en/404.html';
     const hugoProjectPath = props.hugoProjectPath || '../frontend';
+    const dockerImage = props.dockerImage || 'public.ecr.aws/docker/library/node:lts-alpine';
+    const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     const alpineHugoVersion = props.alpineHugoVersion || '';
     const s3deployAssetHash = props.s3deployAssetHash || `${Number(Math.random())}-${props.buildStage}`;
 
@@ -281,14 +297,13 @@ function handler(event) {
           assetHash: s3deployAssetHash,
           assetHashType: AssetHashType.CUSTOM,
           bundling: {
-            image: DockerImage.fromRegistry('public.ecr.aws/docker/library/node:lts-alpine'),
+            image: DockerImage.fromRegistry(dockerImage),
             // Note: we are already in the '../frontend' folder
             command: [
               'sh', '-c',
               `
-              apk update && apk add hugo${alpineHugoVersion} &&
-              npm --version && hugo version &&
-              npm i && npm run build -- --environment ${this.buildStage} &&
+              apk update && apk add hugo${alpineHugoVersion} && hugo version &&
+              ${hugoBuildCommand} --environment ${this.buildStage} &&
               mkdir -p /asset-output && cp -r public-${this.buildStage}/* /asset-output
               `,
             ],

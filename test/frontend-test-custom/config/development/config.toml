@@ -1,0 +1,2 @@
+baseurl = "https://dev.example.com"
+publishDir = "public-development"
