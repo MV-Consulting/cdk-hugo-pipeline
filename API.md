@@ -1,5 +1,8 @@
 # cdk-hugo-pipeline
 
+[![cdk-constructs: experimental](https://img.shields.io/badge/cdk--constructs-experimental-important.svg)](https://constructs.dev/packages/cdk-hugo-pipeline)
+[![npm version](https://badge.fury.io/js/cdk-hugo-pipeline.svg)](https://badge.fury.io/js/cdk-hugo-pipeline)
+
 This is an AWS CDK Construct for deploying Hugo Static websites to AWS S3 behind SSL/Cloudfront with `cdk-pipelines`, having an all-in-one infrastructure-as-code deployment on AWS, meaning
 
 - self-contained, all resources should be on AWS
