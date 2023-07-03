@@ -16,7 +16,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '@commitlint/config-conventional',
     'husky',
   ],
-  // packageName: undefined,  /* The "name" in package.json. */
+  packageName: '@mavogel/cdk-hugo-pipeline', /* The "name" in package.json. */
 });
 project.package.setScript('prepare', 'husky install');
 project.synth();
