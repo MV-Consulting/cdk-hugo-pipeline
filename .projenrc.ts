@@ -1,4 +1,5 @@
 import { awscdk } from 'projen';
+import { NpmAccess } from 'projen/lib/javascript';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Manuel Vogel',
   authorAddress: 'mavogel@posteo.de',
@@ -17,6 +18,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'husky',
   ],
   packageName: '@mavogel/cdk-hugo-pipeline', /* The "name" in package.json. */
+  npmAccess: NpmAccess.PUBLIC, /* The npm access level to use when releasing this module. */
 });
 project.package.setScript('prepare', 'husky install');
 project.synth();
