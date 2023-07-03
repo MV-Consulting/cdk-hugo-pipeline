@@ -94,7 +94,7 @@ git push origin master
 - `main.ts` file
 ```ts
 import { App, Stack, StackProps } from 'aws-cdk-lib';
-import { HugoPipeline } from 'cdk-hugo-pipeline';
+import { HugoPipeline } from '@mavogel/cdk-hugo-pipeline';
 
 export class MyStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
