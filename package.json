@@ -1,5 +1,5 @@
 {
-  "name": "cdk-hugo-pipeline",
+  "name": "@mavogel/cdk-hugo-pipeline",
   "repository": {
     "type": "git",
     "url": "https://github.com/mavogel/cdk-hugo-pipeline.git"
