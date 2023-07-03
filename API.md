@@ -1,7 +1,6 @@
 # cdk-hugo-pipeline
-
-[![cdk-constructs: experimental](https://img.shields.io/badge/cdk--constructs-experimental-important.svg)](https://constructs.dev/packages/cdk-hugo-pipeline)
-[![npm version](https://badge.fury.io/js/cdk-hugo-pipeline.svg)](https://badge.fury.io/js/cdk-hugo-pipeline)
+[![cdk-constructs: experimental](https://img.shields.io/badge/cdk--constructs-experimental-yellow.svg)](https://constructs.dev/packages/@mavogel/cdk-hugo-pipeline)
+[![npm version](https://img.shields.io/npm/v/@mavogel/cdk-hugo-pipeline)](https://www.npmjs.com/package/@mavogel/cdk-hugo-pipeline)
 
 This is an AWS CDK Construct for deploying Hugo Static websites to AWS S3 behind SSL/Cloudfront with `cdk-pipelines`, having an all-in-one infrastructure-as-code deployment on AWS, meaning
 
@@ -108,7 +107,7 @@ export class MyStack extends Stack {
       name: 'my-blog',
       domainName: 'your-domain.com',
       siteSubDomain: 'dev',
-      hugoProjectPath: '../../../blog',
+      hugoProjectPath: '../../../../blog',
       hugoBuildCommand: 'hugo --gc --cleanDestinationDir --minify',
       basicAuthUsername: 'darth',
       basicAuthPassword: 'vader',
