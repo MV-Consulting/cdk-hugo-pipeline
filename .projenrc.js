@@ -2,7 +2,7 @@ const { awscdk } = require('projen');
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Manuel Vogel',
   authorAddress: 'mavogel@posteo.de',
-  cdkVersion: '2.1.0',
+  cdkVersion: '2.80.0',
   defaultReleaseBranch: 'main',
   name: 'cdk-hugo-pipeline',
   repositoryUrl: 'https://github.com/mavogel/cdk-hugo-pipeline.git',
