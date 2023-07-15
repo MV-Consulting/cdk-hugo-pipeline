@@ -78,7 +78,7 @@ dev:
 which has a `Route53 Hosted Zone` for `your-domain.com`:
 ```sh
 # build it locally via
-npm run build`
+npm run build
 # deploy the repository and the pipeline once via
 npm run deploy
 ```
