@@ -11,7 +11,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   repositoryUrl: 'https://github.com/mavogel/cdk-hugo-pipeline.git',
 
   // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
+  description: 'Build you hugo website all on AWS with CI/CD and a dev environment.', /* The description is just a string that helps people understand the purpose of the package. */
   devDeps: [ /* Build dependencies for this module. */
     '@commitlint/cli',
     '@commitlint/config-conventional',
