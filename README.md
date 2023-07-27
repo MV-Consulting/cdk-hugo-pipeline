@@ -14,14 +14,16 @@ Take a look at the blog post [My blog with hugo - all on AWS](https://manuel-vog
 about all the details and learnings.
 
 ## Prerequisites
+1. binaries
 ```sh
 brew install node@16 hugo docker
 ```
+2. a `Route53 Hosted Zone` for `your-domain.com` in the AWS account you deploy into.
 
 If you use [hugo modules](https://gohugo.io/hugo-modules/) add them as git submodules in the `themes` directory, so they can be pulled by the same git command in the `codepipeline`.
 
 ## Usage
-In this demo case, we will use the `blist` theme: https://github.com/apvarun/blist-hugo-theme
+In this demo case, we will use the `blist` theme: https://github.com/apvarun/blist-hugo-theme, however you can use any other hugo theme. Note, that you need to adapt the branch of the theme you use.
 
 ### Set up the repository
 ```sh
@@ -45,36 +47,75 @@ cp -r blog/themes/blist/exampleSite/*  blog/
 mkdir -p blog/config/_default blog/config/development blog/config/production
 # and move the standard config in the _default folder
 mv blog/config.toml blog/config/_default/config.toml
-# adapt the config files
+```
+3. adapt the config files
+```sh
 ## file: blog/config/development/config.toml
+cat << EOF > blog/config/development/config.toml
 baseurl = "https://dev.your-domain.com"
 publishDir = "public-development"
+EOF
+
+cat << EOF > blog/config/production/config.toml
 ## file: blog/config/production/config.toml
 baseurl = "https://your-domain.com"
 publishDir = "public-production"
+EOF
 ```
-3. ignore the output folders in the file `blog/.gitignore`
+4. ignore the output folders in the file `blog/.gitignore`
 ```sh
+cat << EOF >> blog/.gitignore
 public-*
 resources/_gen
 node_modules
 .DS_Store
 .hugo_build.lock
+EOF
 ```
-4. additionally copy `package.jsons`. **Note**: this depends on your theme
+5. additionally copy `package.jsons`. **Note**: this depends on your theme
 ```sh
 cp blog/themes/blist/package.json blog/package.json
 cp blog/themes/blist/package-lock.json blog/package-lock.json
 ```
-5. *Optional*: create a `Makefile`. **Note**: the `npm i` depends on your theme as well
-```sh
-.DEFAULT_GOAL := dev
-build:
-	cd blog && npm i && hugo --gc --minify --cleanDestinationDir
-dev:
-	cd blog && npm i && hugo server --watch --buildFuture --cleanDestinationDir
+6. *Optional*: add the script to the `.projenrc.ts`. **Note**: the command depends on your theme as well
+```ts
+project.addScripts({
+  dev: 'npm --prefix blog run start',
+  # below is the general commands
+  # dev: 'cd blog && hugo server --watch --buildFuture --cleanDestinationDir --disableFastRender',
+});
 ```
-### Deploy to your AWS account 
+and update the project via the following command
+```sh
+npm run projen
+```
+### Use typsscript and deploy to your AWS account
+Add this to the the `main.ts` file
+```ts
+import { App, Stack, StackProps } from 'aws-cdk-lib';
+import { HugoPipeline } from '@mavogel/cdk-hugo-pipeline';
+
+export class MyStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
+    super(scope, id, props);
+
+    // we only need 1 stack as it creates dev and prod stage in the pipeline
+    new HugoPipeline(this, 'my-blog', {
+      name: 'my-blog',
+      domainName: 'your-domain.com', // <- adapt here
+      siteSubDomain: 'dev',
+      hugoProjectPath: '../../../../blog',
+    });
+}
+```
+and adapt the `main.test.ts` (yes, known issue. See #28)
+
+```ts
+test('Snapshot', () => {
+  expect(true).toBe(true);
+});
+```
+
 which has a `Route53 Hosted Zone` for `your-domain.com`:
 ```sh
 # build it locally via
@@ -93,42 +134,13 @@ git push origin master
 ```
 2. ... wait until the pipeline has deployed to the `dev stage`, go to your url `dev.your-comain.com`, enter the basic auth credentials (default: `john:doe`) and look at you beautiful blog :tada:
 
-### With Typescript
-now use it as follows by adding it to the `main.ts` file
-```ts
-import { App, Stack, StackProps } from 'aws-cdk-lib';
-import { HugoPipeline } from '@mavogel/cdk-hugo-pipeline';
-
-export class MyStack extends Stack {
-  constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
-
-    // we only need 1 stack as it creates dev and prod stage in the pipeline
-    new HugoPipeline(this, 'my-blog', {
-      name: 'my-blog',
-      domainName: 'your-domain.com',
-      siteSubDomain: 'dev',
-      hugoProjectPath: '../../../../blog',
-      hugoBuildCommand: 'hugo --gc --cleanDestinationDir --minify',
-      basicAuthUsername: 'darth',
-      basicAuthPassword: 'vader',
-    });
-}
-```
-and adapt the `main.test.ts` (yes, known issue)
-
-```ts
-test('Snapshot', () => {
-  expect(true).toBe(true);
-});
-```
 ## Known issues
 - If with `npm test` you get the error `docker exited with status 1`, 
   - then clean the docker layers and re-run the tests via `docker system prune -f`
   - and if it happens in `codebuild`, re-run the build
 ## Open todos
 - [ ] fix this relative path `hugoProjectPath: '../../../blog'`
-- [ ] fix the testing issue with the R53 lookup
+- [ ] fix the testing issue with the R53 lookup (see #28)
 - [ ] a local development possibility in `docker`
 - [ ] which includes building the code in the container with `build.sh` to test also locally upfront
 
