@@ -36,8 +36,8 @@
     "organization": false
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.6",
-    "@commitlint/config-conventional": "^17.6.6",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
     "@types/jest": "^27",
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5",
@@ -57,7 +57,7 @@
     "jsii-pacmak": "^1.85.0",
     "jsii-rosetta": "~5.0.0",
     "npm-check-updates": "^16",
-    "projen": "^0.71.141",
+    "projen": "^0.71.151",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
