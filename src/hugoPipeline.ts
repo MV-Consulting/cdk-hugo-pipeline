@@ -63,6 +63,7 @@ export class HugoPageStage extends Stage {
       hugoBuildCommand: props.hugoBuildCommand,
       dockerImage: props.dockerImage,
       s3deployAssetHash: props.s3deployAssetHash,
+      env: props.env,
     });
 
     this.staticSiteURL = hugoHostingStack.staticSiteURL;
