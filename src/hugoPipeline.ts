@@ -63,7 +63,6 @@ export class HugoPageStage extends Stage {
       hugoBuildCommand: props.hugoBuildCommand,
       dockerImage: props.dockerImage,
       s3deployAssetHash: props.s3deployAssetHash,
-      env: props.env,
     });
 
     this.staticSiteURL = hugoHostingStack.staticSiteURL;
@@ -182,7 +181,7 @@ export class HugoPipeline extends Construct {
 
     const hugoPageDevStage = new HugoPageStage(this, 'dev-stage', {
       env: {
-        account: Stack.of(this).account, // TODO understand, as we run in the same account
+        account: Stack.of(this).account,
         region: Stack.of(this).region,
       },
       buildStage: 'development', //  TODO make constant
@@ -209,7 +208,7 @@ export class HugoPipeline extends Construct {
 
     const hugoPageProdStage = new HugoPageStage(this, 'prod-stage', {
       env: {
-        account: Stack.of(this).account, // TODO understand, as we run in the same account
+        account: Stack.of(this).account,
         region: Stack.of(this).region,
       },
       buildStage: 'production',
