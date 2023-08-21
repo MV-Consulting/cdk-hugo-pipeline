@@ -180,8 +180,9 @@ export class HugoPipeline extends Construct {
     });
 
     const hugoPageDevStage = new HugoPageStage(this, 'dev-stage', {
+      // Note: the pipeline and deployment are in the same account
       env: {
-        account: Stack.of(this).account, // TODO understand, as we run in the same account
+        account: Stack.of(this).account,
         region: Stack.of(this).region,
       },
       buildStage: 'development', //  TODO make constant
