@@ -295,11 +295,10 @@ function handler(event) {
         s3deploy.Source.asset(path.join(__dirname, hugoProjectPath), {
           // Note: to avoid mismatch between builds, we build the assets each time
           assetHash: s3deployAssetHash,
-          // TODO see https://dev.to/aws-builders/aws-cdk-fullstack-polyglot-with-asset-bundling-318h
           assetHashType: AssetHashType.CUSTOM,
           bundling: {
             image: DockerImage.fromRegistry(dockerImage),
-            // Note: we are already in the '../frontend' folder
+            // Note: we are already in the '../blog' folder
             command: [
               'sh', '-c',
               `
