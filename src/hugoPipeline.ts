@@ -144,7 +144,6 @@ export class HugoPipeline extends Construct {
   constructor(scope: Construct, id: string, props: HugoPipelineProps) {
     super(scope, id);
 
-    // TODO helper class
     const basicAuthUsername = props.basicAuthUsername || 'john';
     const basicAuthPassword = props.basicAuthPassword || 'doe';
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
@@ -174,9 +173,6 @@ export class HugoPipeline extends Construct {
       // NOTE: as we build the hugo blog in a docker container
       // see https://github.com/aws/aws-cdk/tree/v2.56.1/packages/%40aws-cdk/pipelines#using-bundled-file-assets
       dockerEnabledForSynth: true,
-      // codeBuildDefaults: {
-      //   timeout: Duration.minutes(20),
-      // },
     });
 
     const hugoPageDevStage = new HugoPageStage(this, 'dev-stage', {
@@ -185,7 +181,7 @@ export class HugoPipeline extends Construct {
         account: Stack.of(this).account,
         region: Stack.of(this).region,
       },
-      buildStage: 'development', //  TODO make constant
+      buildStage: 'development',
       siteSubDomain: this.siteSubDomain,
       domainName: this.domainName,
       hugoProjectPath: props.hugoProjectPath,
