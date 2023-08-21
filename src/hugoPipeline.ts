@@ -201,7 +201,6 @@ export class HugoPipeline extends Construct {
             // Make the address available as $URL inside the commands
             URL: hugoPageDevStage.staticSiteURL,
           },
-          // TODO add header to allow request to call
           commands: [`curl -Ssf -H "Authorization: Basic ${basicAuthBase64}" $URL`],
         }),
       ],
@@ -209,7 +208,7 @@ export class HugoPipeline extends Construct {
 
     const hugoPageProdStage = new HugoPageStage(this, 'prod-stage', {
       env: {
-        account: Stack.of(this).account, // TODO understand, as we run in the same account
+        account: Stack.of(this).account,
         region: Stack.of(this).region,
       },
       buildStage: 'production',
