@@ -101,14 +101,11 @@ export class MyStack extends Stack {
 
     // we only need 1 stack as it creates dev and prod stage in the pipeline
     new HugoPipeline(this, 'my-blog', {
-      name: 'my-blog',
       domainName: 'your-domain.com', // <- adapt here
-      siteSubDomain: 'dev',
-      hugoProjectPath: '../../../../blog',
     });
 }
 ```
-and adapt the `main.test.ts` (yes, known issue. See #28)
+and adapt the `main.test.ts` (yes, known issue. See [#40](https://github.com/MV-Consulting/cdk-hugo-pipeline/issues/40))
 
 ```ts
 test('Snapshot', () => {
@@ -139,8 +136,6 @@ git push origin master
   - then clean the docker layers and re-run the tests via `docker system prune -f`
   - and if it happens in `codebuild`, re-run the build
 ## Open todos
-- [ ] fix this relative path `hugoProjectPath: '../../../blog'`
-- [ ] fix the testing issue with the R53 lookup (see #28)
 - [ ] a local development possibility in `docker`
 - [ ] which includes building the code in the container with `build.sh` to test also locally upfront
 
