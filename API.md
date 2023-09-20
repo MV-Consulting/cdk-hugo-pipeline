@@ -25,9 +25,28 @@ If you use [hugo modules](https://gohugo.io/hugo-modules/) add them as git submo
 ## Usage
 In this demo case, we will use the `blist` theme: https://github.com/apvarun/blist-hugo-theme, however you can use any other hugo theme. Note, that you need to adapt the branch of the theme you use.
 
-### Set up the repository
+### With a projen template (recommended)
+and the [blist](https://github.com/apvarun/blist-hugo-theme) theme.
 ```sh
 mkdir my-blog && cd my-blog
+
+npx projen new \
+    --from @mavogel/projen-cdk-hugo-pipeline@~0 \
+    --domain your-domain.com \
+    --projenrc-ts
+
+npm --prefix blog install
+# and start the development server on http://localhost:1313
+npm run dev
+```
+
+
+### By hand (more flexible)
+<details>
+  <summary>Click me</summary>
+
+#### Set up the repository
+```sh
 # create the surrounding cdk-app
 npx projen new awscdk-app-ts
 # add the desired hugo template into the 'blog' folder
@@ -35,7 +54,7 @@ git submodule add https://github.com/apvarun/blist-hugo-theme.git blog/themes/bl
 # add fixed version to hugo template in the .gitmodules file
 git submodule set-branch --branch v2.1.0 blog/themes/blist
 ```
-### Configure the repository
+#### Configure the repository
 depending on the theme you use (here [blist](https://github.com/apvarun/blist-hugo-theme))
 1. copy the example site
 ```sh
@@ -89,7 +108,7 @@ and update the project via the following command
 ```sh
 npm run projen
 ```
-### Use typsscript and deploy to your AWS account
+#### Use Typescript and deploy to your AWS account
 Add this to the the `main.ts` file
 ```ts
 import { App, Stack, StackProps } from 'aws-cdk-lib';
@@ -114,6 +133,9 @@ test('Snapshot', () => {
 ```
 
 which has a `Route53 Hosted Zone` for `your-domain.com`:
+</details>
+
+### Deploy it
 ```sh
 # build it locally via
 npm run build
@@ -137,7 +159,6 @@ git push origin master
   - and if it happens in `codebuild`, re-run the build
 ## Open todos
 - [ ] a local development possibility in `docker`
-- [ ] which includes building the code in the container with `build.sh` to test also locally upfront
 
 ## Resources / Inspiration
 - [cdk-hugo-deploy](https://github.com/maafk/cdk-hugo-deploy): however here you need to build the static site with `hugo` before locally

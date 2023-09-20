@@ -173,12 +173,10 @@ export class HugoPipeline extends Construct {
       // NOTE: as we build the hugo blog in a docker container
       // see https://github.com/aws/aws-cdk/tree/v2.56.1/packages/%40aws-cdk/pipelines#using-bundled-file-assets
       dockerEnabledForSynth: true,
-      // codeBuildDefaults: {
-      //   timeout: Duration.minutes(20),
-      // },
     });
 
     const hugoPageDevStage = new HugoPageStage(this, 'dev-stage', {
+      // Note: the pipeline and deployment are in the same account
       env: {
         account: Stack.of(this).account,
         region: Stack.of(this).region,
