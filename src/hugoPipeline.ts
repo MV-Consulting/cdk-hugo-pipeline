@@ -200,7 +200,6 @@ export class HugoPipeline extends Construct {
             // Make the address available as $URL inside the commands
             URL: hugoPageDevStage.staticSiteURL,
           },
-          // TODO add header to allow request to call
           commands: [`curl -Ssf -H "Authorization: Basic ${basicAuthBase64}" $URL`],
         }),
       ],
