@@ -22,7 +22,7 @@ export interface HugoHostingProps {
    *
    * @default - production
    */
-  readonly buildStage: string;
+  readonly buildStage?: string;
 
   /**
    * The username for basic auth on the development site
@@ -72,7 +72,7 @@ export interface HugoHostingProps {
   /**
    * The path to the hugo project
    *
-   * @default - '../frontend'
+   * @default - '../../../../blog'
    */
   readonly hugoProjectPath?: string;
 
@@ -127,7 +127,7 @@ export class HugoHosting extends Construct {
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
     const http403ResponsePagePath = props.http403ResponsePagePath || '/en/404.html';
     const http404ResponsePagePath = props.http404ResponsePagePath || '/en/404.html';
-    const hugoProjectPath = props.hugoProjectPath || '../frontend';
+    const hugoProjectPath = props.hugoProjectPath || '../../../../blog';
     const dockerImage = props.dockerImage || 'public.ecr.aws/docker/library/node:lts-alpine';
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     const alpineHugoVersion = props.alpineHugoVersion || '';
