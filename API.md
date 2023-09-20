@@ -2408,7 +2408,7 @@ public readonly hugoProjectPath: string;
 ```
 
 - *Type:* string
-- *Default:* '../frontend'
+- *Default:* '../../../../blog'
 
 The path to the hugo project.
 
