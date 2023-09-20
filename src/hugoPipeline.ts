@@ -184,7 +184,7 @@ export class HugoPipeline extends Construct {
         account: Stack.of(this).account,
         region: Stack.of(this).region,
       },
-      buildStage: 'development', //  TODO make constant
+      buildStage: 'development',
       siteSubDomain: this.siteSubDomain,
       domainName: this.domainName,
       hugoProjectPath: hugoProjectPath,
