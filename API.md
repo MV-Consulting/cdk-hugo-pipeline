@@ -120,14 +120,11 @@ export class MyStack extends Stack {
 
     // we only need 1 stack as it creates dev and prod stage in the pipeline
     new HugoPipeline(this, 'my-blog', {
-      name: 'my-blog',
       domainName: 'your-domain.com', // <- adapt here
-      siteSubDomain: 'dev',
-      hugoProjectPath: '../../../../blog',
     });
 }
 ```
-and adapt the `main.test.ts` (yes, known issue. See #28)
+and adapt the `main.test.ts` (yes, known issue. See [#40](https://github.com/MV-Consulting/cdk-hugo-pipeline/issues/40))
 
 ```ts
 test('Snapshot', () => {
@@ -161,8 +158,6 @@ git push origin master
   - then clean the docker layers and re-run the tests via `docker system prune -f`
   - and if it happens in `codebuild`, re-run the build
 ## Open todos
-- [ ] fix this relative path `hugoProjectPath: '../../../blog'`
-- [ ] fix the testing issue with the R53 lookup (see #28)
 - [ ] a local development possibility in `docker`
 
 ## Resources / Inspiration
@@ -1577,7 +1572,6 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipeline.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipeline.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipeline.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -1597,16 +1591,6 @@ The tree node.
 
 ```typescript
 public readonly domainName: string;
-```
-
-- *Type:* string
-
----
-
-##### `siteSubDomain`<sup>Required</sup> <a name="siteSubDomain" id="@mavogel/cdk-hugo-pipeline.HugoPipeline.property.siteSubDomain"></a>
-
-```typescript
-public readonly siteSubDomain: string;
 ```
 
 - *Type:* string
@@ -2332,7 +2316,6 @@ const hugoPipelineProps: HugoPipelineProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.domainName">domainName</a></code> | <code>string</code> | Name of the domain to host the site on. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | The docker image to use to build the hugo page. |
@@ -2340,6 +2323,7 @@ const hugoPipelineProps: HugoPipelineProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.name">name</a></code> | <code>string</code> | Name of the codecommit repository. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | The hash to use to build or rebuild the hugo page. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
 
 ---
 
@@ -2352,19 +2336,6 @@ public readonly domainName: string;
 - *Type:* string
 
 Name of the domain to host the site on.
-
----
-
-##### `siteSubDomain`<sup>Required</sup> <a name="siteSubDomain" id="@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain"></a>
-
-```typescript
-public readonly siteSubDomain: string;
-```
-
-- *Type:* string
-- *Default:* dev
-
-The subdomain to host the development site on, for example 'dev'.
 
 ---
 
@@ -2429,7 +2400,7 @@ public readonly hugoProjectPath: string;
 ```
 
 - *Type:* string
-- *Default:* '../frontend'
+- *Default:* '../../../../blog'
 
 The path to the hugo project.
 
@@ -2463,6 +2434,19 @@ We use it to rebuild the site every time as cdk caching is too intelligent
 and it did not deploy updates.
 
 For testing purposes we pass a static hash to avoid updates of the snapshot tests.
+
+---
+
+##### `siteSubDomain`<sup>Optional</sup> <a name="siteSubDomain" id="@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.siteSubDomain"></a>
+
+```typescript
+public readonly siteSubDomain: string;
+```
+
+- *Type:* string
+- *Default:* dev
+
+The subdomain to host the development site on, for example 'dev'.
 
 ---
 
