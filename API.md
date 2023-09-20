@@ -1614,11 +1614,11 @@ const hugoHostingProps: HugoHostingProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.buildStage">buildStage</a></code> | <code>string</code> | Name of the stage to deploy to. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.domainName">domainName</a></code> | <code>string</code> | Name of the domain to host the site on. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.alpineHugoVersion">alpineHugoVersion</a></code> | <code>string</code> | The hugo version to use in the alpine docker image. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.buildStage">buildStage</a></code> | <code>string</code> | Name of the stage to deploy to. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | The docker image to use to build the hugo page. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | The path to the 403 error page. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | The path to the 404 error page. |
@@ -1627,21 +1627,6 @@ const hugoHostingProps: HugoHostingProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | The hash to use to build or rebuild the hugo page. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.zone">zone</a></code> | <code>aws-cdk-lib.aws_route53.HostedZone</code> | Zone the Domain Name is created in. |
-
----
-
-##### `buildStage`<sup>Required</sup> <a name="buildStage" id="@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.buildStage"></a>
-
-```typescript
-public readonly buildStage: string;
-```
-
-- *Type:* string
-- *Default:* production
-
-Name of the stage to deploy to.
-
-Should be 'development' or 'production'
 
 ---
 
@@ -1693,6 +1678,21 @@ public readonly basicAuthUsername: string;
 - *Default:* john
 
 The username for basic auth on the development site.
+
+---
+
+##### `buildStage`<sup>Optional</sup> <a name="buildStage" id="@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.buildStage"></a>
+
+```typescript
+public readonly buildStage: string;
+```
+
+- *Type:* string
+- *Default:* production
+
+Name of the stage to deploy to.
+
+Should be 'development' or 'production'
 
 ---
 
@@ -1757,7 +1757,7 @@ public readonly hugoProjectPath: string;
 ```
 
 - *Type:* string
-- *Default:* '../frontend'
+- *Default:* '../../../../blog'
 
 The path to the hugo project.
 
