@@ -101,7 +101,7 @@ export interface HugoPipelineProps {
    *
    * @default - dev
    */
-  readonly siteSubDomain: string;
+  readonly siteSubDomain?: string;
 
   /**
    * The path to the hugo project
@@ -139,19 +139,18 @@ export interface HugoPipelineProps {
 
 export class HugoPipeline extends Construct {
   public readonly domainName: string;
-  public readonly siteSubDomain: string;
 
   constructor(scope: Construct, id: string, props: HugoPipelineProps) {
     super(scope, id);
 
+    this.domainName = props.domainName;
     const basicAuthUsername = props.basicAuthUsername || 'john';
     const basicAuthPassword = props.basicAuthPassword || 'doe';
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
     const dockerImage = props.dockerImage || 'public.ecr.aws/docker/library/node:lts-alpine';
     const hugoProjectPath = props.hugoProjectPath || '../../../../blog';
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
-    this.domainName = props.domainName;
-    this.siteSubDomain = props.siteSubDomain;
+    const siteSubDomain = props.siteSubDomain || 'dev';
 
     const repository = new codecommit.Repository(this, 'hugo-blog', {
       repositoryName: props.name || 'hugo-blog',
@@ -185,8 +184,8 @@ export class HugoPipeline extends Construct {
         region: Stack.of(this).region,
       },
       buildStage: 'development',
-      siteSubDomain: this.siteSubDomain,
       domainName: this.domainName,
+      siteSubDomain: siteSubDomain,
       hugoProjectPath: hugoProjectPath,
       dockerImage: dockerImage,
       hugoBuildCommand: hugoBuildCommand,
