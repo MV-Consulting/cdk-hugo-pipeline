@@ -106,7 +106,7 @@ export interface HugoPipelineProps {
   /**
    * The path to the hugo project
    *
-   * @default - '../frontend'
+   * @default - '../../../../blog'
    */
   readonly hugoProjectPath?: string;
 
@@ -149,6 +149,7 @@ export class HugoPipeline extends Construct {
     const basicAuthPassword = props.basicAuthPassword || 'doe';
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
     const dockerImage = props.dockerImage || 'public.ecr.aws/docker/library/node:lts-alpine';
+    const hugoProjectPath = props.hugoProjectPath || '../../../../blog';
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     this.domainName = props.domainName;
     this.siteSubDomain = props.siteSubDomain;
@@ -187,7 +188,7 @@ export class HugoPipeline extends Construct {
       buildStage: 'development', //  TODO make constant
       siteSubDomain: this.siteSubDomain,
       domainName: this.domainName,
-      hugoProjectPath: props.hugoProjectPath,
+      hugoProjectPath: hugoProjectPath,
       dockerImage: dockerImage,
       hugoBuildCommand: hugoBuildCommand,
       s3deployAssetHash: props.s3deployAssetHash,
