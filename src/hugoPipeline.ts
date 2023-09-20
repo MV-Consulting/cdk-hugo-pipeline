@@ -144,7 +144,6 @@ export class HugoPipeline extends Construct {
   constructor(scope: Construct, id: string, props: HugoPipelineProps) {
     super(scope, id);
 
-    // TODO helper class
     const basicAuthUsername = props.basicAuthUsername || 'john';
     const basicAuthPassword = props.basicAuthPassword || 'doe';
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
