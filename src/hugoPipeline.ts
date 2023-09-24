@@ -164,7 +164,8 @@ export class HugoPipeline extends Construct {
         // not implemented on 2022-12-28: https://github.com/aws/aws-cdk/issues/11399
         // so we clone submodules manually
         commands: [
-          'npm ci || yarn install --check-files --frozen-lockfile',
+          'test -f package-lock.json && npm ci',
+          'test -f yarn.lock && yarn install --check-files --frozen-lockfile',
           'git submodule update --init',
           'npm run build',
           'npm run synth',
