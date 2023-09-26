@@ -15,6 +15,8 @@ export interface HugoHostingStackProps extends StackProps {
   readonly domainName: string;
   readonly siteSubDomain?: string;
   readonly hugoProjectPath?: string;
+  readonly dockerImage?: string;
+  readonly hugoBuildCommand?: string;
   readonly s3deployAssetHash?: string;
 }
 
@@ -29,6 +31,8 @@ export class HugoHostingStack extends Stack {
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
       hugoProjectPath: props.hugoProjectPath,
+      hugoBuildCommand: props.hugoBuildCommand,
+      dockerImage: props.dockerImage,
       s3deployAssetHash: props.s3deployAssetHash,
     });
 
@@ -41,6 +45,8 @@ export interface HugoPageStageProps extends StageProps {
   readonly domainName: string;
   readonly siteSubDomain?: string;
   readonly hugoProjectPath?: string;
+  readonly dockerImage?: string;
+  readonly hugoBuildCommand?: string;
   readonly s3deployAssetHash?: string;
 }
 export class HugoPageStage extends Stage {
@@ -54,6 +60,8 @@ export class HugoPageStage extends Stage {
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
       hugoProjectPath: props.hugoProjectPath,
+      hugoBuildCommand: props.hugoBuildCommand,
+      dockerImage: props.dockerImage,
       s3deployAssetHash: props.s3deployAssetHash,
     });
 
@@ -93,14 +101,28 @@ export interface HugoPipelineProps {
    *
    * @default - dev
    */
-  readonly siteSubDomain: string;
+  readonly siteSubDomain?: string;
 
   /**
    * The path to the hugo project
    *
-   * @default - '../frontend'
+   * @default - '../../../../blog'
    */
   readonly hugoProjectPath?: string;
+
+  /**
+   * The docker image to use to build the hugo page. Note: you need to use the 'apk' package manager
+   *
+   * @default - 'public.ecr.aws/docker/library/node:lts-alpine'
+   */
+  readonly dockerImage?: string;
+
+  /**
+   * The build command for the hugo site on which the '--environment' flag is appended
+   *
+   * @default - 'hugo --gc --minify --cleanDestinationDir'
+   */
+  readonly hugoBuildCommand?: string;
 
   /**
    * The hash to use to build or rebuild the hugo page.
@@ -117,17 +139,18 @@ export interface HugoPipelineProps {
 
 export class HugoPipeline extends Construct {
   public readonly domainName: string;
-  public readonly siteSubDomain: string;
 
   constructor(scope: Construct, id: string, props: HugoPipelineProps) {
     super(scope, id);
 
-    // TODO helper class
+    this.domainName = props.domainName;
     const basicAuthUsername = props.basicAuthUsername || 'john';
     const basicAuthPassword = props.basicAuthPassword || 'doe';
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
-    this.domainName = props.domainName;
-    this.siteSubDomain = props.siteSubDomain;
+    const dockerImage = props.dockerImage || 'public.ecr.aws/docker/library/node:lts-alpine';
+    const hugoProjectPath = props.hugoProjectPath || '../../../../blog';
+    const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
+    const siteSubDomain = props.siteSubDomain || 'dev';
 
     const repository = new codecommit.Repository(this, 'hugo-blog', {
       repositoryName: props.name || 'hugo-blog',
@@ -141,7 +164,8 @@ export class HugoPipeline extends Construct {
         // not implemented on 2022-12-28: https://github.com/aws/aws-cdk/issues/11399
         // so we clone submodules manually
         commands: [
-          'npm ci',
+          'test -f package-lock.json && npm ci',
+          'test -f yarn.lock && yarn install --check-files --frozen-lockfile',
           'git submodule update --init',
           'npm run build',
           'npm run synth',
@@ -150,20 +174,20 @@ export class HugoPipeline extends Construct {
       // NOTE: as we build the hugo blog in a docker container
       // see https://github.com/aws/aws-cdk/tree/v2.56.1/packages/%40aws-cdk/pipelines#using-bundled-file-assets
       dockerEnabledForSynth: true,
-      // codeBuildDefaults: {
-      //   timeout: Duration.minutes(20),
-      // },
     });
 
     const hugoPageDevStage = new HugoPageStage(this, 'dev-stage', {
+      // Note: the pipeline and deployment are in the same account
       env: {
-        account: Stack.of(this).account, // TODO understand, as we run in the same account
+        account: Stack.of(this).account,
         region: Stack.of(this).region,
       },
-      buildStage: 'development', //  TODO make constant
-      siteSubDomain: this.siteSubDomain,
+      buildStage: 'development',
       domainName: this.domainName,
-      hugoProjectPath: props.hugoProjectPath,
+      siteSubDomain: siteSubDomain,
+      hugoProjectPath: hugoProjectPath,
+      dockerImage: dockerImage,
+      hugoBuildCommand: hugoBuildCommand,
       s3deployAssetHash: props.s3deployAssetHash,
     });
 
@@ -174,7 +198,6 @@ export class HugoPipeline extends Construct {
             // Make the address available as $URL inside the commands
             URL: hugoPageDevStage.staticSiteURL,
           },
-          // TODO add header to allow request to call
           commands: [`curl -Ssf -H "Authorization: Basic ${basicAuthBase64}" $URL`],
         }),
       ],
@@ -182,7 +205,7 @@ export class HugoPipeline extends Construct {
 
     const hugoPageProdStage = new HugoPageStage(this, 'prod-stage', {
       env: {
-        account: Stack.of(this).account, // TODO understand, as we run in the same account
+        account: Stack.of(this).account,
         region: Stack.of(this).region,
       },
       buildStage: 'production',

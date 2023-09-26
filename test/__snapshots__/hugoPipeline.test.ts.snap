@@ -22,10 +22,14 @@ Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
         },
+        "Cache": Object {
+          "Type": "NO_CACHE",
+        },
+        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset1",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:6.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
@@ -42,12 +46,12 @@ Object {
   \\"phases\\": {
     \\"install\\": {
       \\"commands\\": [
-        \\"npm install -g cdk-assets\\"
+        \\"npm install -g cdk-assets@2\\"
       ]
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"350185a1069fa20a23a583e20c77f6844218bd73097902362dc94f1a108f5d89:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
@@ -62,10 +66,14 @@ Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
         },
+        "Cache": Object {
+          "Type": "NO_CACHE",
+        },
+        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset2",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:6.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
@@ -82,12 +90,12 @@ Object {
   \\"phases\\": {
     \\"install\\": {
       \\"commands\\": [
-        \\"npm install -g cdk-assets\\"
+        \\"npm install -g cdk-assets@2\\"
       ]
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"861509f9607aa6bb9fd7034fb10fe6f0c60d91dfd7f010b9ef666869dec9bbd9:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
@@ -102,10 +110,14 @@ Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
         },
+        "Cache": Object {
+          "Type": "NO_CACHE",
+        },
+        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset3",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:6.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
@@ -122,12 +134,12 @@ Object {
   \\"phases\\": {
     \\"install\\": {
       \\"commands\\": [
-        \\"npm install -g cdk-assets\\"
+        \\"npm install -g cdk-assets@2\\"
       ]
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"e2277687077a2abf9ae1af1cc9565e6715e2ebb62f79ec53aa75a1af9298f642:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
@@ -142,10 +154,14 @@ Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
         },
+        "Cache": Object {
+          "Type": "NO_CACHE",
+        },
+        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset4",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:6.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
@@ -162,12 +178,12 @@ Object {
   \\"phases\\": {
     \\"install\\": {
       \\"commands\\": [
-        \\"npm install -g cdk-assets\\"
+        \\"npm install -g cdk-assets@2\\"
       ]
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"983c442a2fe823a8b4ebb18d241a5150ae15103dacbf3f038c7c6343e565aa4c:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"9eb41a5505d37607ac419321497a4f8c21cf0ee1f9b4a6b29aa04301aea5c7fd:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
@@ -182,10 +198,14 @@ Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
         },
+        "Cache": Object {
+          "Type": "NO_CACHE",
+        },
+        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset5",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:6.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
@@ -202,12 +222,12 @@ Object {
   \\"phases\\": {
     \\"install\\": {
       \\"commands\\": [
-        \\"npm install -g cdk-assets\\"
+        \\"npm install -g cdk-assets@2\\"
       ]
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"82a81b10b8047c7b0e2d929d63966efa0f3b357e1e864e4b80a8bcfa0c589d61:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"bd58bcd9bdc2b7a2012ec9d0708af490f52b3e2460869bb2ed674002c0d42a1c:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
@@ -222,10 +242,14 @@ Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
         },
+        "Cache": Object {
+          "Type": "NO_CACHE",
+        },
+        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset6",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:6.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
@@ -242,12 +266,12 @@ Object {
   \\"phases\\": {
     \\"install\\": {
       \\"commands\\": [
-        \\"npm install -g cdk-assets\\"
+        \\"npm install -g cdk-assets@2\\"
       ]
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-prod-stage/testStackhugoPipelineprodstagehugoblogstackE7EDD29B.assets.json\\\\\\" --verbose publish \\\\\\"75efb70d82778efa0ed769e846c785362f3de5093b2d675bcece69b707399267:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-prod-stage/testStackhugoPipelineprodstagehugoblogstackE7EDD29B.assets.json\\\\\\" --verbose publish \\\\\\"4692c904719ef9f36c07826f8e6dcbd9b0971104f78e9d9231023ef6eb85a7f8:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
@@ -265,6 +289,13 @@ Object {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
               "Principal": Object {
+                "Service": "codebuild.amazonaws.com",
+              },
+            },
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
                 "AWS": Object {
                   "Fn::Join": Array [
                     "",
@@ -277,7 +308,6 @@ Object {
                     ],
                   ],
                 },
-                "Service": "codebuild.amazonaws.com",
               },
             },
           ],
@@ -344,11 +374,9 @@ Object {
             Object {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Resource": Array [
-                Object {
-                  "Fn::Sub": "arn:\${AWS::Partition}:iam::1234:role/cdk-hnb659fds-file-publishing-role-1234-us-east-1",
-                },
-              ],
+              "Resource": Object {
+                "Fn::Sub": "arn:\${AWS::Partition}:iam::1234:role/cdk-hnb659fds-file-publishing-role-1234-us-east-1",
+              },
             },
             Object {
               "Action": Array [
@@ -391,6 +419,184 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Policy",
+    },
+    "hugoPipelinehugoblogpipelineCodeBuildActionRoleDefaultPolicy1DA60F83": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "hugoPipelinehugoblogpipelinePipelineBuildSynthCdkBuildProject21258FA6",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "hugoPipelinehugoblogpipelineUpdatePipelineSelfMutation6B2A9AB4",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "hugoPipelinehugoblogpipelineAssetsFileAsset1D8E78EFA",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "hugoPipelinehugoblogpipelineAssetsFileAsset2481D086E",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "hugoPipelinehugoblogpipelineAssetsFileAsset31D350802",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "hugoPipelinehugoblogpipelineAssetsFileAsset4D7DF3BEA",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "hugoPipelinehugoblogpipelineAssetsFileAsset5C51E1C6C",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "hugoPipelinehugoblogpipelineAssetsFileAsset61D4034BD",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "hugoPipelinehugoblogpipelinePipelinedevstageHitDevEndpoint4EACEF67",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "hugoPipelinehugoblogpipelinePipelineprodstageHitProdEndpointE4BC66D2",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "hugoPipelinehugoblogpipelineCodeBuildActionRoleDefaultPolicy1DA60F83",
+        "Roles": Array [
+          Object {
+            "Ref": "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": Object {
+                  "Fn::GetAtt": Array [
+                    "hugoPipelinehugoblogpipelinePipelineRoleF157B64B",
+                    "Arn",
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
     },
     "hugoPipelinehugoblogpipelinePipeline8A9312D1": Object {
       "DependsOn": Array [
@@ -464,7 +670,7 @@ Object {
                   "Version": "1",
                 },
                 "Configuration": Object {
-                  "EnvironmentVariables": "[{\\"name\\":\\"_PROJECT_CONFIG_HASH\\",\\"type\\":\\"PLAINTEXT\\",\\"value\\":\\"08cb0d51b09350759138cb15eb6c31977e8110279404fa753068ff4fca485e58\\"}]",
+                  "EnvironmentVariables": "[{\\"name\\":\\"_PROJECT_CONFIG_HASH\\",\\"type\\":\\"PLAINTEXT\\",\\"value\\":\\"f3f4db03f11b2b0de2007bc29c030b7042e42a19e8ed339a5eb99f31e9eff02f\\"}]",
                   "ProjectName": Object {
                     "Ref": "hugoPipelinehugoblogpipelinePipelineBuildSynthCdkBuildProject21258FA6",
                   },
@@ -482,7 +688,7 @@ Object {
                 ],
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
-                    "hugoPipelinehugoblogpipelinePipelineBuildSynthCodePipelineActionRole40C01300",
+                    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                     "Arn",
                   ],
                 },
@@ -501,7 +707,7 @@ Object {
                   "Version": "1",
                 },
                 "Configuration": Object {
-                  "EnvironmentVariables": "[{\\"name\\":\\"_PROJECT_CONFIG_HASH\\",\\"type\\":\\"PLAINTEXT\\",\\"value\\":\\"925488a1f67b3c85a8f66d752dc59e6141d3489dd9fb850d6b65d91d50a1c34f\\"}]",
+                  "EnvironmentVariables": "[{\\"name\\":\\"_PROJECT_CONFIG_HASH\\",\\"type\\":\\"PLAINTEXT\\",\\"value\\":\\"938fcf05b36057ba9427619cabeac4414591f419ef7ca422ccca74e5d70f5fd7\\"}]",
                   "ProjectName": Object {
                     "Ref": "hugoPipelinehugoblogpipelineUpdatePipelineSelfMutation6B2A9AB4",
                   },
@@ -514,7 +720,7 @@ Object {
                 "Name": "SelfMutate",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
-                    "hugoPipelinehugoblogpipelinePipelineUpdatePipelineSelfMutateCodePipelineActionRole474A9F34",
+                    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                     "Arn",
                   ],
                 },
@@ -545,7 +751,7 @@ Object {
                 "Name": "FileAsset1",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
-                    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset1CodePipelineActionRole3528C02F",
+                    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                     "Arn",
                   ],
                 },
@@ -571,7 +777,7 @@ Object {
                 "Name": "FileAsset2",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
-                    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset2CodePipelineActionRoleE5782D7E",
+                    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                     "Arn",
                   ],
                 },
@@ -597,7 +803,7 @@ Object {
                 "Name": "FileAsset3",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
-                    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset3CodePipelineActionRole7458323B",
+                    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                     "Arn",
                   ],
                 },
@@ -623,7 +829,7 @@ Object {
                 "Name": "FileAsset4",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
-                    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset4CodePipelineActionRole092D1620",
+                    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                     "Arn",
                   ],
                 },
@@ -649,7 +855,7 @@ Object {
                 "Name": "FileAsset5",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
-                    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset5CodePipelineActionRoleF4ED7279",
+                    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                     "Arn",
                   ],
                 },
@@ -675,7 +881,7 @@ Object {
                 "Name": "FileAsset6",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
-                    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset6CodePipelineActionRoleAD549D32",
+                    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                     "Arn",
                   ],
                 },
@@ -781,7 +987,7 @@ Object {
                 "Name": "HitDevEndpoint",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
-                    "hugoPipelinehugoblogpipelinePipelinedevstageHitDevEndpointCodePipelineActionRoleF4381A32",
+                    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                     "Arn",
                   ],
                 },
@@ -903,7 +1109,7 @@ Object {
                 "Name": "HitProdEndpoint",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
-                    "hugoPipelinehugoblogpipelinePipelineprodstageHitProdEndpointCodePipelineActionRoleE824EE0E",
+                    "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                     "Arn",
                   ],
                 },
@@ -945,6 +1151,40 @@ Object {
         },
         "PolicyDocument": Object {
           "Statement": Array [
+            Object {
+              "Action": "s3:*",
+              "Condition": Object {
+                "Bool": Object {
+                  "aws:SecureTransport": "false",
+                },
+              },
+              "Effect": "Deny",
+              "Principal": Object {
+                "AWS": "*",
+              },
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "hugoPipelinehugoblogpipelinePipelineArtifactsBucketDEB4CBD4",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "hugoPipelinehugoblogpipelinePipelineArtifactsBucketDEB4CBD4",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
             Object {
               "Action": Array [
                 "s3:GetObject*",
@@ -995,363 +1235,19 @@ Object {
       },
       "Type": "AWS::S3::BucketPolicy",
     },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset1CodePipelineActionRole3528C02F": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset1CodePipelineActionRoleDefaultPolicy23A9E91A": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "codebuild:BatchGetBuilds",
-                "codebuild:StartBuild",
-                "codebuild:StopBuild",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelineAssetsFileAsset1D8E78EFA",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset1CodePipelineActionRoleDefaultPolicy23A9E91A",
-        "Roles": Array [
-          Object {
-            "Ref": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset1CodePipelineActionRole3528C02F",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset2CodePipelineActionRoleDefaultPolicy1B3A4996": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "codebuild:BatchGetBuilds",
-                "codebuild:StartBuild",
-                "codebuild:StopBuild",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelineAssetsFileAsset2481D086E",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset2CodePipelineActionRoleDefaultPolicy1B3A4996",
-        "Roles": Array [
-          Object {
-            "Ref": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset2CodePipelineActionRoleE5782D7E",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset2CodePipelineActionRoleE5782D7E": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset3CodePipelineActionRole7458323B": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset3CodePipelineActionRoleDefaultPolicy5FE54662": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "codebuild:BatchGetBuilds",
-                "codebuild:StartBuild",
-                "codebuild:StopBuild",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelineAssetsFileAsset31D350802",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset3CodePipelineActionRoleDefaultPolicy5FE54662",
-        "Roles": Array [
-          Object {
-            "Ref": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset3CodePipelineActionRole7458323B",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset4CodePipelineActionRole092D1620": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset4CodePipelineActionRoleDefaultPolicyDCD8D813": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "codebuild:BatchGetBuilds",
-                "codebuild:StartBuild",
-                "codebuild:StopBuild",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelineAssetsFileAsset4D7DF3BEA",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset4CodePipelineActionRoleDefaultPolicyDCD8D813",
-        "Roles": Array [
-          Object {
-            "Ref": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset4CodePipelineActionRole092D1620",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset5CodePipelineActionRoleDefaultPolicy1031D871": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "codebuild:BatchGetBuilds",
-                "codebuild:StartBuild",
-                "codebuild:StopBuild",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelineAssetsFileAsset5C51E1C6C",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset5CodePipelineActionRoleDefaultPolicy1031D871",
-        "Roles": Array [
-          Object {
-            "Ref": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset5CodePipelineActionRoleF4ED7279",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset5CodePipelineActionRoleF4ED7279": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset6CodePipelineActionRoleAD549D32": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset6CodePipelineActionRoleDefaultPolicy5EFF5772": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "codebuild:BatchGetBuilds",
-                "codebuild:StartBuild",
-                "codebuild:StopBuild",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelineAssetsFileAsset61D4034BD",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset6CodePipelineActionRoleDefaultPolicy5EFF5772",
-        "Roles": Array [
-          Object {
-            "Ref": "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset6CodePipelineActionRoleAD549D32",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
     "hugoPipelinehugoblogpipelinePipelineBuildSynthCdkBuildProject21258FA6": Object {
       "Properties": Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
         },
+        "Cache": Object {
+          "Type": "NO_CACHE",
+        },
+        "Description": "Pipeline step testStack/Pipeline/Build/Synth",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:6.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": true,
           "Type": "LINUX_CONTAINER",
@@ -1368,7 +1264,8 @@ Object {
   \\"phases\\": {
     \\"build\\": {
       \\"commands\\": [
-        \\"npm ci\\",
+        \\"test -f package-lock.json && npm ci\\",
+        \\"test -f yarn.lock && yarn install --check-files --frozen-lockfile\\",
         \\"git submodule update --init\\",
         \\"npm run build\\",
         \\"npm run synth\\"
@@ -1463,6 +1360,10 @@ Object {
                 "s3:List*",
                 "s3:DeleteObject*",
                 "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
                 "s3:Abort*",
               ],
               "Effect": "Allow",
@@ -1528,64 +1429,6 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "hugoPipelinehugoblogpipelinePipelineBuildSynthCodePipelineActionRole40C01300": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "hugoPipelinehugoblogpipelinePipelineBuildSynthCodePipelineActionRoleDefaultPolicy5A9FA566": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "codebuild:BatchGetBuilds",
-                "codebuild:StartBuild",
-                "codebuild:StopBuild",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineBuildSynthCdkBuildProject21258FA6",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "hugoPipelinehugoblogpipelinePipelineBuildSynthCodePipelineActionRoleDefaultPolicy5A9FA566",
-        "Roles": Array [
-          Object {
-            "Ref": "hugoPipelinehugoblogpipelinePipelineBuildSynthCodePipelineActionRole40C01300",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
     "hugoPipelinehugoblogpipelinePipelineEventsRole15DEB179": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
@@ -1649,6 +1492,10 @@ Object {
                 "s3:List*",
                 "s3:DeleteObject*",
                 "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
                 "s3:Abort*",
               ],
               "Effect": "Allow",
@@ -1690,77 +1537,7 @@ Object {
               "Effect": "Allow",
               "Resource": Object {
                 "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineBuildSynthCodePipelineActionRole40C01300",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineUpdatePipelineSelfMutateCodePipelineActionRole474A9F34",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset1CodePipelineActionRole3528C02F",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset2CodePipelineActionRoleE5782D7E",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset3CodePipelineActionRole7458323B",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset4CodePipelineActionRole092D1620",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset5CodePipelineActionRoleF4ED7279",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineAssetsFileAsset6CodePipelineActionRoleAD549D32",
+                  "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
                   "Arn",
                 ],
               },
@@ -1786,27 +1563,7 @@ Object {
               "Effect": "Allow",
               "Resource": Object {
                 "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelinedevstageHitDevEndpointCodePipelineActionRoleF4381A32",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
                   "hugoPipelinehugoblogpipelinePipelineprodstagePromoteToProdCodePipelineActionRoleD4971B49",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineprodstageHitProdEndpointCodePipelineActionRoleE824EE0E",
                   "Arn",
                 ],
               },
@@ -1879,6 +1636,10 @@ Object {
                 "s3:List*",
                 "s3:DeleteObject*",
                 "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
                 "s3:Abort*",
               ],
               "Effect": "Allow",
@@ -1934,73 +1695,19 @@ Object {
       },
       "Type": "AWS::IAM::Policy",
     },
-    "hugoPipelinehugoblogpipelinePipelineUpdatePipelineSelfMutateCodePipelineActionRole474A9F34": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "hugoPipelinehugoblogpipelinePipelineUpdatePipelineSelfMutateCodePipelineActionRoleDefaultPolicy593C7306": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "codebuild:BatchGetBuilds",
-                "codebuild:StartBuild",
-                "codebuild:StopBuild",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelineUpdatePipelineSelfMutation6B2A9AB4",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "hugoPipelinehugoblogpipelinePipelineUpdatePipelineSelfMutateCodePipelineActionRoleDefaultPolicy593C7306",
-        "Roles": Array [
-          Object {
-            "Ref": "hugoPipelinehugoblogpipelinePipelineUpdatePipelineSelfMutateCodePipelineActionRole474A9F34",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
     "hugoPipelinehugoblogpipelinePipelinedevstageHitDevEndpoint4EACEF67": Object {
       "Properties": Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
         },
+        "Cache": Object {
+          "Type": "NO_CACHE",
+        },
+        "Description": "Pipeline step testStack/Pipeline/dev-stage/HitDevEndpoint",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:6.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
@@ -2026,64 +1733,6 @@ Object {
         },
       },
       "Type": "AWS::CodeBuild::Project",
-    },
-    "hugoPipelinehugoblogpipelinePipelinedevstageHitDevEndpointCodePipelineActionRoleDefaultPolicyC9DDB231": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "codebuild:BatchGetBuilds",
-                "codebuild:StartBuild",
-                "codebuild:StopBuild",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelinedevstageHitDevEndpoint4EACEF67",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "hugoPipelinehugoblogpipelinePipelinedevstageHitDevEndpointCodePipelineActionRoleDefaultPolicyC9DDB231",
-        "Roles": Array [
-          Object {
-            "Ref": "hugoPipelinehugoblogpipelinePipelinedevstageHitDevEndpointCodePipelineActionRoleF4381A32",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "hugoPipelinehugoblogpipelinePipelinedevstageHitDevEndpointCodePipelineActionRoleF4381A32": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
     },
     "hugoPipelinehugoblogpipelinePipelinedevstageHitDevEndpointRoleB8416E3C": Object {
       "Properties": Object {
@@ -2225,73 +1874,19 @@ Object {
       },
       "Type": "AWS::IAM::Policy",
     },
-    "hugoPipelinehugoblogpipelinePipelineprodstageHitProdEndpointCodePipelineActionRoleDefaultPolicy9102462E": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "codebuild:BatchGetBuilds",
-                "codebuild:StartBuild",
-                "codebuild:StopBuild",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "hugoPipelinehugoblogpipelinePipelineprodstageHitProdEndpointE4BC66D2",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "hugoPipelinehugoblogpipelinePipelineprodstageHitProdEndpointCodePipelineActionRoleDefaultPolicy9102462E",
-        "Roles": Array [
-          Object {
-            "Ref": "hugoPipelinehugoblogpipelinePipelineprodstageHitProdEndpointCodePipelineActionRoleE824EE0E",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "hugoPipelinehugoblogpipelinePipelineprodstageHitProdEndpointCodePipelineActionRoleE824EE0E": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
     "hugoPipelinehugoblogpipelinePipelineprodstageHitProdEndpointE4BC66D2": Object {
       "Properties": Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
         },
+        "Cache": Object {
+          "Type": "NO_CACHE",
+        },
+        "Description": "Pipeline step testStack/Pipeline/prod-stage/HitProdEndpoint",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:6.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
@@ -2491,10 +2086,14 @@ Object {
         "Artifacts": Object {
           "Type": "CODEPIPELINE",
         },
+        "Cache": Object {
+          "Type": "NO_CACHE",
+        },
+        "Description": "Pipeline step testStack/Pipeline/UpdatePipeline/SelfMutate",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:6.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
@@ -2511,7 +2110,7 @@ Object {
   \\"phases\\": {
     \\"install\\": {
       \\"commands\\": [
-        \\"npm install -g aws-cdk\\"
+        \\"npm install -g aws-cdk@2\\"
       ]
     },
     \\"build\\": {
