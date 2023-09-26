@@ -28,7 +28,8 @@
     "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
     "projen": "npx projen",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "integ-test": "integ-runner --directory ./integ-tests --parallel-regions eu-west-1 --update-on-failed"
   },
   "author": {
     "name": "Manuel Vogel",
@@ -36,6 +37,8 @@
     "organization": false
   },
   "devDependencies": {
+    "@aws-cdk/integ-runner": "^2.90.0-alpha.0",
+    "@aws-cdk/integ-tests-alpha": "^2.90.0-alpha.0",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@types/jest": "^27",
@@ -67,6 +70,16 @@
     "aws-cdk-lib": "^2.80.0",
     "constructs": "^10.0.5"
   },
+  "dependencies": {
+    "aws-sdk": "^2.1464.0",
+    "axios": "^1.5.0",
+    "cdk-nag": "^2.27.142"
+  },
+  "bundledDependencies": [
+    "aws-sdk",
+    "axios",
+    "cdk-nag"
+  ],
   "keywords": [
     "cdk"
   ],
