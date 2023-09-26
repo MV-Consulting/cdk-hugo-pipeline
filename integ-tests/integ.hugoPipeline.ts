@@ -46,9 +46,9 @@ const integ = new IntegTest(app, integStackName, {
   regions: [stackUnderTest.region],
 });
 
-const bootstrapEc2Handler = new NodejsFunction(stackUnderTest, 'bootstrap-ec2-handler', {
-  functionName: `${stackUnderTestName}-bootstrap-ec2-handler`,
-  entry: path.join(__dirname, 'functions', 'bootstrap-ec2-handler.ts'),
+const bootstrapHandler = new NodejsFunction(stackUnderTest, 'bootstrap-handler', {
+  functionName: `${stackUnderTestName}-bootstrap-handler`,
+  entry: path.join(__dirname, 'functions', 'bootstrap-handler.ts'),
   runtime: lambda.Runtime.NODEJS_18_X,
   logRetention: 1,
   timeout: Duration.minutes(30),
@@ -68,9 +68,9 @@ const bootstrapEc2Handler = new NodejsFunction(stackUnderTest, 'bootstrap-ec2-ha
 const id = `test-id-${randomTestId}`;
 const message = 'This is a mail body';
 
-const bootstrapEc2Assertion = integ.assertions
+const bootstrapAssertion = integ.assertions
   .invokeFunction({
-    functionName: bootstrapEc2Handler.functionName,
+    functionName: bootstrapHandler.functionName,
     logType: LogType.TAIL,
     invocationType: InvocationType.REQUEST_RESPONE,
     payload: JSON.stringify({
@@ -142,7 +142,7 @@ const prodSiteAvailableAssertion = integ.assertions
 /**
  * Main test case
  */
-bootstrapEc2Assertion
+bootstrapAssertion
   .next(devSiteAvailableAssertion)
   .next(promoteToProdAssertion)
   .next(prodSiteAvailableAssertion);
