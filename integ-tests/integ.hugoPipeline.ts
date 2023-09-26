@@ -50,6 +50,8 @@ const bootstrapHandler = new NodejsFunction(stackUnderTest, 'bootstrap-handler',
   functionName: `${stackUnderTestName}-bootstrap-handler`,
   entry: path.join(__dirname, 'functions', 'bootstrap-handler.ts'),
   runtime: lambda.Runtime.NODEJS_18_X,
+  memorySize: 1024,
+  // role: TODO
   logRetention: 1,
   timeout: Duration.minutes(30),
   initialPolicy: [
