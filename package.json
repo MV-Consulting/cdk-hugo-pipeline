@@ -36,7 +36,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.1",
+    "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
     "@types/jest": "^27",
     "@types/node": "^16",
@@ -57,7 +57,7 @@
     "jsii-pacmak": "^1.89.0",
     "jsii-rosetta": "~5.0.0",
     "npm-check-updates": "^16",
-    "projen": "^0.73.32",
+    "projen": "^0.73.37",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
