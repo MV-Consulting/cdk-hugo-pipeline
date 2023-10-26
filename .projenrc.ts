@@ -19,6 +19,16 @@ const project = new awscdk.AwsCdkConstructLibrary({
   ],
   packageName: '@mavogel/cdk-hugo-pipeline', /* The "name" in package.json. */
   npmAccess: NpmAccess.PUBLIC, /* The npm access level to use when releasing this module. */
+  keywords: ['aws', 'cdk', 'hugo'],
+  autoApproveOptions: {
+    allowedUsernames: ['mavogel'],
+  },
+  autoApproveUpgrades: true,
+  depsUpgradeOptions: {
+    workflowOptions: {
+      labels: ['auto-approve'],
+    },
+  },
 });
 project.package.setScript('prepare', 'husky install');
 project.synth();
