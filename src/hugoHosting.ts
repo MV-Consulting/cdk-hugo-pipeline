@@ -129,7 +129,7 @@ function cloudfrontRedirectReplacementsExpression(replacements: Record<string, s
   let expression = '';
   if (!replacements || Object.keys(replacements).length == 0) {
     return `
-    // no redirect replacements`;
+  // no redirect replacements`;
   }
 
   // pack all from into an array
@@ -160,9 +160,9 @@ function cloudfrontRedirectReplacementsExpression(replacements: Record<string, s
   expression += `
     var response = {
       statusCode: 301,
-      statusDescription: 'Moved Permanently',
+      statusDescription: "Moved Permanently",
       headers:
-          { 'location': { 'value': request.uri } }
+          { "location": { "value": request.uri } }
     }`;
 
   expression += `
