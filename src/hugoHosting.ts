@@ -108,6 +108,70 @@ export interface HugoHostingProps {
    * @default - `${Number(Math.random())}-${props.buildStage}`
    */
   readonly s3deployAssetHash?: string;
+
+  /**
+   * The cloudfront redirect replacements. Those are string replacements for the request.uri
+   *
+   * @default - {}
+   */
+  readonly cloudfrontRedirectReplacements?: Record<string, string>;
+}
+
+/**
+ * Create the cloudfront redirect replacements expression
+ * see https://www.edge-cloud.net/2023/03/20/http-redirect-with-cloudfront/
+ * see https://stackoverflow.com/questions/60170182/for-loop-inside-template-literals
+ *
+ * @param replacements - the replacements to make
+ * @returns the expression
+ */
+function cloudfrontRedirectReplacementsExpression(replacements: Record<string, string>): string {
+  let expression = '';
+  if (!replacements || Object.keys(replacements).length == 0) {
+    return `
+  // no redirect replacements`;
+  }
+
+  // pack all from into an array
+  // see https://stackoverflow.com/questions/5582574/how-to-check-if-a-string-contains-text-from-an-array-of-substrings-in-javascript
+  // -> var froms = ['/talk/', '/project/', '/post/'];
+  expression += 'var froms = [';
+  const froms = Object.keys(replacements);
+  for (let i = 0; i < froms.length; i++) {
+    expression += `'${froms[i]}'`;
+    if (i < froms.length - 1) {
+      expression += ',';
+    }
+  }
+  // const to = replacements[from];
+  expression += '];\n';
+
+  // check if the url contains one of the froms
+  expression += `
+  if (froms.some(from => request.uri.includes(from))) {`;
+
+  for (const from in replacements) {
+    const to = replacements[from];
+    expression += `
+    request.uri = request.uri.replace('${from}', '${to}');`;
+  }
+  expression += '\n';
+
+  expression += `
+    var response = {
+      statusCode: 301,
+      statusDescription: "Moved Permanently",
+      headers:
+          { "location": { "value": request.uri } }
+    }`;
+
+  expression += `
+    return response;`;
+  // close the if
+  expression += `
+  }`;
+
+  return expression;
 }
 
 export class HugoHosting extends Construct {
@@ -132,6 +196,7 @@ export class HugoHosting extends Construct {
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     const alpineHugoVersion = props.alpineHugoVersion || '';
     const s3deployAssetHash = props.s3deployAssetHash || `${Number(Math.random())}-${props.buildStage}`;
+    const cloudfrontRedirectReplacements = props.cloudfrontRedirectReplacements || {};
 
     const zone = route53.HostedZone.fromLookup(this, 'Zone', {
       domainName: this.domainName,
@@ -197,6 +262,8 @@ function handler(event) {
     request.uri += '/index.html';
   }
 
+  ${cloudfrontRedirectReplacementsExpression(cloudfrontRedirectReplacements)}
+
   return request;
 }
       `) : cloudfront.FunctionCode.fromInline(`
@@ -238,6 +305,8 @@ function handler(event) {
       },
     },
   };
+
+  ${cloudfrontRedirectReplacementsExpression(cloudfrontRedirectReplacements)}
 
   return response;
 }    

@@ -130,6 +130,11 @@ test('Snapshot production hosting', () => {
     buildStage: 'production',
     hugoProjectPath: '../test/frontend-test',
     s3deployAssetHash: '2',
+    cloudfrontRedirectReplacements: {
+      '/talks/': '/works/',
+      '/project/': '/works/',
+      '/post/': '/posts/',
+    },
   };
   // WHEN
   new HugoHosting(stack, 'hugoProductionHosting', testProps);
@@ -152,6 +157,10 @@ test('Production hosting', () => {
     buildStage: 'production',
     hugoProjectPath: '../test/frontend-test',
     s3deployAssetHash: '2',
+    cloudfrontRedirectReplacements: {
+      '/talks/': '/works/',
+      '/post/': '/posts/',
+    },
   };
   // WHEN
   new HugoHosting(stack, 'hugoProductionHosting', testProps);
@@ -208,6 +217,42 @@ test('Production hosting', () => {
       }),
     }),
   });
+
+  template.hasResourceProperties('AWS::CloudFront::Function', {
+    AutoPublish: true,
+    FunctionCode: Match.exact(`
+function handler(event) {
+  var request = event.request;
+  var uri = request.uri;
+
+  // Check whether the URI is missing a file name.
+  if (uri.endsWith('/')) {
+    request.uri += 'index.html';
+  }
+  // Check whether the URI is missing a file extension.
+  else if (!uri.includes('.')) {
+    request.uri += '/index.html';
+  }
+
+  var froms = ['/talks/','/post/'];
+
+  if (froms.some(from => request.uri.includes(from))) {
+    request.uri = request.uri.replace('/talks/', '/works/');
+    request.uri = request.uri.replace('/post/', '/posts/');
+
+    var response = {
+      statusCode: 301,
+      statusDescription: "Moved Permanently",
+      headers:
+          { "location": { "value": request.uri } }
+    }
+    return response;
+  }
+
+  return request;
+}
+      `),
+  }); // NOTE: keep the 6 whitespaces at the end of the string
 
   template.hasResourceProperties('AWS::Route53::RecordSet', {
     Name: 'example.com.',

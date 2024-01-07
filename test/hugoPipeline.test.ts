@@ -140,6 +140,10 @@ test('Custom pipeline', () => {
     // below is custom
     hugoBuildCommand: 'hugo --gc',
     dockerImage: 'public.ecr.aws/docker/library/node:16-alpine',
+    cloudfrontRedirectReplacements: {
+      '/talks/': '/works/',
+      '/post/': '/posts/',
+    },
   };
   // WHEN
   new HugoPipeline(stack, 'hugoPipeline', testProps);
