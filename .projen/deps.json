@@ -14,7 +14,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^18",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -25,6 +25,10 @@
     {
       "name": "@typescript-eslint/parser",
       "version": "^6",
+      "type": "build"
+    },
+    {
+      "name": "eslint-import-resolver-node",
       "type": "build"
     },
     {
@@ -73,6 +77,11 @@
     {
       "name": "jsii",
       "version": "~5.0.0",
+      "type": "build"
+    },
+    {
+      "name": "npm-check-updates",
+      "version": "^16",
       "type": "build"
     },
     {
