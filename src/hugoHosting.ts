@@ -112,9 +112,9 @@ export interface HugoHostingProps {
   /**
    * The cloudfront redirect replacements. Those are string replacements for the request.uri
    *
-   * @default - []
+   * @default - {}
    */
-  readonly cloudfrontRedirectReplacements?: { from: string; to: string }[];
+  readonly cloudfrontRedirectReplacements?: Record<string, string>;
 }
 
 /**
@@ -125,9 +125,9 @@ export interface HugoHostingProps {
  * @param replacements - the replacements to make
  * @returns the expression
  */
-function cloudfrontRedirectReplacementsExpression(replacements: { from: string; to: string }[]): string {
+function cloudfrontRedirectReplacementsExpression(replacements: Record<string, string>): string {
   let expression = '';
-  if (!replacements || replacements.length == 0) {
+  if (!replacements || Object.keys(replacements).length == 0) {
     return `
     // no redirect replacements`;
   }
@@ -136,21 +136,24 @@ function cloudfrontRedirectReplacementsExpression(replacements: { from: string; 
   // see https://stackoverflow.com/questions/5582574/how-to-check-if-a-string-contains-text-from-an-array-of-substrings-in-javascript
   // -> var froms = ['/talk/', '/project/', '/post/'];
   expression += 'var froms = [';
-  for (let i = 0; i < replacements.length; i++) {
-    expression += `'${replacements[i].from}'`;
-    if (i < replacements.length - 1) {
+  const froms = Object.keys(replacements);
+  for (let i = 0; i < froms.length; i++) {
+    expression += `'${froms[i]}'`;
+    if (i < froms.length - 1) {
       expression += ',';
     }
   }
+  // const to = replacements[from];
   expression += '];\n';
 
   // check if the url contains one of the froms
   expression += `
   if (froms.some(from => request.uri.includes(from))) {`;
 
-  for (let i = 0; i < replacements.length; i++) {
+  for (const from in replacements) {
+    const to = replacements[from];
     expression += `
-    request.uri = request.uri.replace('${replacements[i].from}', '${replacements[i].to}');`;
+    request.uri = request.uri.replace('${from}', '${to}');`;
   }
   expression += '\n';
 
@@ -193,7 +196,7 @@ export class HugoHosting extends Construct {
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     const alpineHugoVersion = props.alpineHugoVersion || '';
     const s3deployAssetHash = props.s3deployAssetHash || `${Number(Math.random())}-${props.buildStage}`;
-    const cloudfrontRedirectReplacements = props.cloudfrontRedirectReplacements || [];
+    const cloudfrontRedirectReplacements = props.cloudfrontRedirectReplacements || {};
 
     const zone = route53.HostedZone.fromLookup(this, 'Zone', {
       domainName: this.domainName,

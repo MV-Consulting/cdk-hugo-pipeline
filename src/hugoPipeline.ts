@@ -18,7 +18,7 @@ export interface HugoHostingStackProps extends StackProps {
   readonly dockerImage?: string;
   readonly hugoBuildCommand?: string;
   readonly s3deployAssetHash?: string;
-  readonly cloudfrontRedirectReplacements?: { from: string; to: string }[];
+  readonly cloudfrontRedirectReplacements?: Record<string, string>;
 }
 
 export class HugoHostingStack extends Stack {
@@ -49,7 +49,7 @@ export interface HugoPageStageProps extends StageProps {
   readonly dockerImage?: string;
   readonly hugoBuildCommand?: string;
   readonly s3deployAssetHash?: string;
-  readonly cloudfrontRedirectReplacements?: { from: string; to: string }[];
+  readonly cloudfrontRedirectReplacements?: Record<string, string>;
 }
 export class HugoPageStage extends Stage {
   public readonly staticSiteURL: CfnOutput;
@@ -142,9 +142,9 @@ export interface HugoPipelineProps {
   /**
    * The cloudfront redirect replacements. Those are string replacements for the request.uri
    *
-   * @default - []
+   * @default - {}
    */
-  readonly cloudfrontRedirectReplacements?: { from: string; to: string }[];
+  readonly cloudfrontRedirectReplacements?: Record<string, string>;
 }
 
 export class HugoPipeline extends Construct {
@@ -161,7 +161,7 @@ export class HugoPipeline extends Construct {
     const hugoProjectPath = props.hugoProjectPath || '../../../../blog';
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     const siteSubDomain = props.siteSubDomain || 'dev';
-    const cloudfrontRedirectReplacements = props.cloudfrontRedirectReplacements || [];
+    const cloudfrontRedirectReplacements = props.cloudfrontRedirectReplacements || {};
 
     const repository = new codecommit.Repository(this, 'hugo-blog', {
       repositoryName: props.name || 'hugo-blog',

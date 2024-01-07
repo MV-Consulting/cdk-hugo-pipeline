@@ -20,11 +20,11 @@ test('Snapshot development hosting', () => {
     buildStage: 'development',
     hugoProjectPath: '../test/frontend-test',
     s3deployAssetHash: '1',
-    cloudfrontRedirectReplacements: [
-      { from: '/talks/', to: '/works/' },
-      { from: '/project/', to: '/works/' },
-      { from: '/post/', to: '/posts/' },
-    ],
+    cloudfrontRedirectReplacements: {
+      '/talks/': '/works/',
+      '/project/': '/works/',
+      '/post/': '/posts/',
+    },
   };
   // WHEN
   new HugoHosting(stack, 'hugoDevelopmentHosting', testProps);
@@ -135,11 +135,11 @@ test('Snapshot production hosting', () => {
     buildStage: 'production',
     hugoProjectPath: '../test/frontend-test',
     s3deployAssetHash: '2',
-    cloudfrontRedirectReplacements: [
-      { from: '/talks/', to: '/works/' },
-      { from: '/project/', to: '/works/' },
-      { from: '/post/', to: '/posts/' },
-    ],
+    cloudfrontRedirectReplacements: {
+      '/talks/': '/works/',
+      '/project/': '/works/',
+      '/post/': '/posts/',
+    },
   };
   // WHEN
   new HugoHosting(stack, 'hugoProductionHosting', testProps);
@@ -162,10 +162,10 @@ test('Production hosting', () => {
     buildStage: 'production',
     hugoProjectPath: '../test/frontend-test',
     s3deployAssetHash: '2',
-    cloudfrontRedirectReplacements: [
-      { from: '/talks/', to: '/works/' },
-      { from: '/post/', to: '/posts/' },
-    ],
+    cloudfrontRedirectReplacements: {
+      '/talks/': '/works/',
+      '/post/': '/posts/',
+    },
   };
   // WHEN
   new HugoHosting(stack, 'hugoProductionHosting', testProps);
