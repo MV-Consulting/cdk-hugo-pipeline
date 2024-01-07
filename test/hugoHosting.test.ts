@@ -20,11 +20,6 @@ test('Snapshot development hosting', () => {
     buildStage: 'development',
     hugoProjectPath: '../test/frontend-test',
     s3deployAssetHash: '1',
-    cloudfrontRedirectReplacements: {
-      '/talks/': '/works/',
-      '/project/': '/works/',
-      '/post/': '/posts/',
-    },
   };
   // WHEN
   new HugoHosting(stack, 'hugoDevelopmentHosting', testProps);
@@ -247,9 +242,9 @@ function handler(event) {
 
     var response = {
       statusCode: 301,
-      statusDescription: 'Moved Permanently',
+      statusDescription: "Moved Permanently",
       headers:
-          { 'location': { 'value': request.uri } }
+          { "location": { "value": request.uri } }
     }
     return response;
   }
