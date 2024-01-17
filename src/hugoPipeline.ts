@@ -35,6 +35,7 @@ export class HugoHostingStack extends Stack {
       hugoBuildCommand: props.hugoBuildCommand,
       dockerImage: props.dockerImage,
       s3deployAssetHash: props.s3deployAssetHash,
+      cloudfrontRedirectReplacements: props.cloudfrontRedirectReplacements,
     });
 
     this.staticSiteURL = staticHosting.staticSiteURL;
