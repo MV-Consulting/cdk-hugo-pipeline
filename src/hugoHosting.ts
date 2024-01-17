@@ -253,6 +253,8 @@ function handler(event) {
   var request = event.request;
   var uri = request.uri;
 
+  ${cloudfrontRedirectReplacementsExpression(cloudfrontRedirectReplacements)}
+  
   // Check whether the URI is missing a file name.
   if (uri.endsWith('/')) {
     request.uri += 'index.html';
@@ -262,8 +264,6 @@ function handler(event) {
     request.uri += '/index.html';
   }
 
-  ${cloudfrontRedirectReplacementsExpression(cloudfrontRedirectReplacements)}
-
   return request;
 }
       `) : cloudfront.FunctionCode.fromInline(`
@@ -271,6 +271,8 @@ function handler(event) {
   var request = event.request;
   var uri = request.uri;
   var authHeaders = request.headers.authorization;
+
+  ${cloudfrontRedirectReplacementsExpression(cloudfrontRedirectReplacements)}
 
   // The Base64-encoded Auth string that should be present.
   // It is an encoding of 'Basic base64([username]:[password])'
@@ -305,8 +307,6 @@ function handler(event) {
       },
     },
   };
-
-  ${cloudfrontRedirectReplacementsExpression(cloudfrontRedirectReplacements)}
 
   return response;
 }    
