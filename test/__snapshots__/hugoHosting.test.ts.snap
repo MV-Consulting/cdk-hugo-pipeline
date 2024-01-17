@@ -673,6 +673,9 @@ function handler(event) {
   var uri = request.uri;
   var authHeaders = request.headers.authorization;
 
+  
+  // no redirect replacements
+
   // The Base64-encoded Auth string that should be present.
   // It is an encoding of 'Basic base64([username]:[password])'
   // The username and password are:
@@ -706,9 +709,6 @@ function handler(event) {
       },
     },
   };
-
-  
-  // no redirect replacements
 
   return response;
 }    
@@ -1307,15 +1307,6 @@ function handler(event) {
   var request = event.request;
   var uri = request.uri;
 
-  // Check whether the URI is missing a file name.
-  if (uri.endsWith('/')) {
-    request.uri += 'index.html';
-  }
-  // Check whether the URI is missing a file extension.
-  else if (!uri.includes('.')) {
-    request.uri += '/index.html';
-  }
-
   var froms = ['/talks/','/project/','/post/'];
 
   if (froms.some(from => request.uri.includes(from))) {
@@ -1330,6 +1321,15 @@ function handler(event) {
           { \\"location\\": { \\"value\\": request.uri } }
     }
     return response;
+  }
+  
+  // Check whether the URI is missing a file name.
+  if (uri.endsWith('/')) {
+    request.uri += 'index.html';
+  }
+  // Check whether the URI is missing a file extension.
+  else if (!uri.includes('.')) {
+    request.uri += '/index.html';
   }
 
   return request;
