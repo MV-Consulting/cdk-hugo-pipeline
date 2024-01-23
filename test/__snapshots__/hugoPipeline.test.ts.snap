@@ -1725,7 +1725,7 @@ Object {
   \\"phases\\": {
     \\"build\\": {
       \\"commands\\": [
-        \\"curl -Ssf -H \\\\\\"Authorization: Basic am9objpkb2U=\\\\\\" $URL\\"
+        \\"curl -sSfL -H \\\\\\"Authorization: Basic am9objpkb2U=\\\\\\" $URL -o /dev/null\\"
       ]
     }
   }
@@ -1904,7 +1904,7 @@ Object {
   \\"phases\\": {
     \\"build\\": {
       \\"commands\\": [
-        \\"curl -Ssf $URL\\"
+        \\"curl -sSfL $URL -o /dev/null\\"
       ]
     }
   }
