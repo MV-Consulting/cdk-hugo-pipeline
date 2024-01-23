@@ -212,7 +212,7 @@ export class HugoPipeline extends Construct {
             // Make the address available as $URL inside the commands
             URL: hugoPageDevStage.staticSiteURL,
           },
-          commands: [`curl -Ssf -H "Authorization: Basic ${basicAuthBase64}" $URL`],
+          commands: [`curl -sSfL -H "Authorization: Basic ${basicAuthBase64}" $URL -o /dev/null`],
         }),
       ],
     });
@@ -238,7 +238,7 @@ export class HugoPipeline extends Construct {
           envFromCfnOutputs: {
             URL: hugoPageProdStage.staticSiteURL,
           },
-          commands: ['curl -Ssf $URL'],
+          commands: ['curl -sSfL $URL -o /dev/null'],
         }),
       ],
     });
