@@ -1307,12 +1307,12 @@ function handler(event) {
   var request = event.request;
   var uri = request.uri;
 
-  var froms = ['/talks/','/project/','/post/'];
+  var regexes = [/talks/,/project/,/post/];
 
-  if (froms.some(from => request.uri.includes(from))) {
-    request.uri = request.uri.replace('/talks/', '/works/');
-    request.uri = request.uri.replace('/project/', '/works/');
-    request.uri = request.uri.replace('/post/', '/posts/');
+  if (regexes.some(regex => regex.test(request.uri))) {
+    request.uri = request.uri.replace(/talks/, '/works/');
+    request.uri = request.uri.replace(/project/, '/works/');
+    request.uri = request.uri.replace(/post/, '/posts/');
 
     var response = {
       statusCode: 301,

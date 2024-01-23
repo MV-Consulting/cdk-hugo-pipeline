@@ -152,16 +152,25 @@ test('Production hosting', () => {
     },
   });
 
+  // const escapeRegExp = (toReplace: string): string => {
+  //   // $& means the whole matched string
+  //   return toReplace.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // }
+
+  // const escapedTalks = escapeRegExp('/\/talks\//');
+
   const testProps: HugoHostingProps = {
     domainName: 'example.com',
     buildStage: 'production',
     hugoProjectPath: '../test/frontend-test',
     s3deployAssetHash: '2',
     cloudfrontRedirectReplacements: {
-      '/talks/': '/works/',
-      '/post/': '/posts/',
+      '/\\\/talks\\\//': '/works/',
+      '/\\\/post\\\//': '/posts/',
+      '/(\.\*)(\\\/post\\\/)(\.\*)(\\\/gallery\\\/)(\.\*)/': '$1/images/$3/$5',
     },
   };
+
   // WHEN
   new HugoHosting(stack, 'hugoProductionHosting', testProps);
 
@@ -225,11 +234,12 @@ function handler(event) {
   var request = event.request;
   var uri = request.uri;
 
-  var froms = ['/talks/','/post/'];
+  var regexes = [/\\\/talks\\\//,/\\\/post\\\//,/(\.\*)(\\\/post\\\/)(\.\*)(\\\/gallery\\\/)(\.\*)/];
 
-  if (froms.some(from => request.uri.includes(from))) {
-    request.uri = request.uri.replace('/talks/', '/works/');
-    request.uri = request.uri.replace('/post/', '/posts/');
+  if (regexes.some(regex => regex.test(request.uri))) {
+    request.uri = request.uri.replace(/\\\/talks\\\//, '/works/');
+    request.uri = request.uri.replace(/\\\/post\\\//, '/posts/');
+    request.uri = request.uri.replace(/(\.\*)(\\\/post\\\/)(\.\*)(\\\/gallery\\\/)(\.\*)/, '$1/images/$3/$5');
 
     var response = {
       statusCode: 301,
