@@ -134,11 +134,11 @@ function cloudfrontRedirectReplacementsExpression(replacements: Record<string, s
 
   // pack all from into an array
   // see https://stackoverflow.com/questions/5582574/how-to-check-if-a-string-contains-text-from-an-array-of-substrings-in-javascript
-  // -> var froms = ['/talk/', '/project/', '/post/'];
-  expression += 'var froms = [';
+  // -> var froms = ['\/talk\/', '\/project\/', '\/post\/'];
+  expression += 'var regexes = [';
   const froms = Object.keys(replacements);
   for (let i = 0; i < froms.length; i++) {
-    expression += `'${froms[i]}'`;
+    expression += froms[i];
     if (i < froms.length - 1) {
       expression += ',';
     }
@@ -148,12 +148,12 @@ function cloudfrontRedirectReplacementsExpression(replacements: Record<string, s
 
   // check if the url contains one of the froms
   expression += `
-  if (froms.some(from => request.uri.includes(from))) {`;
+  if (regexes.some(regex => regex.test(request.uri))) {`;
 
   for (const from in replacements) {
     const to = replacements[from];
     expression += `
-    request.uri = request.uri.replace('${from}', '${to}');`;
+    request.uri = request.uri.replace(${from}, '${to}');`;
   }
   expression += '\n';
 
