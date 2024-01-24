@@ -1,6 +1,7 @@
 import {
   App,
   Stack,
+  aws_cloudfront as cloudfront,
 } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { HugoHosting, HugoHostingProps } from '../src';
@@ -262,6 +263,190 @@ function handler(event) {
   return request;
 }
       `),
+  }); // NOTE: keep the 6 whitespaces at the end of the string
+
+  template.hasResourceProperties('AWS::Route53::RecordSet', {
+    Name: 'example.com.',
+    Type: 'A',
+    HostedZoneId: 'DUMMY',
+  });
+
+  template.hasResource('Custom::CDKBucketDeployment', {
+    Properties: Match.objectLike({
+      Prune: true,
+      DistributionPaths: Match.arrayWith(['/*']),
+    }),
+    UpdateReplacePolicy: 'Delete',
+    DeletionPolicy: 'Delete',
+  });
+});
+
+test('Production hosting custom function', () => {
+  const app = new App();
+  const stack = new Stack(app, 'testStack', {
+    env: {
+      region: 'us-east-1',
+      account: '1234',
+    },
+  });
+
+  const testProps: HugoHostingProps = {
+    domainName: 'example.com',
+    buildStage: 'production',
+    hugoProjectPath: '../test/frontend-test',
+    s3deployAssetHash: '2',
+    cloudfrontCustomFunctionCode: cloudfront.FunctionCode.fromInline(`
+function handler(event) {
+  var request = event.request;
+  var uri = request.uri;
+  var authHeaders = request.headers.authorization;
+
+  var regexes = [/\\\/talks\\\//,/\\\/post\\\//];
+
+  if (regexes.some(regex => regex.test(request.uri))) {
+    request.uri = request.uri.replace(/\\\/talks\\\//, '/works/');
+    request.uri = request.uri.replace(/\\\/post\\\//, '/posts/');
+
+    var response = {
+      statusCode: 301,
+      statusDescription: "Moved Permanently",
+      headers:
+          { "location": { "value": request.uri } }
+    }
+    return response;
+  }
+
+  var expected = "Basic cGV0ZXI6cGFu";
+
+  if (authHeaders && authHeaders.value === expected) {
+    if (uri.endsWith('/')) {
+      request.uri += 'index.html';
+    }
+    else if (!uri.includes('.')) {
+      request.uri += '/index.html';
+    }
+    return request;
+  }
+
+  var response = {
+    statusCode: 401,
+    statusDescription: "Unauthorized",
+    headers: {
+      "www-authenticate": {
+        value: 'Basic realm="Enter credentials for this super secure site"',
+      },
+    },
+  };
+
+  return response;
+}          
+      `.replace(/ /g, '')),
+  };
+
+  // WHEN
+  new HugoHosting(stack, 'hugoProductionHosting', testProps);
+
+  const template = Template.fromStack(stack);
+
+  // THEN
+  template.hasResource('AWS::S3::Bucket', {
+    Properties: Match.objectLike({
+      BucketName: 'example.com',
+      PublicAccessBlockConfiguration: {
+        BlockPublicAcls: true,
+        BlockPublicPolicy: true,
+        IgnorePublicAcls: true,
+        RestrictPublicBuckets: true,
+      },
+    }),
+    DeletionPolicy: 'Retain',
+    UpdateReplacePolicy: 'Retain',
+  });
+
+  template.hasResourceProperties('AWS::CloudFront::CloudFrontOriginAccessIdentity', {
+    CloudFrontOriginAccessIdentityConfig: Match.objectLike({
+      Comment: 'OAI for hugoProductionHosting',
+    }),
+  });
+
+  template.hasResourceProperties('AWS::CloudFront::Distribution', {
+    DistributionConfig: Match.objectLike({
+      Aliases: Match.arrayWith(['example.com']),
+      CustomErrorResponses: Match.arrayWith([
+        Match.objectLike({
+          ErrorCachingMinTTL: 1800,
+          ErrorCode: 403,
+          ResponseCode: 404,
+          ResponsePagePath: '/en/404.html',
+        }),
+        Match.objectLike({
+          ErrorCachingMinTTL: 1800,
+          ErrorCode: 404,
+          ResponseCode: 404,
+          ResponsePagePath: '/en/404.html',
+        }),
+      ]),
+      DefaultRootObject: 'index.html',
+      DefaultCacheBehavior: Match.objectLike({
+        Compress: true,
+        ViewerProtocolPolicy: 'redirect-to-https',
+        FunctionAssociations: Match.arrayWith([
+          Match.objectLike({
+            EventType: 'viewer-request',
+          }),
+        ]),
+      }),
+    }),
+  });
+
+  template.hasResourceProperties('AWS::CloudFront::Function', {
+    AutoPublish: true,
+    FunctionCode: Match.exact(`
+function handler(event) {
+  var request = event.request;
+  var uri = request.uri;
+  var authHeaders = request.headers.authorization;
+
+  var regexes = [/\\\/talks\\\//,/\\\/post\\\//];
+
+  if (regexes.some(regex => regex.test(request.uri))) {
+    request.uri = request.uri.replace(/\\\/talks\\\//, '/works/');
+    request.uri = request.uri.replace(/\\\/post\\\//, '/posts/');
+
+    var response = {
+      statusCode: 301,
+      statusDescription: "Moved Permanently",
+      headers:
+          { "location": { "value": request.uri } }
+    }
+    return response;
+  }
+
+  var expected = "Basic cGV0ZXI6cGFu";
+
+  if (authHeaders && authHeaders.value === expected) {
+    if (uri.endsWith('/')) {
+      request.uri += 'index.html';
+    }
+    else if (!uri.includes('.')) {
+      request.uri += '/index.html';
+    }
+    return request;
+  }
+
+  var response = {
+    statusCode: 401,
+    statusDescription: "Unauthorized",
+    headers: {
+      "www-authenticate": {
+        value: 'Basic realm="Enter credentials for this super secure site"',
+      },
+    },
+  };
+
+  return response;
+}
+      `.replace(/ /g, '')),
   }); // NOTE: keep the 6 whitespaces at the end of the string
 
   template.hasResourceProperties('AWS::Route53::RecordSet', {

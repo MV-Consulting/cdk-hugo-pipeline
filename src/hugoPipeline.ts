@@ -3,6 +3,7 @@ import {
   StageProps,
   Stack,
   StackProps,
+  aws_cloudfront as cloudfront,
   aws_codecommit as codecommit,
   pipelines,
   CfnOutput,
@@ -22,6 +23,7 @@ export interface HugoHostingStackProps extends StackProps {
   readonly dockerImage?: string;
   readonly hugoBuildCommand?: string;
   readonly s3deployAssetHash?: string;
+  readonly cloudfrontCustomFunctionCode?: cloudfront.FunctionCode;
   readonly cloudfrontRedirectReplacements?: Record<string, string>;
 }
 
@@ -43,6 +45,7 @@ export class HugoHostingStack extends Stack {
       hugoBuildCommand: props.hugoBuildCommand,
       dockerImage: props.dockerImage,
       s3deployAssetHash: props.s3deployAssetHash,
+      cloudfrontCustomFunctionCode: props.cloudfrontCustomFunctionCode,
       cloudfrontRedirectReplacements: props.cloudfrontRedirectReplacements,
     });
 
@@ -62,6 +65,7 @@ export interface HugoPageStageProps extends StageProps {
   readonly dockerImage?: string;
   readonly hugoBuildCommand?: string;
   readonly s3deployAssetHash?: string;
+  readonly cloudfrontCustomFunctionCode?: cloudfront.FunctionCode;
   readonly cloudfrontRedirectReplacements?: Record<string, string>;
 }
 export class HugoPageStage extends Stage {
@@ -82,6 +86,7 @@ export class HugoPageStage extends Stage {
       hugoBuildCommand: props.hugoBuildCommand,
       dockerImage: props.dockerImage,
       s3deployAssetHash: props.s3deployAssetHash,
+      cloudfrontCustomFunctionCode: props.cloudfrontCustomFunctionCode,
       cloudfrontRedirectReplacements: props.cloudfrontRedirectReplacements,
     });
 
@@ -171,7 +176,23 @@ export interface HugoPipelineProps {
   readonly s3deployAssetHash?: string;
 
   /**
-   * The cloudfront redirect replacements. Those are string replacements for the request.uri
+   * The cloudfront custom function code for the development stage.
+   *
+   * @default - undefined
+   */
+  readonly cloudfrontCustomFunctionCodeDevelopment?: cloudfront.FunctionCode;
+
+  /**
+   * The cloudfront custom function code for the production stage.
+   *
+   * @default - undefined
+   */
+  readonly cloudfrontCustomFunctionCodeProduction?: cloudfront.FunctionCode;
+
+  /**
+   * The cloudfront redirect replacements. Those are string replacements for the request.uri.
+   * Note: the replacements are regular expressions.
+   * Note: if cloudfrontCustomFunctionCode(Development|Production) is set, this property is ignored.
    *
    * @default - {}
    */
@@ -194,6 +215,8 @@ export class HugoPipeline extends Construct {
     const http404ResponsePagePath = props.http404ResponsePagePath || '/en/404.html';
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     const siteSubDomain = props.siteSubDomain || 'dev';
+    const cloudfrontCustomFunctionCodeDevelopment = props.cloudfrontCustomFunctionCodeDevelopment;
+    const cloudfrontCustomFunctionCodeProduction = props.cloudfrontCustomFunctionCodeProduction;
     const cloudfrontRedirectReplacements = props.cloudfrontRedirectReplacements || {};
 
     const repository = new codecommit.Repository(this, 'hugo-blog', {
@@ -238,6 +261,7 @@ export class HugoPipeline extends Construct {
       dockerImage: dockerImage,
       hugoBuildCommand: hugoBuildCommand,
       s3deployAssetHash: props.s3deployAssetHash,
+      cloudfrontCustomFunctionCode: cloudfrontCustomFunctionCodeDevelopment,
       cloudfrontRedirectReplacements: cloudfrontRedirectReplacements,
     });
 
@@ -266,6 +290,7 @@ export class HugoPipeline extends Construct {
       http404ResponsePagePath: http404ResponsePagePath,
       hugoProjectPath: props.hugoProjectPath,
       s3deployAssetHash: props.s3deployAssetHash,
+      cloudfrontCustomFunctionCode: cloudfrontCustomFunctionCodeProduction,
       cloudfrontRedirectReplacements: cloudfrontRedirectReplacements,
     });
 

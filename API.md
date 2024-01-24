@@ -1619,6 +1619,7 @@ const hugoHostingProps: HugoHostingProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.buildStage">buildStage</a></code> | <code>string</code> | Name of the stage to deploy to. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.cloudfrontCustomFunctionCode">cloudfrontCustomFunctionCode</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionCode</code> | The cloudfront custom function code. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | The cloudfront redirect replacements. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | The docker image to use to build the hugo page. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | The path to the 403 error page. |
@@ -1697,6 +1698,19 @@ Should be 'development' or 'production'
 
 ---
 
+##### `cloudfrontCustomFunctionCode`<sup>Optional</sup> <a name="cloudfrontCustomFunctionCode" id="@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.cloudfrontCustomFunctionCode"></a>
+
+```typescript
+public readonly cloudfrontCustomFunctionCode: FunctionCode;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.FunctionCode
+- *Default:* undefined
+
+The cloudfront custom function code.
+
+---
+
 ##### `cloudfrontRedirectReplacements`<sup>Optional</sup> <a name="cloudfrontRedirectReplacements" id="@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.cloudfrontRedirectReplacements"></a>
 
 ```typescript
@@ -1708,7 +1722,9 @@ public readonly cloudfrontRedirectReplacements: {[ key: string ]: string};
 
 The cloudfront redirect replacements.
 
-Those are string replacements for the request.uri
+Those are string replacements for the request.uri.
+Note: the replacements are regular expressions.
+Note: if cloudfrontCustomFunctionCode is set, this property is ignored.
 
 ---
 
@@ -1849,6 +1865,7 @@ const hugoHostingStackProps: HugoHostingStackProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontCustomFunctionCode">cloudfrontCustomFunctionCode</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionCode</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | *No description.* |
@@ -2093,6 +2110,16 @@ public readonly basicAuthUsername: string;
 
 ---
 
+##### `cloudfrontCustomFunctionCode`<sup>Optional</sup> <a name="cloudfrontCustomFunctionCode" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontCustomFunctionCode"></a>
+
+```typescript
+public readonly cloudfrontCustomFunctionCode: FunctionCode;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.FunctionCode
+
+---
+
 ##### `cloudfrontRedirectReplacements`<sup>Optional</sup> <a name="cloudfrontRedirectReplacements" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontRedirectReplacements"></a>
 
 ```typescript
@@ -2196,6 +2223,7 @@ const hugoPageStageProps: HugoPageStageProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.cloudfrontCustomFunctionCode">cloudfrontCustomFunctionCode</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionCode</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | *No description.* |
@@ -2347,6 +2375,16 @@ public readonly basicAuthUsername: string;
 
 ---
 
+##### `cloudfrontCustomFunctionCode`<sup>Optional</sup> <a name="cloudfrontCustomFunctionCode" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.cloudfrontCustomFunctionCode"></a>
+
+```typescript
+public readonly cloudfrontCustomFunctionCode: FunctionCode;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.FunctionCode
+
+---
+
 ##### `cloudfrontRedirectReplacements`<sup>Optional</sup> <a name="cloudfrontRedirectReplacements" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.cloudfrontRedirectReplacements"></a>
 
 ```typescript
@@ -2444,6 +2482,8 @@ const hugoPipelineProps: HugoPipelineProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.domainName">domainName</a></code> | <code>string</code> | Name of the domain to host the site on. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | The password for basic auth on the development site. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.cloudfrontCustomFunctionCodeDevelopment">cloudfrontCustomFunctionCodeDevelopment</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionCode</code> | The cloudfront custom function code for the development stage. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.cloudfrontCustomFunctionCodeProduction">cloudfrontCustomFunctionCodeProduction</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionCode</code> | The cloudfront custom function code for the production stage. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | The cloudfront redirect replacements. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | The docker image to use to build the hugo page. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | The path to the 403 error page. |
@@ -2494,6 +2534,32 @@ The username for basic auth on the development site.
 
 ---
 
+##### `cloudfrontCustomFunctionCodeDevelopment`<sup>Optional</sup> <a name="cloudfrontCustomFunctionCodeDevelopment" id="@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.cloudfrontCustomFunctionCodeDevelopment"></a>
+
+```typescript
+public readonly cloudfrontCustomFunctionCodeDevelopment: FunctionCode;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.FunctionCode
+- *Default:* undefined
+
+The cloudfront custom function code for the development stage.
+
+---
+
+##### `cloudfrontCustomFunctionCodeProduction`<sup>Optional</sup> <a name="cloudfrontCustomFunctionCodeProduction" id="@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.cloudfrontCustomFunctionCodeProduction"></a>
+
+```typescript
+public readonly cloudfrontCustomFunctionCodeProduction: FunctionCode;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.FunctionCode
+- *Default:* undefined
+
+The cloudfront custom function code for the production stage.
+
+---
+
 ##### `cloudfrontRedirectReplacements`<sup>Optional</sup> <a name="cloudfrontRedirectReplacements" id="@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.cloudfrontRedirectReplacements"></a>
 
 ```typescript
@@ -2505,7 +2571,9 @@ public readonly cloudfrontRedirectReplacements: {[ key: string ]: string};
 
 The cloudfront redirect replacements.
 
-Those are string replacements for the request.uri
+Those are string replacements for the request.uri.
+Note: the replacements are regular expressions.
+Note: if cloudfrontCustomFunctionCode(Development|Production) is set, this property is ignored.
 
 ---
 
