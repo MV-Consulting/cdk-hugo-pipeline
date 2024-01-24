@@ -14,6 +14,8 @@ export interface HugoHostingStackProps extends StackProps {
   readonly buildStage: string;
   readonly domainName: string;
   readonly siteSubDomain?: string;
+  readonly http403ResponsePagePath?: string;
+  readonly http404ResponsePagePath?: string;
   readonly hugoProjectPath?: string;
   readonly dockerImage?: string;
   readonly hugoBuildCommand?: string;
@@ -31,6 +33,8 @@ export class HugoHostingStack extends Stack {
       buildStage: props.buildStage,
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
+      http403ResponsePagePath: props.http403ResponsePagePath,
+      http404ResponsePagePath: props.http404ResponsePagePath,
       hugoProjectPath: props.hugoProjectPath,
       hugoBuildCommand: props.hugoBuildCommand,
       dockerImage: props.dockerImage,
@@ -46,6 +50,8 @@ export interface HugoPageStageProps extends StageProps {
   readonly buildStage: string;
   readonly domainName: string;
   readonly siteSubDomain?: string;
+  readonly http403ResponsePagePath?: string;
+  readonly http404ResponsePagePath?: string;
   readonly hugoProjectPath?: string;
   readonly dockerImage?: string;
   readonly hugoBuildCommand?: string;
@@ -62,6 +68,8 @@ export class HugoPageStage extends Stage {
       buildStage: props.buildStage,
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
+      http403ResponsePagePath: props.http403ResponsePagePath,
+      http404ResponsePagePath: props.http404ResponsePagePath,
       hugoProjectPath: props.hugoProjectPath,
       hugoBuildCommand: props.hugoBuildCommand,
       dockerImage: props.dockerImage,
@@ -106,6 +114,20 @@ export interface HugoPipelineProps {
    * @default - dev
    */
   readonly siteSubDomain?: string;
+
+  /**
+   * The path to the 403 error page
+   *
+   * @default - /en/404.html
+   */
+  readonly http403ResponsePagePath?: string;
+
+  /**
+   * The path to the 404 error page
+   *
+   * @default - /en/404.html
+   */
+  readonly http404ResponsePagePath?: string;
 
   /**
    * The path to the hugo project
@@ -160,6 +182,8 @@ export class HugoPipeline extends Construct {
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
     const dockerImage = props.dockerImage || 'public.ecr.aws/docker/library/node:lts-alpine';
     const hugoProjectPath = props.hugoProjectPath || '../../../../blog';
+    const http403ResponsePagePath = props.http403ResponsePagePath || '/en/404.html';
+    const http404ResponsePagePath = props.http404ResponsePagePath || '/en/404.html';
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     const siteSubDomain = props.siteSubDomain || 'dev';
     const cloudfrontRedirectReplacements = props.cloudfrontRedirectReplacements || {};
@@ -198,6 +222,8 @@ export class HugoPipeline extends Construct {
       buildStage: 'development',
       domainName: this.domainName,
       siteSubDomain: siteSubDomain,
+      http403ResponsePagePath: http403ResponsePagePath,
+      http404ResponsePagePath: http404ResponsePagePath,
       hugoProjectPath: hugoProjectPath,
       dockerImage: dockerImage,
       hugoBuildCommand: hugoBuildCommand,
@@ -224,6 +250,8 @@ export class HugoPipeline extends Construct {
       },
       buildStage: 'production',
       domainName: this.domainName,
+      http403ResponsePagePath: http403ResponsePagePath,
+      http404ResponsePagePath: http404ResponsePagePath,
       hugoProjectPath: props.hugoProjectPath,
       s3deployAssetHash: props.s3deployAssetHash,
       cloudfrontRedirectReplacements: cloudfrontRedirectReplacements,

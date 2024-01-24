@@ -1849,6 +1849,8 @@ const hugoHostingStackProps: HugoHostingStackProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | *No description.* |
@@ -2089,6 +2091,26 @@ public readonly dockerImage: string;
 
 ---
 
+##### `http403ResponsePagePath`<sup>Optional</sup> <a name="http403ResponsePagePath" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.http403ResponsePagePath"></a>
+
+```typescript
+public readonly http403ResponsePagePath: string;
+```
+
+- *Type:* string
+
+---
+
+##### `http404ResponsePagePath`<sup>Optional</sup> <a name="http404ResponsePagePath" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.http404ResponsePagePath"></a>
+
+```typescript
+public readonly http404ResponsePagePath: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `hugoBuildCommand`<sup>Optional</sup> <a name="hugoBuildCommand" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.hugoBuildCommand"></a>
 
 ```typescript
@@ -2152,6 +2174,8 @@ const hugoPageStageProps: HugoPageStageProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | *No description.* |
@@ -2299,6 +2323,26 @@ public readonly dockerImage: string;
 
 ---
 
+##### `http403ResponsePagePath`<sup>Optional</sup> <a name="http403ResponsePagePath" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.http403ResponsePagePath"></a>
+
+```typescript
+public readonly http403ResponsePagePath: string;
+```
+
+- *Type:* string
+
+---
+
+##### `http404ResponsePagePath`<sup>Optional</sup> <a name="http404ResponsePagePath" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.http404ResponsePagePath"></a>
+
+```typescript
+public readonly http404ResponsePagePath: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `hugoBuildCommand`<sup>Optional</sup> <a name="hugoBuildCommand" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.hugoBuildCommand"></a>
 
 ```typescript
@@ -2358,6 +2402,8 @@ const hugoPipelineProps: HugoPipelineProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | The username for basic auth on the development site. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | The cloudfront redirect replacements. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | The docker image to use to build the hugo page. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | The path to the 403 error page. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | The path to the 404 error page. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | The build command for the hugo site on which the '--environment' flag is appended. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.name">name</a></code> | <code>string</code> | Name of the codecommit repository. |
@@ -2431,6 +2477,32 @@ public readonly dockerImage: string;
 The docker image to use to build the hugo page.
 
 Note: you need to use the 'apk' package manager
+
+---
+
+##### `http403ResponsePagePath`<sup>Optional</sup> <a name="http403ResponsePagePath" id="@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.http403ResponsePagePath"></a>
+
+```typescript
+public readonly http403ResponsePagePath: string;
+```
+
+- *Type:* string
+- *Default:* /en/404.html
+
+The path to the 403 error page.
+
+---
+
+##### `http404ResponsePagePath`<sup>Optional</sup> <a name="http404ResponsePagePath" id="@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.http404ResponsePagePath"></a>
+
+```typescript
+public readonly http404ResponsePagePath: string;
+```
+
+- *Type:* string
+- *Default:* /en/404.html
+
+The path to the 404 error page.
 
 ---
 
