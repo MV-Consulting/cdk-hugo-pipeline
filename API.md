@@ -1847,6 +1847,8 @@ const hugoHostingStackProps: HugoHostingStackProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | *No description.* |
@@ -2071,6 +2073,26 @@ public readonly domainName: string;
 
 ---
 
+##### `basicAuthPassword`<sup>Optional</sup> <a name="basicAuthPassword" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.basicAuthPassword"></a>
+
+```typescript
+public readonly basicAuthPassword: string;
+```
+
+- *Type:* string
+
+---
+
+##### `basicAuthUsername`<sup>Optional</sup> <a name="basicAuthUsername" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.basicAuthUsername"></a>
+
+```typescript
+public readonly basicAuthUsername: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `cloudfrontRedirectReplacements`<sup>Optional</sup> <a name="cloudfrontRedirectReplacements" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontRedirectReplacements"></a>
 
 ```typescript
@@ -2172,6 +2194,8 @@ const hugoPageStageProps: HugoPageStageProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.stageName">stageName</a></code> | <code>string</code> | Name of this stage. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | *No description.* |
@@ -2297,6 +2321,26 @@ public readonly buildStage: string;
 
 ```typescript
 public readonly domainName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `basicAuthPassword`<sup>Optional</sup> <a name="basicAuthPassword" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.basicAuthPassword"></a>
+
+```typescript
+public readonly basicAuthPassword: string;
+```
+
+- *Type:* string
+
+---
+
+##### `basicAuthUsername`<sup>Optional</sup> <a name="basicAuthUsername" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.basicAuthUsername"></a>
+
+```typescript
+public readonly basicAuthUsername: string;
 ```
 
 - *Type:* string

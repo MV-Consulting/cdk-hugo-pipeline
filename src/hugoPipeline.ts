@@ -12,6 +12,8 @@ import { HugoHosting } from './hugoHosting';
 
 export interface HugoHostingStackProps extends StackProps {
   readonly buildStage: string;
+  readonly basicAuthUsername?: string;
+  readonly basicAuthPassword?: string;
   readonly domainName: string;
   readonly siteSubDomain?: string;
   readonly http403ResponsePagePath?: string;
@@ -31,6 +33,8 @@ export class HugoHostingStack extends Stack {
 
     const staticHosting = new HugoHosting(this, 'static-hosting', {
       buildStage: props.buildStage,
+      basicAuthUsername: props.basicAuthUsername,
+      basicAuthPassword: props.basicAuthPassword,
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
       http403ResponsePagePath: props.http403ResponsePagePath,
@@ -48,6 +52,8 @@ export class HugoHostingStack extends Stack {
 
 export interface HugoPageStageProps extends StageProps {
   readonly buildStage: string;
+  readonly basicAuthUsername?: string;
+  readonly basicAuthPassword?: string;
   readonly domainName: string;
   readonly siteSubDomain?: string;
   readonly http403ResponsePagePath?: string;
@@ -66,6 +72,8 @@ export class HugoPageStage extends Stage {
 
     const hugoHostingStack = new HugoHostingStack(this, 'hugo-blog-stack', {
       buildStage: props.buildStage,
+      basicAuthUsername: props.basicAuthUsername,
+      basicAuthPassword: props.basicAuthPassword,
       siteSubDomain: props.siteSubDomain,
       domainName: props.domainName,
       http403ResponsePagePath: props.http403ResponsePagePath,
@@ -220,6 +228,8 @@ export class HugoPipeline extends Construct {
         region: Stack.of(this).region,
       },
       buildStage: 'development',
+      basicAuthUsername: basicAuthUsername,
+      basicAuthPassword: basicAuthPassword,
       domainName: this.domainName,
       siteSubDomain: siteSubDomain,
       http403ResponsePagePath: http403ResponsePagePath,
@@ -249,6 +259,8 @@ export class HugoPipeline extends Construct {
         region: Stack.of(this).region,
       },
       buildStage: 'production',
+      basicAuthUsername: basicAuthUsername,
+      basicAuthPassword: basicAuthPassword,
       domainName: this.domainName,
       http403ResponsePagePath: http403ResponsePagePath,
       http404ResponsePagePath: http404ResponsePagePath,
