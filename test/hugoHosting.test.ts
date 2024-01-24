@@ -301,11 +301,11 @@ function handler(event) {
   var uri = request.uri;
   var authHeaders = request.headers.authorization;
 
-  var regexes = [/\\\/talks\\\//,/\\\/post\\\//];
+  var regexes = [/\/talks\//,/\/post\//];
 
   if (regexes.some(regex => regex.test(request.uri))) {
-    request.uri = request.uri.replace(/\\\/talks\\\//, '/works/');
-    request.uri = request.uri.replace(/\\\/post\\\//, '/posts/');
+    request.uri = request.uri.replace(/\/talks\//, '/works/');
+    request.uri = request.uri.replace(/\/post\//, '/posts/');
 
     var response = {
       statusCode: 301,
@@ -340,7 +340,7 @@ function handler(event) {
 
   return response;
 }          
-      `.replace(/ /g, '')),
+      `.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '')),
   };
 
   // WHEN
@@ -407,11 +407,11 @@ function handler(event) {
   var uri = request.uri;
   var authHeaders = request.headers.authorization;
 
-  var regexes = [/\\\/talks\\\//,/\\\/post\\\//];
+  var regexes = [/\/talks\//,/\/post\//];
 
   if (regexes.some(regex => regex.test(request.uri))) {
-    request.uri = request.uri.replace(/\\\/talks\\\//, '/works/');
-    request.uri = request.uri.replace(/\\\/post\\\//, '/posts/');
+    request.uri = request.uri.replace(/\/talks\//, '/works/');
+    request.uri = request.uri.replace(/\/post\//, '/posts/');
 
     var response = {
       statusCode: 301,
@@ -446,7 +446,7 @@ function handler(event) {
 
   return response;
 }
-      `.replace(/ /g, '')),
+      `.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '')),
   }); // NOTE: keep the 6 whitespaces at the end of the string
 
   template.hasResourceProperties('AWS::Route53::RecordSet', {
