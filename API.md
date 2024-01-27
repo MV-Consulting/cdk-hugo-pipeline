@@ -1724,7 +1724,7 @@ const hugoHostingProps: HugoHostingProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | The path to the 403 error page. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | The path to the 404 error page. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | The build command for the hugo site on which the '--environment' flag is appended. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The path to the hugo project. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The absolute path to the hugo project. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | The hash to use to build or rebuild the hugo page. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.zone">zone</a></code> | <code>aws-cdk-lib.aws_route53.HostedZone</code> | Zone the Domain Name is created in. |
@@ -1888,9 +1888,9 @@ public readonly hugoProjectPath: string;
 ```
 
 - *Type:* string
-- *Default:* '../../../../blog'
+- *Default:* 'path.join(__dirname, '../../../../blog')'
 
-The path to the hugo project.
+The absolute path to the hugo project.
 
 ---
 

@@ -21,7 +21,7 @@ test('Snapshot development hosting', () => {
     siteSubDomain: 'dev',
     domainName: 'example.com',
     buildStage: 'development',
-    hugoProjectPath: '../test/frontend-test',
+    hugoProjectPath: path.join(__dirname, 'frontend-test'),
     s3deployAssetHash: '1',
   };
   // WHEN
@@ -44,7 +44,7 @@ test('Development hosting', () => {
     siteSubDomain: 'dev',
     domainName: 'example.com',
     buildStage: 'development',
-    hugoProjectPath: '../test/frontend-test',
+    hugoProjectPath: path.join(__dirname, 'frontend-test'),
     s3deployAssetHash: '1',
   };
   // WHEN
@@ -131,7 +131,7 @@ test('Snapshot production hosting', () => {
   const testProps: HugoHostingProps = {
     domainName: 'example.com',
     buildStage: 'production',
-    hugoProjectPath: '../test/frontend-test',
+    hugoProjectPath: path.join(__dirname, 'frontend-test'),
     s3deployAssetHash: '2',
     cloudfrontRedirectReplacements: {
       '/talks/': '/works/',
@@ -165,7 +165,7 @@ test('Production hosting', () => {
   const testProps: HugoHostingProps = {
     domainName: 'example.com',
     buildStage: 'production',
-    hugoProjectPath: '../test/frontend-test',
+    hugoProjectPath: path.join(__dirname, 'frontend-test'),
     s3deployAssetHash: '2',
     cloudfrontRedirectReplacements: {
       '/\\\/talks\\\//': '/works/',
@@ -298,7 +298,7 @@ test('Production hosting custom function', () => {
   const testProps: HugoHostingProps = {
     domainName: 'example.com',
     buildStage: 'production',
-    hugoProjectPath: '../test/frontend-test',
+    hugoProjectPath: path.join(__dirname, 'frontend-test'),
     s3deployAssetHash: '2',
     cloudfrontCustomFunctionCode: cloudfront.FunctionCode.fromInline(escaptedtestCfFunctionCode),
   };
