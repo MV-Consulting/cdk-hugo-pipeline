@@ -1,3 +1,5 @@
+import * as fs from 'fs';
+import * as path from 'path';
 import {
   App,
   Stack,
@@ -290,57 +292,15 @@ test('Production hosting custom function', () => {
     },
   });
 
+  const testCfFunctionCode = fs.readFileSync(path.join(__dirname, 'custom-cf-funcs', 'basis-auth-redirect.js'), 'utf8');
+  const escaptedtestCfFunctionCode = testCfFunctionCode.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '');
+
   const testProps: HugoHostingProps = {
     domainName: 'example.com',
     buildStage: 'production',
     hugoProjectPath: '../test/frontend-test',
     s3deployAssetHash: '2',
-    cloudfrontCustomFunctionCode: cloudfront.FunctionCode.fromInline(`
-function handler(event) {
-  var request = event.request;
-  var uri = request.uri;
-  var authHeaders = request.headers.authorization;
-
-  var regexes = [/\/talks\//,/\/post\//];
-
-  if (regexes.some(regex => regex.test(request.uri))) {
-    request.uri = request.uri.replace(/\/talks\//, '/works/');
-    request.uri = request.uri.replace(/\/post\//, '/posts/');
-
-    var response = {
-      statusCode: 301,
-      statusDescription: "Moved Permanently",
-      headers:
-          { "location": { "value": request.uri } }
-    }
-    return response;
-  }
-
-  var expected = "Basic cGV0ZXI6cGFu";
-
-  if (authHeaders && authHeaders.value === expected) {
-    if (uri.endsWith('/')) {
-      request.uri += 'index.html';
-    }
-    else if (!uri.includes('.')) {
-      request.uri += '/index.html';
-    }
-    return request;
-  }
-
-  var response = {
-    statusCode: 401,
-    statusDescription: "Unauthorized",
-    headers: {
-      "www-authenticate": {
-        value: 'Basic realm="Enter credentials for this super secure site"',
-      },
-    },
-  };
-
-  return response;
-}          
-      `.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '')),
+    cloudfrontCustomFunctionCode: cloudfront.FunctionCode.fromInline(escaptedtestCfFunctionCode),
   };
 
   // WHEN
@@ -401,53 +361,8 @@ function handler(event) {
 
   template.hasResourceProperties('AWS::CloudFront::Function', {
     AutoPublish: true,
-    FunctionCode: Match.exact(`
-function handler(event) {
-  var request = event.request;
-  var uri = request.uri;
-  var authHeaders = request.headers.authorization;
-
-  var regexes = [/\/talks\//,/\/post\//];
-
-  if (regexes.some(regex => regex.test(request.uri))) {
-    request.uri = request.uri.replace(/\/talks\//, '/works/');
-    request.uri = request.uri.replace(/\/post\//, '/posts/');
-
-    var response = {
-      statusCode: 301,
-      statusDescription: "Moved Permanently",
-      headers:
-          { "location": { "value": request.uri } }
-    }
-    return response;
-  }
-
-  var expected = "Basic cGV0ZXI6cGFu";
-
-  if (authHeaders && authHeaders.value === expected) {
-    if (uri.endsWith('/')) {
-      request.uri += 'index.html';
-    }
-    else if (!uri.includes('.')) {
-      request.uri += '/index.html';
-    }
-    return request;
-  }
-
-  var response = {
-    statusCode: 401,
-    statusDescription: "Unauthorized",
-    headers: {
-      "www-authenticate": {
-        value: 'Basic realm="Enter credentials for this super secure site"',
-      },
-    },
-  };
-
-  return response;
-}
-      `.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '')),
-  }); // NOTE: keep the 6 whitespaces at the end of the string
+    FunctionCode: Match.exact(escaptedtestCfFunctionCode),
+  });
 
   template.hasResourceProperties('AWS::Route53::RecordSet', {
     Name: 'example.com.',
