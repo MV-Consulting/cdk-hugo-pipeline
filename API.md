@@ -1888,7 +1888,7 @@ public readonly hugoProjectPath: string;
 ```
 
 - *Type:* string
-- *Default:* 'path.join(__dirname, '../../../../blog')'
+- *Default:* 'path.join(process.cwd(), 'blog')'
 
 The absolute path to the hugo project.
 
