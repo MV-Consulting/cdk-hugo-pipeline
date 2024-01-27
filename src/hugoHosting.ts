@@ -70,9 +70,9 @@ export interface HugoHostingProps {
   readonly http404ResponsePagePath?: string;
 
   /**
-   * The path to the hugo project
+   * The absolute path to the hugo project
    *
-   * @default - '../../../../blog'
+   * @default - 'path.join(__dirname, '../../../../blog')'
    */
   readonly hugoProjectPath?: string;
 
@@ -200,7 +200,7 @@ export class HugoHosting extends Construct {
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
     const http403ResponsePagePath = props.http403ResponsePagePath || '/en/404.html';
     const http404ResponsePagePath = props.http404ResponsePagePath || '/en/404.html';
-    const hugoProjectPath = props.hugoProjectPath || '../../../../blog';
+    const hugoProjectPath = props.hugoProjectPath || path.join(__dirname, '../../../../blog');
     const dockerImage = props.dockerImage || 'public.ecr.aws/docker/library/node:lts-alpine';
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     const alpineHugoVersion = props.alpineHugoVersion || '';
@@ -371,13 +371,13 @@ function handler(event) {
 
     new s3deploy.BucketDeployment(this, 'frontend-deployment', {
       sources: [
-        s3deploy.Source.asset(path.join(__dirname, hugoProjectPath), {
+        s3deploy.Source.asset(hugoProjectPath, {
           // Note: to avoid mismatch between builds, we build the assets each time
           assetHash: s3deployAssetHash,
           assetHashType: AssetHashType.CUSTOM,
           bundling: {
             image: DockerImage.fromRegistry(dockerImage),
-            // Note: we are already in the '../blog' folder
+            // Note: we are already in the folder where the hugo project is located
             command: [
               'sh', '-c',
               `

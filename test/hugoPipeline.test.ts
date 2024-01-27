@@ -1,3 +1,4 @@
+import * as path from 'path';
 import {
   App,
   Stack,
@@ -17,7 +18,7 @@ test('Snapshot pipeline', () => {
   const testProps: HugoPipelineProps = {
     domainName: 'example.com',
     siteSubDomain: 'dev',
-    hugoProjectPath: '../test/frontend-test',
+    hugoProjectPath: path.join(__dirname, 'frontend-test'),
     s3deployAssetHash: '3',
   };
   // WHEN
@@ -39,7 +40,7 @@ test('Default pipeline', () => {
   const testProps: HugoPipelineProps = {
     domainName: 'example.com',
     siteSubDomain: 'dev',
-    hugoProjectPath: '../test/frontend-test',
+    hugoProjectPath: path.join(__dirname, 'frontend-test'),
     s3deployAssetHash: '3',
   };
   // WHEN
@@ -135,7 +136,7 @@ test('Custom pipeline', () => {
   const testProps: HugoPipelineProps = {
     domainName: 'example.com',
     siteSubDomain: 'dev',
-    hugoProjectPath: '../test/frontend-test-custom',
+    hugoProjectPath: path.join(__dirname, 'frontend-test-custom'),
     s3deployAssetHash: '3',
     // below is custom
     hugoBuildCommand: 'hugo --gc',
