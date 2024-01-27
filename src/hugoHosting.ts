@@ -72,7 +72,7 @@ export interface HugoHostingProps {
   /**
    * The absolute path to the hugo project
    *
-   * @default - 'path.join(__dirname, '../../../../blog')'
+   * @default - 'path.join(process.cwd(), 'blog')'
    */
   readonly hugoProjectPath?: string;
 
@@ -200,7 +200,7 @@ export class HugoHosting extends Construct {
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
     const http403ResponsePagePath = props.http403ResponsePagePath || '/en/404.html';
     const http404ResponsePagePath = props.http404ResponsePagePath || '/en/404.html';
-    const hugoProjectPath = props.hugoProjectPath || path.join(__dirname, '../../../../blog');
+    const hugoProjectPath = props.hugoProjectPath || path.join(process.cwd(), 'blog');
     const dockerImage = props.dockerImage || 'public.ecr.aws/docker/library/node:lts-alpine';
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     const alpineHugoVersion = props.alpineHugoVersion || '';
