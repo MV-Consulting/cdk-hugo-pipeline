@@ -1,3 +1,4 @@
+import * as path from 'path';
 import {
   Stage,
   StageProps,
@@ -145,7 +146,7 @@ export interface HugoPipelineProps {
   /**
    * The path to the hugo project
    *
-   * @default - '../../../../blog'
+   * @default - path.join(process.cwd(), 'blog')
    */
   readonly hugoProjectPath?: string;
 
@@ -210,7 +211,7 @@ export class HugoPipeline extends Construct {
     const basicAuthPassword = props.basicAuthPassword || 'doe';
     const basicAuthBase64 = Buffer.from(`${basicAuthUsername}:${basicAuthPassword}`).toString('base64');
     const dockerImage = props.dockerImage || 'public.ecr.aws/docker/library/node:lts-alpine';
-    const hugoProjectPath = props.hugoProjectPath || '../../../../blog';
+    const hugoProjectPath = props.hugoProjectPath || path.join(process.cwd(), 'blog');
     const http403ResponsePagePath = props.http403ResponsePagePath || '/en/404.html';
     const http404ResponsePagePath = props.http404ResponsePagePath || '/en/404.html';
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
