@@ -2737,7 +2737,7 @@ public readonly hugoProjectPath: string;
 ```
 
 - *Type:* string
-- *Default:* '../../../../blog'
+- *Default:* path.join(process.cwd(), 'blog')
 
 The path to the hugo project.
 
