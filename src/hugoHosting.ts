@@ -110,7 +110,16 @@ export interface HugoHostingProps {
   readonly s3deployAssetHash?: string;
 
   /**
-   * The cloudfront redirect replacements. Those are string replacements for the request.uri
+   * The cloudfront custom function code
+   *
+   * @default - undefined
+   */
+  readonly cloudfrontCustomFunctionCode?: cloudfront.FunctionCode;
+
+  /**
+   * The cloudfront redirect replacements. Those are string replacements for the request.uri.
+   * Note: the replacements are regular expressions.
+   * Note: if cloudfrontCustomFunctionCode is set, this property is ignored.
    *
    * @default - {}
    */
@@ -196,6 +205,7 @@ export class HugoHosting extends Construct {
     const hugoBuildCommand = props.hugoBuildCommand || 'hugo --gc --minify --cleanDestinationDir';
     const alpineHugoVersion = props.alpineHugoVersion || '';
     const s3deployAssetHash = props.s3deployAssetHash || `${Number(Math.random())}-${props.buildStage}`;
+    const cloudfrontCustomFunctionCode = props.cloudfrontCustomFunctionCode;
     const cloudfrontRedirectReplacements = props.cloudfrontRedirectReplacements || {};
 
     const zone = route53.HostedZone.fromLookup(this, 'Zone', {
@@ -248,7 +258,7 @@ export class HugoHosting extends Construct {
 
     // The redirect function with basic auth for the development site
     const cfFunction = new cloudfront.Function(this, 'redirect-request-cf', {
-      code: this.buildStage == 'production' ? cloudfront.FunctionCode.fromInline(`
+      code: cloudfrontCustomFunctionCode || (this.buildStage == 'production' ? cloudfront.FunctionCode.fromInline(`
 function handler(event) {
   var request = event.request;
   var uri = request.uri;
@@ -310,7 +320,7 @@ function handler(event) {
 
   return response;
 }    
-      `),
+      `)),
     });
 
     const distribution = new cloudfront.Distribution(
