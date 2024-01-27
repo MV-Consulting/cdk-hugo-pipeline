@@ -153,6 +153,105 @@ git push origin master
 ```
 2. ... wait until the pipeline has deployed to the `dev stage`, go to your url `dev.your-comain.com`, enter the basic auth credentials (default: `john:doe`) and look at you beautiful blog :tada:
 
+## Customizations
+### Redirects
+You can add customizations such as `HTTP 301` redirects , for example
+1. from `/talks/` to `/works/`:
+  1. from `https://your-domain.com/talks/2024-01-24-my-talk`
+  2. to   `https://your-domain.com/works/2024-01-24-my-talk`
+2. or more complex ones `/post/2024-01-25-my-blog/gallery/my-image.webp` to `/images/2024-01-25-my-blog/my-image.webp`, which is represented by the regexp `'/(\.\*)(\\\/post\\\/)(\.\*)(\\\/gallery\\\/)(\.\*)/'` and capture group `'$1/images/$3/$5'`. Here as full example:
+  1. from `https://your-domain.com/post/2024-01-25-my-blog/gallery/my-image.webp`
+  2. to   `https://your-domain.com/images/2024-01-25-my-blog/my-image.webp`
+
+```ts
+export class MyStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
+    super(scope, id, props);
+
+    // Note: test you regex upfront
+    // here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+    // an escape them.
+
+    new HugoPipeline(this, 'my-blog', {
+      domainName: 'your-domain.com', // <- adapt here
+      cloudfrontRedirectReplacements: { // <- all regexp need to be escaped!
+        '/\\\/talks\\\//': '/works/',  // /talks/ -> /\\\/talks\\\//
+        // /(.*)(\/post\/)(.*)(\/gallery\/)(.*)/
+        '/(\.\*)(\\\/post\\\/)(\.\*)(\\\/gallery\\\/)(\.\*)/': '$1/images/$3/$5',
+      },
+    });
+}
+```
+However, you can also pass in a whole custom functions as the next section shows.
+
+### Custom Cloudfront function
+For the `VIEWER_REQUEST`, where you can also achieve `Basic Auth` or redirects the way you want
+
+```ts
+export class MyStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
+    super(scope, id, props);
+
+    const customCfFunctionCode = `
+function handler(event) {
+    var request = event.request;
+    var uri = request.uri;
+    var authHeaders = request.headers.authorization;
+
+    var regexes = [/\/talks\//, /\/post\//];
+
+    if (regexes.some(regex => regex.test(request.uri))) {
+        request.uri = request.uri.replace(/\/talks\//, '/works/');
+        request.uri = request.uri.replace(/\/post\//, '/posts/');
+
+        var response = {
+            statusCode: 301,
+            statusDescription: "Moved Permanently",
+            headers:
+                { "location": { "value": request.uri } }
+        }
+        return response;
+    }
+
+    var expected = "Basic am9objpkb2U=";
+
+    if (authHeaders && authHeaders.value === expected) {
+        if (uri.endsWith('/')) {
+            request.uri += 'index.html';
+        }
+        else if (!uri.includes('.')) {
+            request.uri += '/index.html';
+        }
+        return request;
+    }
+
+    var response = {
+        statusCode: 401,
+        statusDescription: "Unauthorized",
+        headers: {
+            "www-authenticate": {
+                value: 'Basic realm="Enter credentials for this super secure site"',
+            },
+        },
+    };
+
+    return response;
+}
+`
+    // we do the escapes here so it passed in correctly
+    const escaptedtestCfFunctionCode = customCfFunctionCode.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+    new HugoPipeline(this, 'my-blog', {
+      domainName: 'your-domain.com', // <- adapt here
+      // Note: keep in sync with the basic auth defined in the function
+      // echo -n "john:doe"|base64 -> 'am9objpkb2U='
+      basicAuthUsername: 'john',
+      basicAuthPassword: 'doe',
+      cloudfrontCustomFunctionCode: cloudfront.FunctionCode.fromInline(escaptedtestCfFunctionCode),
+    });
+}
+```
+
 ## Known issues
 - If with `npm test` you get the error `docker exited with status 1`,
   - then clean the docker layers and re-run the tests via `docker system prune -f`
