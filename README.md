@@ -192,7 +192,7 @@ export class MyStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const customCfFunctionCode = `
+    const customCfFunctionCodeDevelopment = `
 function handler(event) {
     var request = event.request;
     var uri = request.uri;
@@ -238,8 +238,25 @@ function handler(event) {
     return response;
 } 
 `
+
+    const customCfFunctionCodeProduction = `
+function handler(event) {
+  var request = event.request;
+  var uri = request.uri;
+
+  if (uri.endsWith('/')) {
+    request.uri += 'index.html';
+  }
+  else if (!uri.includes('.')) {
+    request.uri += '/index.html';
+  }
+
+  return request;
+}
+`
     // we do the escapes here so it passed in correctly
-    const escaptedtestCfFunctionCode = customCfFunctionCode.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const escapedtestCfFunctionCodeDevelopment = customCfFunctionCodeDevelopment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const escapedtestCfFunctionCodeProduction = customCfFunctionCodeProduction.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     
     new HugoPipeline(this, 'my-blog', {
       domainName: 'your-domain.com', // <- adapt here
@@ -247,7 +264,8 @@ function handler(event) {
       // echo -n "john:doe"|base64 -> 'am9objpkb2U='
       basicAuthUsername: 'john',
       basicAuthPassword: 'doe',
-      cloudfrontCustomFunctionCode: cloudfront.FunctionCode.fromInline(escaptedtestCfFunctionCode),
+      cloudfrontCustomFunctionCodeDevelopment: cloudfront.FunctionCode.fromInline(escapedtestCfFunctionCodeDevelopment),
+      cloudfrontCustomFunctionCodeProduction: cloudfront.FunctionCode.fromInline(escapedtestCfFunctionCodeProduction),
     });
 }
 ```
