@@ -178,7 +178,7 @@ export interface HugoPipelineProps {
 
   /**
    * The cloudfront custom function code for the development stage.
-   * If not set it falls back to a function having basic auth with 
+   * If not set it falls back to a function having basic auth with
    * 'basicAuthUsername' and 'basicAuthPassword' as username and password
    * and adding the default root object 'index.html'.
    *

@@ -192,7 +192,7 @@ export class MyStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const customCfFunctionCode = `
+    const customCfFunctionCodeDevelopment = `
 function handler(event) {
     var request = event.request;
     var uri = request.uri;
@@ -238,8 +238,25 @@ function handler(event) {
     return response;
 }
 `
+
+    const customCfFunctionCodeProduction = `
+function handler(event) {
+  var request = event.request;
+  var uri = request.uri;
+
+  if (uri.endsWith('/')) {
+    request.uri += 'index.html';
+  }
+  else if (!uri.includes('.')) {
+    request.uri += '/index.html';
+  }
+
+  return request;
+}
+`
     // we do the escapes here so it passed in correctly
-    const escaptedtestCfFunctionCode = customCfFunctionCode.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const escapedtestCfFunctionCodeDevelopment = customCfFunctionCodeDevelopment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const escapedtestCfFunctionCodeProduction = customCfFunctionCodeProduction.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
     new HugoPipeline(this, 'my-blog', {
       domainName: 'your-domain.com', // <- adapt here
@@ -247,7 +264,8 @@ function handler(event) {
       // echo -n "john:doe"|base64 -> 'am9objpkb2U='
       basicAuthUsername: 'john',
       basicAuthPassword: 'doe',
-      cloudfrontCustomFunctionCode: cloudfront.FunctionCode.fromInline(escaptedtestCfFunctionCode),
+      cloudfrontCustomFunctionCodeDevelopment: cloudfront.FunctionCode.fromInline(escapedtestCfFunctionCodeDevelopment),
+      cloudfrontCustomFunctionCodeProduction: cloudfront.FunctionCode.fromInline(escapedtestCfFunctionCodeProduction),
     });
 }
 ```
@@ -2644,6 +2662,10 @@ public readonly cloudfrontCustomFunctionCodeDevelopment: FunctionCode;
 
 The cloudfront custom function code for the development stage.
 
+If not set it falls back to a function having basic auth with 
+'basicAuthUsername' and 'basicAuthPassword' as username and password
+and adding the default root object 'index.html'.
+
 ---
 
 ##### `cloudfrontCustomFunctionCodeProduction`<sup>Optional</sup> <a name="cloudfrontCustomFunctionCodeProduction" id="@mavogel/cdk-hugo-pipeline.HugoPipelineProps.property.cloudfrontCustomFunctionCodeProduction"></a>
@@ -2656,6 +2678,8 @@ public readonly cloudfrontCustomFunctionCodeProduction: FunctionCode;
 - *Default:* undefined
 
 The cloudfront custom function code for the production stage.
+
+If not set it falls back to a function adding the default root object 'index.html'.
 
 ---
 
