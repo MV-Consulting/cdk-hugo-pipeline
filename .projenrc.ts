@@ -8,7 +8,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   jsiiVersion: '~5.3.0',
   name: 'cdk-hugo-pipeline',
   projenrcTs: true,
-  repositoryUrl: 'https://github.com/mavogel/cdk-hugo-pipeline.git',
+  repositoryUrl: 'https://github.com/MV-Consulting/cdk-hugo-pipeline',
 
   // deps: [],                /* Runtime dependencies of this module. */
   description: 'Build you hugo website all on AWS with CI/CD and a dev environment.', /* The description is just a string that helps people understand the purpose of the package. */
