@@ -3,7 +3,7 @@
   "description": "Build you hugo website all on AWS with CI/CD and a dev environment.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mavogel/cdk-hugo-pipeline.git"
+    "url": "https://github.com/MV-Consulting/cdk-hugo-pipeline"
   },
   "scripts": {
     "build": "npx projen build",
