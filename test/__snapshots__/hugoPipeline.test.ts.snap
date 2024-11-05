@@ -139,7 +139,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"a8803356d66dc4f7473f836fc7e3391429b67f4c1423406f678cf6b5f5e14081:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"0457d333165d06eb6c6f378cdab18fc4e0714ab2e47bcdedd45059f77e7f37da:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
