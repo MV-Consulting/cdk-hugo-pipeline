@@ -5,7 +5,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorAddress: 'mavogel@posteo.de',
   cdkVersion: '2.80.0',
   defaultReleaseBranch: 'main',
-  jsiiVersion: '~5.3.0',
+  jsiiVersion: '~5.6.0',
   name: 'cdk-hugo-pipeline',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/MV-Consulting/cdk-hugo-pipeline',
