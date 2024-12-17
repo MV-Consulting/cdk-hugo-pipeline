@@ -545,7 +545,7 @@ Object {
       "Properties": Object {
         "Content": Object {
           "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
-          "S3Key": "6620cb784ea0d3cf3a6e3e128827087f88e7e9999cd41b0be7c50431fbf12026.zip",
+          "S3Key": "09ee37fb9a746a9dea0618b3024913848346b4b63d08d3fae387b9a11ac83a01.zip",
         },
         "Description": "/opt/awscli/aws",
       },
@@ -1180,7 +1180,7 @@ Object {
       "Properties": Object {
         "Content": Object {
           "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
-          "S3Key": "6620cb784ea0d3cf3a6e3e128827087f88e7e9999cd41b0be7c50431fbf12026.zip",
+          "S3Key": "09ee37fb9a746a9dea0618b3024913848346b4b63d08d3fae387b9a11ac83a01.zip",
         },
         "Description": "/opt/awscli/aws",
       },
