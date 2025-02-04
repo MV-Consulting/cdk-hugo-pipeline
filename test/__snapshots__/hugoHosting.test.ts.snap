@@ -51,7 +51,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
-          "S3Key": "9eb41a5505d37607ac419321497a4f8c21cf0ee1f9b4a6b29aa04301aea5c7fd.zip",
+          "S3Key": "c6358465bf49dfae556bb430bf9c81fa578c221b82c308e3707901b1dd654762.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -70,7 +70,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -208,7 +208,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
-          "S3Key": "350185a1069fa20a23a583e20c77f6844218bd73097902362dc94f1a108f5d89.zip",
+          "S3Key": "faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6.zip",
         },
         "Description": Object {
           "Fn::Join": Array [
@@ -222,7 +222,7 @@ Object {
             ],
           ],
         },
-        "Handler": "__entrypoint__.handler",
+        "Handler": "index.handler",
         "MemorySize": 128,
         "Role": Object {
           "Fn::GetAtt": Array [
@@ -230,7 +230,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs16.x",
+        "Runtime": "nodejs20.x",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -290,7 +290,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
-          "S3Key": "861509f9607aa6bb9fd7034fb10fe6f0c60d91dfd7f010b9ef666869dec9bbd9.zip",
+          "S3Key": "b073cebcf4d61fb152a30f5a5e57a94df7f980a549fdf1a79a0b18c5750522d8.zip",
         },
         "Handler": "index.certificateRequestHandler",
         "Role": Object {
@@ -299,7 +299,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs16.x",
+        "Runtime": "nodejs20.x",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -473,6 +473,7 @@ Object {
           "Statement": Array [
             Object {
               "Action": Array [
+                "s3:PutBucketPolicy",
                 "s3:GetBucket*",
                 "s3:List*",
                 "s3:DeleteObject*",
@@ -545,7 +546,7 @@ Object {
       "Properties": Object {
         "Content": Object {
           "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
-          "S3Key": "d3a6ffb61845b6de3a902f7d70528e6b52293cac69a22956f7f950d97143dee0.zip",
+          "S3Key": "12c225b94e04fc999a2a54d77987738c403683fd92a548c30fd9ef5bcae80afb.zip",
         },
         "Description": "/opt/awscli/aws",
       },
@@ -563,6 +564,7 @@ Object {
         "DistributionPaths": Array [
           "/*",
         ],
+        "OutputObjectKeys": true,
         "Prune": true,
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
@@ -714,10 +716,10 @@ function handler(event) {
 }    
       ",
         "FunctionConfig": Object {
-          "Comment": "us-east-1testStackhugoDevelopmenHostingredirectrequestcf858EEEC8",
+          "Comment": "us-east-1testStackhugoDevirect-request-cf858EEEC8",
           "Runtime": "cloudfront-js-1.0",
         },
-        "Name": "us-east-1testStackhugoDevelopmenHostingredirectrequestcf858EEEC8",
+        "Name": "us-east-1testStackhugoDevirect-request-cf858EEEC8",
       },
       "Type": "AWS::CloudFront::Function",
     },
@@ -803,7 +805,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
-          "S3Key": "9eb41a5505d37607ac419321497a4f8c21cf0ee1f9b4a6b29aa04301aea5c7fd.zip",
+          "S3Key": "c6358465bf49dfae556bb430bf9c81fa578c221b82c308e3707901b1dd654762.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -822,7 +824,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -986,7 +988,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
-          "S3Key": "861509f9607aa6bb9fd7034fb10fe6f0c60d91dfd7f010b9ef666869dec9bbd9.zip",
+          "S3Key": "b073cebcf4d61fb152a30f5a5e57a94df7f980a549fdf1a79a0b18c5750522d8.zip",
         },
         "Handler": "index.certificateRequestHandler",
         "Role": Object {
@@ -995,7 +997,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs16.x",
+        "Runtime": "nodejs20.x",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -1180,7 +1182,7 @@ Object {
       "Properties": Object {
         "Content": Object {
           "S3Bucket": "cdk-hnb659fds-assets-1234-us-east-1",
-          "S3Key": "d3a6ffb61845b6de3a902f7d70528e6b52293cac69a22956f7f950d97143dee0.zip",
+          "S3Key": "12c225b94e04fc999a2a54d77987738c403683fd92a548c30fd9ef5bcae80afb.zip",
         },
         "Description": "/opt/awscli/aws",
       },
@@ -1198,6 +1200,7 @@ Object {
         "DistributionPaths": Array [
           "/*",
         ],
+        "OutputObjectKeys": true,
         "Prune": true,
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
@@ -1336,10 +1339,10 @@ function handler(event) {
 }
       ",
         "FunctionConfig": Object {
-          "Comment": "us-east-1testStackhugoProductionHostingredirectrequestcf5850BC27",
+          "Comment": "us-east-1testStackhugoProirect-request-cf5850BC27",
           "Runtime": "cloudfront-js-1.0",
         },
-        "Name": "us-east-1testStackhugoProductionHostingredirectrequestcf5850BC27",
+        "Name": "us-east-1testStackhugoProirect-request-cf5850BC27",
       },
       "Type": "AWS::CloudFront::Function",
     },

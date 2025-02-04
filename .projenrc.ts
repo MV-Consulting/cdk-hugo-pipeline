@@ -3,7 +3,7 @@ import { NpmAccess } from 'projen/lib/javascript';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Manuel Vogel',
   authorAddress: 'mavogel@posteo.de',
-  cdkVersion: '2.80.0',
+  cdkVersion: '2.177.0',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.6.0',
   name: 'cdk-hugo-pipeline',
