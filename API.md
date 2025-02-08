@@ -4,6 +4,8 @@
 
 ### HugoHosting <a name="HugoHosting" id="@mavogel/cdk-hugo-pipeline.HugoHosting"></a>
 
+HugoHosting Construct.
+
 #### Initializers <a name="Initializers" id="@mavogel/cdk-hugo-pipeline.HugoHosting.Initializer"></a>
 
 ```typescript
@@ -99,11 +101,11 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.siteDomain">siteDomain</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.buildStage">buildStage</a></code> | <code>string</code> | buildStage. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.domainName">domainName</a></code> | <code>string</code> | domainName. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.siteDomain">siteDomain</a></code> | <code>string</code> | siteDomain. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | siteSubDomain. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | staticSiteURL. |
 
 ---
 
@@ -127,6 +129,8 @@ public readonly buildStage: string;
 
 - *Type:* string
 
+buildStage.
+
 ---
 
 ##### `domainName`<sup>Required</sup> <a name="domainName" id="@mavogel/cdk-hugo-pipeline.HugoHosting.property.domainName"></a>
@@ -136,6 +140,8 @@ public readonly domainName: string;
 ```
 
 - *Type:* string
+
+domainName.
 
 ---
 
@@ -147,6 +153,8 @@ public readonly siteDomain: string;
 
 - *Type:* string
 
+siteDomain.
+
 ---
 
 ##### `siteSubDomain`<sup>Required</sup> <a name="siteSubDomain" id="@mavogel/cdk-hugo-pipeline.HugoHosting.property.siteSubDomain"></a>
@@ -156,6 +164,8 @@ public readonly siteSubDomain: string;
 ```
 
 - *Type:* string
+
+siteSubDomain.
 
 ---
 
@@ -167,10 +177,14 @@ public readonly staticSiteURL: CfnOutput;
 
 - *Type:* aws-cdk-lib.CfnOutput
 
+staticSiteURL.
+
 ---
 
 
 ### HugoHostingStack <a name="HugoHostingStack" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack"></a>
+
+Hugo Hosting stack.
 
 #### Initializers <a name="Initializers" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.Initializer"></a>
 
@@ -723,7 +737,7 @@ The construct to start the search from.
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | staticSiteURL. |
 
 ---
 
@@ -1065,10 +1079,14 @@ public readonly staticSiteURL: CfnOutput;
 
 - *Type:* aws-cdk-lib.CfnOutput
 
+staticSiteURL.
+
 ---
 
 
 ### HugoPageStage <a name="HugoPageStage" id="@mavogel/cdk-hugo-pipeline.HugoPageStage"></a>
+
+Hugo Page stage.
 
 #### Initializers <a name="Initializers" id="@mavogel/cdk-hugo-pipeline.HugoPageStage.Initializer"></a>
 
@@ -1228,7 +1246,7 @@ on a nested stage, returns its parent.
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStage.property.account">account</a></code> | <code>string</code> | The default account for all resources defined within this stage. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStage.property.parentStage">parentStage</a></code> | <code>aws-cdk-lib.Stage</code> | The parent stage or `undefined` if this is the app. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStage.property.region">region</a></code> | <code>string</code> | The default region for all resources defined within this stage. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStage.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStage.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | staticSiteURL. |
 
 ---
 
@@ -1359,10 +1377,14 @@ public readonly staticSiteURL: CfnOutput;
 
 - *Type:* aws-cdk-lib.CfnOutput
 
+staticSiteURL.
+
 ---
 
 
 ### HugoPipeline <a name="HugoPipeline" id="@mavogel/cdk-hugo-pipeline.HugoPipeline"></a>
+
+Hugo Pipeline.
 
 #### Initializers <a name="Initializers" id="@mavogel/cdk-hugo-pipeline.HugoPipeline.Initializer"></a>
 
@@ -1459,7 +1481,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipeline.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipeline.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipeline.property.domainName">domainName</a></code> | <code>string</code> | the domain name. |
 
 ---
 
@@ -1483,12 +1505,16 @@ public readonly domainName: string;
 
 - *Type:* string
 
+the domain name.
+
 ---
 
 
 ## Structs <a name="Structs" id="Structs"></a>
 
 ### HugoHostingProps <a name="HugoHostingProps" id="@mavogel/cdk-hugo-pipeline.HugoHostingProps"></a>
+
+Hugo Hosting properties.
 
 #### Initializer <a name="Initializer" id="@mavogel/cdk-hugo-pipeline.HugoHostingProps.Initializer"></a>
 
@@ -1516,7 +1542,6 @@ const hugoHostingProps: HugoHostingProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | The absolute path to the hugo project. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | The hash to use to build or rebuild the hugo page. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | The subdomain to host the development site on, for example 'dev'. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.zone">zone</a></code> | <code>aws-cdk-lib.aws_route53.HostedZone</code> | Zone the Domain Name is created in. |
 
 ---
 
@@ -1714,19 +1739,9 @@ The subdomain to host the development site on, for example 'dev'.
 
 ---
 
-##### `zone`<sup>Optional</sup> <a name="zone" id="@mavogel/cdk-hugo-pipeline.HugoHostingProps.property.zone"></a>
-
-```typescript
-public readonly zone: HostedZone;
-```
-
-- *Type:* aws-cdk-lib.aws_route53.HostedZone
-
-Zone the Domain Name is created in.
-
----
-
 ### HugoHostingStackProps <a name="HugoHostingStackProps" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps"></a>
+
+Hugo Hosting properties.
 
 #### Initializer <a name="Initializer" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.Initializer"></a>
 
@@ -1751,19 +1766,19 @@ const hugoHostingStackProps: HugoHostingStackProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Stack tags that will be applied to all the taggable resources and the stack itself. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontCustomFunctionCode">cloudfrontCustomFunctionCode</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionCode</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.buildStage">buildStage</a></code> | <code>string</code> | buildStage. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.domainName">domainName</a></code> | <code>string</code> | domainName. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | basicAuthPassword. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | basicAuthUsername. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontCustomFunctionCode">cloudfrontCustomFunctionCode</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionCode</code> | cloudfrontCustomFunctionCode. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | cloudfrontRedirectReplacements. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | dockerImage. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | http403ResponsePagePath. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | http404ResponsePagePath. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | hugoBuildCommand. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | hugoProjectPath. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | s3deployAssetHash. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | siteSubDomain. |
 
 ---
 
@@ -1998,6 +2013,8 @@ public readonly buildStage: string;
 
 - *Type:* string
 
+buildStage.
+
 ---
 
 ##### `domainName`<sup>Required</sup> <a name="domainName" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.domainName"></a>
@@ -2007,6 +2024,9 @@ public readonly domainName: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+domainName.
 
 ---
 
@@ -2017,6 +2037,9 @@ public readonly basicAuthPassword: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+basicAuthPassword.
 
 ---
 
@@ -2027,6 +2050,9 @@ public readonly basicAuthUsername: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+basicAuthUsername.
 
 ---
 
@@ -2037,6 +2063,9 @@ public readonly cloudfrontCustomFunctionCode: FunctionCode;
 ```
 
 - *Type:* aws-cdk-lib.aws_cloudfront.FunctionCode
+- *Default:* TBD
+
+cloudfrontCustomFunctionCode.
 
 ---
 
@@ -2047,6 +2076,9 @@ public readonly cloudfrontRedirectReplacements: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
+- *Default:* TBD
+
+cloudfrontRedirectReplacements.
 
 ---
 
@@ -2057,6 +2089,9 @@ public readonly dockerImage: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+dockerImage.
 
 ---
 
@@ -2067,6 +2102,9 @@ public readonly http403ResponsePagePath: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+http403ResponsePagePath.
 
 ---
 
@@ -2077,6 +2115,9 @@ public readonly http404ResponsePagePath: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+http404ResponsePagePath.
 
 ---
 
@@ -2087,6 +2128,9 @@ public readonly hugoBuildCommand: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+hugoBuildCommand.
 
 ---
 
@@ -2097,6 +2141,9 @@ public readonly hugoProjectPath: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+hugoProjectPath.
 
 ---
 
@@ -2107,6 +2154,9 @@ public readonly s3deployAssetHash: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+s3deployAssetHash.
 
 ---
 
@@ -2117,10 +2167,15 @@ public readonly siteSubDomain: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+siteSubDomain.
 
 ---
 
 ### HugoPageStageProps <a name="HugoPageStageProps" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps"></a>
+
+Hugo page stage properties.
 
 #### Initializer <a name="Initializer" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps.Initializer"></a>
 
@@ -2139,19 +2194,19 @@ const hugoPageStageProps: HugoPageStageProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.permissionsBoundary">permissionsBoundary</a></code> | <code>aws-cdk-lib.PermissionsBoundary</code> | Options for applying a permissions boundary to all IAM Roles and Users created within this Stage. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.policyValidationBeta1">policyValidationBeta1</a></code> | <code>aws-cdk-lib.IPolicyValidationPluginBeta1[]</code> | Validation plugins to run during synthesis. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.stageName">stageName</a></code> | <code>string</code> | Name of this stage. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.buildStage">buildStage</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.cloudfrontCustomFunctionCode">cloudfrontCustomFunctionCode</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionCode</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.buildStage">buildStage</a></code> | <code>string</code> | buildStage. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.domainName">domainName</a></code> | <code>string</code> | domainName. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.basicAuthPassword">basicAuthPassword</a></code> | <code>string</code> | basicAuthPassword. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.basicAuthUsername">basicAuthUsername</a></code> | <code>string</code> | basicAuthUsername. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.cloudfrontCustomFunctionCode">cloudfrontCustomFunctionCode</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionCode</code> | cloudfrontCustomFunctionCode. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.cloudfrontRedirectReplacements">cloudfrontRedirectReplacements</a></code> | <code>{[ key: string ]: string}</code> | cloudfrontRedirectReplacements. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.dockerImage">dockerImage</a></code> | <code>string</code> | dockerImage. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.http403ResponsePagePath">http403ResponsePagePath</a></code> | <code>string</code> | http403ResponsePagePath. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.http404ResponsePagePath">http404ResponsePagePath</a></code> | <code>string</code> | http404ResponsePagePath. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.hugoBuildCommand">hugoBuildCommand</a></code> | <code>string</code> | hugoBuildCommand. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.hugoProjectPath">hugoProjectPath</a></code> | <code>string</code> | hugoProjectPath. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.s3deployAssetHash">s3deployAssetHash</a></code> | <code>string</code> | s3deployAssetHash. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.siteSubDomain">siteSubDomain</a></code> | <code>string</code> | siteSubDomain. |
 
 ---
 
@@ -2262,6 +2317,9 @@ public readonly buildStage: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+buildStage.
 
 ---
 
@@ -2272,6 +2330,9 @@ public readonly domainName: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+domainName.
 
 ---
 
@@ -2282,6 +2343,9 @@ public readonly basicAuthPassword: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+basicAuthPassword.
 
 ---
 
@@ -2292,6 +2356,9 @@ public readonly basicAuthUsername: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+basicAuthUsername.
 
 ---
 
@@ -2302,6 +2369,9 @@ public readonly cloudfrontCustomFunctionCode: FunctionCode;
 ```
 
 - *Type:* aws-cdk-lib.aws_cloudfront.FunctionCode
+- *Default:* TBD
+
+cloudfrontCustomFunctionCode.
 
 ---
 
@@ -2312,6 +2382,9 @@ public readonly cloudfrontRedirectReplacements: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
+- *Default:* TBD
+
+cloudfrontRedirectReplacements.
 
 ---
 
@@ -2322,6 +2395,9 @@ public readonly dockerImage: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+dockerImage.
 
 ---
 
@@ -2332,6 +2408,9 @@ public readonly http403ResponsePagePath: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+http403ResponsePagePath.
 
 ---
 
@@ -2342,6 +2421,9 @@ public readonly http404ResponsePagePath: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+http404ResponsePagePath.
 
 ---
 
@@ -2352,6 +2434,9 @@ public readonly hugoBuildCommand: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+hugoBuildCommand.
 
 ---
 
@@ -2362,6 +2447,9 @@ public readonly hugoProjectPath: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+hugoProjectPath.
 
 ---
 
@@ -2372,6 +2460,9 @@ public readonly s3deployAssetHash: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+s3deployAssetHash.
 
 ---
 
@@ -2382,10 +2473,15 @@ public readonly siteSubDomain: string;
 ```
 
 - *Type:* string
+- *Default:* TBD
+
+siteSubDomain.
 
 ---
 
 ### HugoPipelineProps <a name="HugoPipelineProps" id="@mavogel/cdk-hugo-pipeline.HugoPipelineProps"></a>
+
+Hugo pipeline properties.
 
 #### Initializer <a name="Initializer" id="@mavogel/cdk-hugo-pipeline.HugoPipelineProps.Initializer"></a>
 

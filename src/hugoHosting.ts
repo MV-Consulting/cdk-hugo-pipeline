@@ -16,6 +16,9 @@ import {
 } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
+/**
+ * Hugo Hosting properties
+ */
 export interface HugoHostingProps {
   /**
    * Name of the stage to deploy to. Should be 'development' or 'production'
@@ -49,11 +52,6 @@ export interface HugoHostingProps {
    * @default - dev
    */
   readonly siteSubDomain?: string;
-
-  /**
-   * Zone the Domain Name is created in
-   */
-  readonly zone?: route53.HostedZone;
 
   /**
    * The path to the 403 error page
@@ -183,11 +181,29 @@ function cloudfrontRedirectReplacementsExpression(replacements: Record<string, s
   return expression;
 }
 
+/**
+ * HugoHosting Construct
+ */
 export class HugoHosting extends Construct {
+  /**
+   * staticSiteURL
+   */
   public readonly staticSiteURL: CfnOutput;
+  /**
+   * domainName
+   */
   public readonly domainName: string;
+  /**
+   * siteDomain
+   */
   public readonly siteDomain: string;
+  /**
+   * siteSubDomain
+   */
   public readonly siteSubDomain: string;
+  /**
+   * buildStage
+   */
   public readonly buildStage: string;
 
   constructor(scope: Construct, id: string, props: HugoHostingProps) {
