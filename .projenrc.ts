@@ -16,9 +16,6 @@ const project = new MvcCdkConstructLibrary({
     '@mavogel/mvc-projen',
     'constructs@^10.4.2',
   ],
-  devDeps: [
-    'constructs@^10.4.2',
-  ],
   description: 'Build you hugo website all on AWS with CI/CD and a dev environment.',
   packageName: '@mavogel/cdk-hugo-pipeline', /* The "name" in package.json. */
   packageManager: javascript.NodePackageManager.YARN_CLASSIC,
