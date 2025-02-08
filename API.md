@@ -62,7 +62,7 @@ Returns a string representation of this construct.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@mavogel/cdk-hugo-pipeline.HugoHosting.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@mavogel/cdk-hugo-pipeline.HugoHosting.isConstruct"></a>
 
 ```typescript
 import { HugoHosting } from '@mavogel/cdk-hugo-pipeline'
@@ -71,6 +71,20 @@ HugoHosting.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@mavogel/cdk-hugo-pipeline.HugoHosting.isConstruct.parameter.x"></a>
 
@@ -614,7 +628,7 @@ Convert an object, potentially containing tokens, to a YAML string.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.isConstruct"></a>
 
 ```typescript
 import { HugoHostingStack } from '@mavogel/cdk-hugo-pipeline'
@@ -623,6 +637,20 @@ HugoHostingStack.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.isConstruct.parameter.x"></a>
 
@@ -1120,7 +1148,7 @@ calls will return the same assembly.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@mavogel/cdk-hugo-pipeline.HugoPageStage.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@mavogel/cdk-hugo-pipeline.HugoPageStage.isConstruct"></a>
 
 ```typescript
 import { HugoPageStage } from '@mavogel/cdk-hugo-pipeline'
@@ -1129,6 +1157,20 @@ HugoPageStage.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@mavogel/cdk-hugo-pipeline.HugoPageStage.isConstruct.parameter.x"></a>
 
@@ -1380,7 +1422,7 @@ Returns a string representation of this construct.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@mavogel/cdk-hugo-pipeline.HugoPipeline.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@mavogel/cdk-hugo-pipeline.HugoPipeline.isConstruct"></a>
 
 ```typescript
 import { HugoPipeline } from '@mavogel/cdk-hugo-pipeline'
@@ -1389,6 +1431,20 @@ HugoPipeline.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@mavogel/cdk-hugo-pipeline.HugoPipeline.isConstruct.parameter.x"></a>
 
