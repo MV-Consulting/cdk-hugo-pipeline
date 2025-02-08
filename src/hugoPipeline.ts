@@ -12,23 +12,95 @@ import {
 import { Construct } from 'constructs';
 import { HugoHosting } from './hugoHosting';
 
+/**
+ * Hugo Hosting properties
+ */
 export interface HugoHostingStackProps extends StackProps {
+  /**
+   * buildStage
+   */
   readonly buildStage: string;
+  /**
+   * basicAuthUsername
+   *
+   * @default TBD
+   */
   readonly basicAuthUsername?: string;
+  /**
+   * basicAuthPassword
+   *
+   * @default TBD
+   */
   readonly basicAuthPassword?: string;
+  /**
+   * domainName
+   *
+   * @default TBD
+   */
   readonly domainName: string;
+  /**
+   * siteSubDomain
+   *
+   * @default TBD
+   */
   readonly siteSubDomain?: string;
+  /**
+   * http403ResponsePagePath
+   *
+   * @default TBD
+   */
   readonly http403ResponsePagePath?: string;
+  /**
+   * http404ResponsePagePath
+   *
+   * @default TBD
+   */
   readonly http404ResponsePagePath?: string;
+  /**
+   * hugoProjectPath
+   *
+   * @default TBD
+   */
   readonly hugoProjectPath?: string;
+  /**
+   * dockerImage
+   *
+   * @default TBD
+   */
   readonly dockerImage?: string;
+  /**
+   * hugoBuildCommand
+   *
+   * @default TBD
+   */
   readonly hugoBuildCommand?: string;
+  /**
+   * s3deployAssetHash
+   *
+   * @default TBD
+   */
   readonly s3deployAssetHash?: string;
+  /**
+   * cloudfrontCustomFunctionCode
+   *
+   * @default TBD
+   */
   readonly cloudfrontCustomFunctionCode?: cloudfront.FunctionCode;
+  /**
+   * cloudfrontRedirectReplacements
+   *
+   * @default TBD
+   */
   readonly cloudfrontRedirectReplacements?: Record<string, string>;
 }
 
+/**
+ * Hugo Hosting stack
+ */
 export class HugoHostingStack extends Stack {
+  /**
+   * staticSiteURL
+   */
   public readonly staticSiteURL: CfnOutput;
 
   constructor(scope: Construct, id: string, props: HugoHostingStackProps) {
@@ -54,22 +126,97 @@ export class HugoHostingStack extends Stack {
   }
 }
 
+/**
+ * Hugo page stage properties
+ */
 export interface HugoPageStageProps extends StageProps {
+  /**
+   * buildStage
+   *
+   * @default TBD
+   */
   readonly buildStage: string;
+  /**
+   * basicAuthUsername
+   *
+   * @default TBD
+   */
   readonly basicAuthUsername?: string;
+  /**
+   * basicAuthPassword
+   *
+   * @default TBD
+   */
   readonly basicAuthPassword?: string;
+  /**
+   * domainName
+   *
+   * @default TBD
+   */
   readonly domainName: string;
+  /**
+   * siteSubDomain
+   *
+   * @default TBD
+   */
   readonly siteSubDomain?: string;
+  /**
+   * http403ResponsePagePath
+   *
+   * @default TBD
+   */
   readonly http403ResponsePagePath?: string;
+  /**
+   * http404ResponsePagePath
+   *
+   * @default TBD
+   */
   readonly http404ResponsePagePath?: string;
+  /**
+   * hugoProjectPath
+   *
+   * @default TBD
+   */
   readonly hugoProjectPath?: string;
+  /**
+   * dockerImage
+   *
+   * @default TBD
+   */
   readonly dockerImage?: string;
+  /**
+   * hugoBuildCommand
+   *
+   * @default TBD
+   */
   readonly hugoBuildCommand?: string;
+  /**
+   * s3deployAssetHash
+   *
+   * @default TBD
+   */
   readonly s3deployAssetHash?: string;
+  /**
+   * cloudfrontCustomFunctionCode
+   *
+   * @default TBD
+   */
   readonly cloudfrontCustomFunctionCode?: cloudfront.FunctionCode;
+  /**
+   * cloudfrontRedirectReplacements
+   *
+   * @default TBD
+   */
   readonly cloudfrontRedirectReplacements?: Record<string, string>;
 }
+
+/**
+ * Hugo Page stage
+ */
 export class HugoPageStage extends Stage {
+  /**
+   * staticSiteURL
+   */
   public readonly staticSiteURL: CfnOutput;
 
   constructor(scope: Construct, id: string, props: HugoPageStageProps) {
@@ -95,6 +242,9 @@ export class HugoPageStage extends Stage {
   }
 }
 
+/**
+ * Hugo pipeline properties
+ */
 export interface HugoPipelineProps {
   /**
    * Name of the codecommit repository
@@ -204,7 +354,13 @@ export interface HugoPipelineProps {
   readonly cloudfrontRedirectReplacements?: Record<string, string>;
 }
 
+/**
+ * Hugo Pipeline
+ */
 export class HugoPipeline extends Construct {
+  /**
+   * the domain name
+   */
   public readonly domainName: string;
 
   constructor(scope: Construct, id: string, props: HugoPipelineProps) {
