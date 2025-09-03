@@ -7,7 +7,7 @@ const project = new MvcCdkConstructLibrary({
   authorAddress: '8409778+mavogel@users.noreply.github.com',
   cdkVersion: '2.177.0',
   defaultReleaseBranch: 'main',
-  jsiiVersion: '~5.7.0',
+  jsiiVersion: '~5.8.0',
   name: 'cdk-hugo-pipeline',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/MV-Consulting/cdk-hugo-pipeline',

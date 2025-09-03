@@ -6,6 +6,7 @@ import {
   StackProps,
   aws_cloudfront as cloudfront,
   aws_codecommit as codecommit,
+  aws_codebuild as codebuild,
   pipelines,
   CfnOutput,
 } from 'aws-cdk-lib';
@@ -392,6 +393,8 @@ export class HugoPipeline extends Construct {
         // not implemented on 2022-12-28: https://github.com/aws/aws-cdk/issues/11399
         // so we clone submodules manually
         commands: [
+          'n 20', // Install and use Node.js 20
+          'node --version', // Verify Node.js version
           'pwd && ls -la',
           'test -f package-lock.json && npm ci || echo "NO package-lock.json file found"',
           'test -f yarn.lock && yarn install --check-files --frozen-lockfile || echo "NO yarn.lock file found"',
@@ -403,6 +406,11 @@ export class HugoPipeline extends Construct {
       // NOTE: as we build the hugo blog in a docker container
       // see https://github.com/aws/aws-cdk/tree/v2.56.1/packages/%40aws-cdk/pipelines#using-bundled-file-assets
       dockerEnabledForSynth: true,
+      codeBuildDefaults: {
+        buildEnvironment: {
+          buildImage: codebuild.LinuxBuildImage.STANDARD_7_0,
+        },
+      },
     });
 
     const hugoPageDevStage = new HugoPageStage(this, 'dev-stage', {

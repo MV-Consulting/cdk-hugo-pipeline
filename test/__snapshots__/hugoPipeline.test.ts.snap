@@ -653,7 +653,7 @@ Object {
                   "Version": "1",
                 },
                 "Configuration": Object {
-                  "EnvironmentVariables": "[{\\"name\\":\\"_PROJECT_CONFIG_HASH\\",\\"type\\":\\"PLAINTEXT\\",\\"value\\":\\"485c2a9e8633d02088374bd2bed277054c01c3f1c6d20e7db805c3e3956c08d2\\"}]",
+                  "EnvironmentVariables": "[{\\"name\\":\\"_PROJECT_CONFIG_HASH\\",\\"type\\":\\"PLAINTEXT\\",\\"value\\":\\"f669c013067bdbb51cb28cd710385f4aafecf3e1f65162815d65b91bdc4625a2\\"}]",
                   "ProjectName": Object {
                     "Ref": "hugoPipelinehugoblogpipelinePipelineBuildSynthCdkBuildProject21258FA6",
                   },
@@ -1247,6 +1247,8 @@ Object {
   \\"phases\\": {
     \\"build\\": {
       \\"commands\\": [
+        \\"n 20\\",
+        \\"node --version\\",
         \\"pwd && ls -la\\",
         \\"test -f package-lock.json && npm ci || echo \\\\\\"NO package-lock.json file found\\\\\\"\\",
         \\"test -f yarn.lock && yarn install --check-files --frozen-lockfile || echo \\\\\\"NO yarn.lock file found\\\\\\"\\",
