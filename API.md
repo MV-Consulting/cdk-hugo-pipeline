@@ -45,6 +45,7 @@ new HugoHosting(scope: Construct, id: string, props: HugoHostingProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHosting.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -55,6 +56,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@mavogel/cdk-hugo-pipeline.HugoHosting.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@mavogel/cdk-hugo-pipeline.HugoHosting.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -225,6 +247,7 @@ new HugoHostingStack(scope: Construct, id: string, props: HugoHostingStackProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.addMetadata">addMetadata</a></code> | Adds an arbitrary key-value pair, with information you want to record about the stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
@@ -249,6 +272,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addDependency` <a name="addDependency" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.addDependency"></a>
 
@@ -1127,6 +1171,7 @@ new HugoPageStage(scope: Construct, id: string, props: HugoPageStageProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStage.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStage.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStage.synth">synth</a></code> | Synthesize this stage into a cloud assembly. |
 
 ---
@@ -1138,6 +1183,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@mavogel/cdk-hugo-pipeline.HugoPageStage.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@mavogel/cdk-hugo-pipeline.HugoPageStage.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `synth` <a name="synth" id="@mavogel/cdk-hugo-pipeline.HugoPageStage.synth"></a>
 
@@ -1425,6 +1491,7 @@ new HugoPipeline(scope: Construct, id: string, props: HugoPipelineProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipeline.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPipeline.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -1435,6 +1502,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@mavogel/cdk-hugo-pipeline.HugoPipeline.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@mavogel/cdk-hugo-pipeline.HugoPipeline.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
