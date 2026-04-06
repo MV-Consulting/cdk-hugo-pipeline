@@ -393,7 +393,7 @@ export class HugoPipeline extends Construct {
         // not implemented on 2022-12-28: https://github.com/aws/aws-cdk/issues/11399
         // so we clone submodules manually
         commands: [
-          'n 20', // Install and use Node.js 20
+          'n 24', // Install and use Node.js 24
           'node --version', // Verify Node.js version
           'pwd && ls -la',
           'test -f package-lock.json && npm ci || echo "NO package-lock.json file found"',

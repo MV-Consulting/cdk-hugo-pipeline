@@ -653,7 +653,7 @@ exports[`Snapshot pipeline 1`] = `
                   "Version": "1",
                 },
                 "Configuration": {
-                  "EnvironmentVariables": "[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"f669c013067bdbb51cb28cd710385f4aafecf3e1f65162815d65b91bdc4625a2"}]",
+                  "EnvironmentVariables": "[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"eba2e2d6ced496daaecbd3b43fe20fbf24b1c4bbe37f40cc95aecc435d6eb346"}]",
                   "ProjectName": {
                     "Ref": "hugoPipelinehugoblogpipelinePipelineBuildSynthCdkBuildProject21258FA6",
                   },
@@ -1247,7 +1247,7 @@ exports[`Snapshot pipeline 1`] = `
   "phases": {
     "build": {
       "commands": [
-        "n 20",
+        "n 24",
         "node --version",
         "pwd && ls -la",
         "test -f package-lock.json && npm ci || echo \\"NO package-lock.json file found\\"",

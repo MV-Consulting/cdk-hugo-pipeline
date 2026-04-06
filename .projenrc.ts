@@ -12,7 +12,7 @@ const project = new MvcCdkConstructLibrary({
   repositoryUrl: 'https://github.com/MV-Consulting/cdk-hugo-pipeline',
 
   deps: [
-    '@mavogel/mvc-projen@0.0.22',
+    '@mavogel/mvc-projen@0.0.23',
   ],
   description: 'Build you hugo website all on AWS with CI/CD and a dev environment.',
   packageName: '@mavogel/cdk-hugo-pipeline', /* The "name" in package.json. */
