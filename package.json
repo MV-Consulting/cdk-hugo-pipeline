@@ -48,6 +48,7 @@
     "aws-cdk-lib": "2.248.0",
     "awslint": "2.248.0-alpha.0",
     "commit-and-tag-version": "^12",
+    "constructs": "10.5.1",
     "eslint": "^9",
     "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-import": "^2.31.0",
@@ -70,8 +71,7 @@
   },
   "dependencies": {
     "@mavogel/mvc-projen": "0.0.22",
-    "cdk-nag": "^2.37.55",
-    "constructs": "^10.4.2"
+    "cdk-nag": "^2.37.55"
   },
   "keywords": [
     "aws",

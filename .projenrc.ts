@@ -13,6 +13,8 @@ const project = new MvcCdkConstructLibrary({
 
   deps: [
     '@mavogel/mvc-projen@0.0.22',
+  ],
+  peerDeps: [
     'constructs@^10.4.2',
   ],
   description: 'Build you hugo website all on AWS with CI/CD and a dev environment.',
