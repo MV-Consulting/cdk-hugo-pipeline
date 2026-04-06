@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(yarn run:*)"
+      "Bash(yarn run:*)",
+      "Bash(npm run:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh run:*)",
+      "Bash(node:*)",
+      "Bash(npx projen:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm view:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []
