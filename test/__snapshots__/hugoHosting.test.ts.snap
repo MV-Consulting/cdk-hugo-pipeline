@@ -43,10 +43,10 @@ exports[`Snapshot development hosting 1`] = `
     },
   },
   "Resources": {
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiB6723FB92": {
       "DependsOn": [
-        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
-        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleDefaultPolicy96C3E726",
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1",
       ],
       "Properties": {
         "Code": {
@@ -64,9 +64,10 @@ exports[`Snapshot development hosting 1`] = `
             "Ref": "hugoDevelopmentHostingfrontenddeploymentAwsCliLayer4660FEA7",
           },
         ],
+        "MemorySize": 512,
         "Role": {
           "Fn::GetAtt": [
-            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1",
             "Arn",
           ],
         },
@@ -75,7 +76,7 @@ exports[`Snapshot development hosting 1`] = `
       },
       "Type": "AWS::Lambda::Function",
     },
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1": {
       "Properties": {
         "AssumeRolePolicyDocument": {
           "Statement": [
@@ -106,7 +107,7 @@ exports[`Snapshot development hosting 1`] = `
       },
       "Type": "AWS::IAM::Role",
     },
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleDefaultPolicy96C3E726": {
       "Properties": {
         "PolicyDocument": {
           "Statement": [
@@ -192,10 +193,10 @@ exports[`Snapshot development hosting 1`] = `
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleDefaultPolicy96C3E726",
         "Roles": [
           {
-            "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+            "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1",
           },
         ],
       },
@@ -437,7 +438,7 @@ exports[`Snapshot development hosting 1`] = `
             "Value": "true",
           },
           {
-            "Key": "aws-cdk:cr-owned:af903df7",
+            "Key": "aws-cdk:cr-owned:4e1517a5",
             "Value": "true",
           },
         ],
@@ -552,7 +553,7 @@ exports[`Snapshot development hosting 1`] = `
       },
       "Type": "AWS::Lambda::LayerVersion",
     },
-    "hugoDevelopmentHostingfrontenddeploymentCustomResourceFADC927A": {
+    "hugoDevelopmentHostingfrontenddeploymentCustomResource512MiB2907932C": {
       "DeletionPolicy": "Delete",
       "Properties": {
         "DestinationBucketName": {
@@ -568,7 +569,7 @@ exports[`Snapshot development hosting 1`] = `
         "Prune": true,
         "ServiceToken": {
           "Fn::GetAtt": [
-            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiB6723FB92",
             "Arn",
           ],
         },
@@ -798,10 +799,10 @@ exports[`Snapshot production hosting 1`] = `
     },
   },
   "Resources": {
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiB6723FB92": {
       "DependsOn": [
-        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
-        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleDefaultPolicy96C3E726",
+        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1",
       ],
       "Properties": {
         "Code": {
@@ -819,9 +820,10 @@ exports[`Snapshot production hosting 1`] = `
             "Ref": "hugoProductionHostingfrontenddeploymentAwsCliLayer00756DF8",
           },
         ],
+        "MemorySize": 512,
         "Role": {
           "Fn::GetAtt": [
-            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1",
             "Arn",
           ],
         },
@@ -830,7 +832,7 @@ exports[`Snapshot production hosting 1`] = `
       },
       "Type": "AWS::Lambda::Function",
     },
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1": {
       "Properties": {
         "AssumeRolePolicyDocument": {
           "Statement": [
@@ -861,7 +863,7 @@ exports[`Snapshot production hosting 1`] = `
       },
       "Type": "AWS::IAM::Role",
     },
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleDefaultPolicy96C3E726": {
       "Properties": {
         "PolicyDocument": {
           "Statement": [
@@ -947,10 +949,10 @@ exports[`Snapshot production hosting 1`] = `
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+        "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleDefaultPolicy96C3E726",
         "Roles": [
           {
-            "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+            "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiBServiceRoleBA21DBC1",
           },
         ],
       },
@@ -1132,7 +1134,7 @@ exports[`Snapshot production hosting 1`] = `
         },
         "Tags": [
           {
-            "Key": "aws-cdk:cr-owned:b5bca063",
+            "Key": "aws-cdk:cr-owned:607846c1",
             "Value": "true",
           },
         ],
@@ -1189,7 +1191,7 @@ exports[`Snapshot production hosting 1`] = `
       },
       "Type": "AWS::Lambda::LayerVersion",
     },
-    "hugoProductionHostingfrontenddeploymentCustomResource85057BB1": {
+    "hugoProductionHostingfrontenddeploymentCustomResource512MiBEFA5D139": {
       "DeletionPolicy": "Delete",
       "Properties": {
         "DestinationBucketName": {
@@ -1205,7 +1207,7 @@ exports[`Snapshot production hosting 1`] = `
         "Prune": true,
         "ServiceToken": {
           "Fn::GetAtt": [
-            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+            "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiB6723FB92",
             "Arn",
           ],
         },

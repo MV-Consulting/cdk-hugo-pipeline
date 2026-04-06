@@ -157,7 +157,7 @@ exports[`Snapshot pipeline 1`] = `
         "Cache": {
           "Type": "NO_CACHE",
         },
-        "Description": "Pipeline step testStack/Pipeline/Assets/Custom_CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C_Code",
+        "Description": "Pipeline step testStack/Pipeline/Assets/Custom_CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiB_Code",
         "EncryptionKey": "alias/aws/s3",
         "Environment": {
           "ComputeType": "BUILD_GENERAL1_SMALL",
@@ -809,7 +809,7 @@ exports[`Snapshot pipeline 1`] = `
                     "Name": "Synth_Output",
                   },
                 ],
-                "Name": "Custom_CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C_Code",
+                "Name": "Custom_CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C512MiB_Code",
                 "RoleArn": {
                   "Fn::GetAtt": [
                     "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
