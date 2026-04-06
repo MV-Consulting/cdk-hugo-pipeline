@@ -5,6 +5,7 @@ const project = new MvcCdkConstructLibrary({
   author: 'Manuel Vogel',
   authorAddress: '8409778+mavogel@users.noreply.github.com',
   cdkVersion: '2.248.0',
+  constructsVersion: '10.6.0',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.9.0',
   name: 'cdk-hugo-pipeline',
@@ -13,9 +14,6 @@ const project = new MvcCdkConstructLibrary({
 
   deps: [
     '@mavogel/mvc-projen@0.0.22',
-  ],
-  peerDeps: [
-    'constructs@^10.4.2',
   ],
   description: 'Build you hugo website all on AWS with CI/CD and a dev environment.',
   packageName: '@mavogel/cdk-hugo-pipeline', /* The "name" in package.json. */
