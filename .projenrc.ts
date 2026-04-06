@@ -22,4 +22,47 @@ const project = new MvcCdkConstructLibrary({
   keywords: ['aws', 'cdk', 'hugo'],
   baseAssetsDirectory: `${process.cwd()}/node_modules/@mavogel/mvc-projen/assets`,
 });
+
+// Pre-pull Docker image used by CDK asset bundling to avoid rate limiting
+// when multiple concurrent docker run commands try to pull the same image
+const buildWorkflow = project.github?.tryFindWorkflow('build');
+if (buildWorkflow) {
+  const buildJob = buildWorkflow.getJob('build');
+  if (buildJob && 'steps' in buildJob) {
+    const steps = [...buildJob.steps];
+    // Insert docker pull step before the build step
+    const buildStepIndex = steps.findIndex(s => 'run' in s && s.name === 'build');
+    if (buildStepIndex !== -1) {
+      steps.splice(buildStepIndex, 0, {
+        name: 'Pre-pull Docker image',
+        run: 'for i in 1 2 3; do docker pull public.ecr.aws/docker/library/node:lts-alpine && break || sleep 15; done',
+      });
+      buildWorkflow.updateJob('build', {
+        ...buildJob,
+        steps,
+      });
+    }
+  }
+}
+
+// Do the same for the release workflow
+const releaseWorkflow = project.github?.tryFindWorkflow('release');
+if (releaseWorkflow) {
+  const releaseJob = releaseWorkflow.getJob('release');
+  if (releaseJob && 'steps' in releaseJob) {
+    const steps = [...releaseJob.steps];
+    const releaseStepIndex = steps.findIndex(s => 'run' in s && s.name === 'release');
+    if (releaseStepIndex !== -1) {
+      steps.splice(releaseStepIndex, 0, {
+        name: 'Pre-pull Docker image',
+        run: 'for i in 1 2 3; do docker pull public.ecr.aws/docker/library/node:lts-alpine && break || sleep 15; done',
+      });
+      releaseWorkflow.updateJob('release', {
+        ...releaseJob,
+        steps,
+      });
+    }
+  }
+}
+
 project.synth();

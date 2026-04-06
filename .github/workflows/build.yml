@@ -26,6 +26,8 @@ jobs:
           package-manager-cache: false
       - name: Install dependencies
         run: yarn install --check-files
+      - name: Pre-pull Docker image
+        run: for i in 1 2 3; do docker pull public.ecr.aws/docker/library/node:lts-alpine && break || sleep 15; done
       - name: build
         run: npx projen build
       - name: Run awslint
