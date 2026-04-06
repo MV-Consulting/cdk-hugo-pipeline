@@ -12,7 +12,7 @@ const project = new MvcCdkConstructLibrary({
   repositoryUrl: 'https://github.com/MV-Consulting/cdk-hugo-pipeline',
 
   deps: [
-    '@mavogel/mvc-projen@0.0.21',
+    '@mavogel/mvc-projen@0.0.22',
     'constructs@^10.4.2',
   ],
   description: 'Build you hugo website all on AWS with CI/CD and a dev environment.',
@@ -21,16 +21,5 @@ const project = new MvcCdkConstructLibrary({
   npmAccess: NpmAccess.PUBLIC, /* The npm access level to use when releasing this module. */
   keywords: ['aws', 'cdk', 'hugo'],
   baseAssetsDirectory: `${process.cwd()}/node_modules/@mavogel/mvc-projen/assets`,
-
-  tsconfigDev: {
-    compilerOptions: {
-      types: ['node', 'jest'],
-    },
-  },
-  tsconfig: {
-    compilerOptions: {
-      types: ['node'],
-    },
-  },
 });
 project.synth();

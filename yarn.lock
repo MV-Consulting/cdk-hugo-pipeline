@@ -874,10 +874,10 @@
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.127.0.tgz#5e5c1d38b0d5444b55158d03186c4a35b875af4c"
   integrity sha512-LJiQLjlyQuMx1KyoKDdU9SlxNe/3xnllPSTlb6alPL84aYAcrGQX82XX7v554AudesIZHp5p5u0bupTK+v3QWA==
 
-"@mavogel/mvc-projen@0.0.21":
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/@mavogel/mvc-projen/-/mvc-projen-0.0.21.tgz#bd59139b8b513e3f2d9fd61077a57190beabd0ff"
-  integrity sha512-tkNa44CohXhltTkUpiDlDQl2G5D3N8/F1F80XnshwPC2FI9/pKRrS/NfpHRKX58BQhG2z/QRFFM1R9buZDAg8Q==
+"@mavogel/mvc-projen@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@mavogel/mvc-projen/-/mvc-projen-0.0.22.tgz#188d2b3bb5872fda2013cbe0c4cda5abc0579a97"
+  integrity sha512-T96AAKMYol3juBrNyRJjPxc8rT2tnNPf9j+YPFJm07jOIN1TVpz7g26qPwFXHeU9CUX9/kcoEm70SV6LzXHKkw==
   dependencies:
     constructs "^10.5.1"
     projen "^0.99.34"
