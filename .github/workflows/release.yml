@@ -34,7 +34,7 @@ jobs:
           node-version: 22.x
           package-manager-cache: false
       - name: Install dependencies
-        run: yarn install --check-files --frozen-lockfile
+        run: npm ci
       - name: Pre-pull Docker image
         run: for i in 1 2 3; do docker pull public.ecr.aws/docker/library/node:lts-alpine && break || sleep 15; done
       - name: release
@@ -114,7 +114,7 @@ jobs:
         with:
           path: .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --check-files --frozen-lockfile
+        run: cd .repo && npm ci
       - name: Extract build artifact
         run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
       - name: Move build artifact out of the way

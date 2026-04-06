@@ -8,7 +8,8 @@
       "Bash(node:*)",
       "Bash(npx projen:*)",
       "Bash(npm ls:*)",
-      "Bash(npm view:*)"
+      "Bash(npm view:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

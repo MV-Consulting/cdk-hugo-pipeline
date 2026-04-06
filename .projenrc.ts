@@ -1,5 +1,4 @@
 import { MvcCdkConstructLibrary } from '@mavogel/mvc-projen';
-import { javascript } from 'projen';
 import { NpmAccess } from 'projen/lib/javascript';
 const project = new MvcCdkConstructLibrary({
   author: 'Manuel Vogel',
@@ -17,7 +16,6 @@ const project = new MvcCdkConstructLibrary({
   ],
   description: 'Build you hugo website all on AWS with CI/CD and a dev environment.',
   packageName: '@mavogel/cdk-hugo-pipeline', /* The "name" in package.json. */
-  packageManager: javascript.NodePackageManager.YARN_CLASSIC,
   npmAccess: NpmAccess.PUBLIC, /* The npm access level to use when releasing this module. */
   keywords: ['aws', 'cdk', 'hugo'],
   baseAssetsDirectory: `${process.cwd()}/node_modules/@mavogel/mvc-projen/assets`,
