@@ -820,9 +820,9 @@ attempt to parse it to implement your logic. If you do, you must first
 check that it is a concrete value an not an unresolved token. If this
 value is an unresolved token (`Token.isUnresolved(stack.account)` returns
 `true`), this implies that the user wishes that this stack will synthesize
-into a **account-agnostic template**. In this case, your code should either
+into an **account-agnostic template**. In this case, your code should either
 fail (throw an error, emit a synth error using `Annotations.of(construct).addError()`) or
-implement some other region-agnostic behavior.
+implement some other account-agnostic behavior.
 
 ---
 
@@ -1849,6 +1849,7 @@ const hugoHostingStackProps: HugoHostingStackProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.env">env</a></code> | <code>aws-cdk-lib.Environment</code> | The AWS environment (account/region) where this stack will be deployed. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.notificationArns">notificationArns</a></code> | <code>string[]</code> | SNS Topic ARNs that will receive stack events. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.permissionsBoundary">permissionsBoundary</a></code> | <code>aws-cdk-lib.PermissionsBoundary</code> | Options for applying a permissions boundary to all IAM Roles and Users created within this Stage. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.propertyInjectors">propertyInjectors</a></code> | <code>aws-cdk-lib.IPropertyInjector[]</code> | A list of IPropertyInjector attached to this Stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.stackName">stackName</a></code> | <code>string</code> | Name to deploy the stack with. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.suppressTemplateIndentation">suppressTemplateIndentation</a></code> | <code>boolean</code> | Enable this flag to suppress indentation in generated CloudFormation templates. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
@@ -2011,6 +2012,19 @@ public readonly permissionsBoundary: PermissionsBoundary;
 - *Default:* no permissions boundary is applied
 
 Options for applying a permissions boundary to all IAM Roles and Users created within this Stage.
+
+---
+
+##### `propertyInjectors`<sup>Optional</sup> <a name="propertyInjectors" id="@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.propertyInjectors"></a>
+
+```typescript
+public readonly propertyInjectors: IPropertyInjector[];
+```
+
+- *Type:* aws-cdk-lib.IPropertyInjector[]
+- *Default:* no PropertyInjectors
+
+A list of IPropertyInjector attached to this Stack.
 
 ---
 
@@ -2281,6 +2295,7 @@ const hugoPageStageProps: HugoPageStageProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.outdir">outdir</a></code> | <code>string</code> | The output directory into which to emit synthesized artifacts. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.permissionsBoundary">permissionsBoundary</a></code> | <code>aws-cdk-lib.PermissionsBoundary</code> | Options for applying a permissions boundary to all IAM Roles and Users created within this Stage. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.policyValidationBeta1">policyValidationBeta1</a></code> | <code>aws-cdk-lib.IPolicyValidationPluginBeta1[]</code> | Validation plugins to run during synthesis. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.propertyInjectors">propertyInjectors</a></code> | <code>aws-cdk-lib.IPropertyInjector[]</code> | A list of IPropertyInjector attached to this Stage. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.stageName">stageName</a></code> | <code>string</code> | Name of this stage. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.buildStage">buildStage</a></code> | <code>string</code> | buildStage. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.domainName">domainName</a></code> | <code>string</code> | domainName. |
@@ -2367,6 +2382,20 @@ public readonly permissionsBoundary: PermissionsBoundary;
 
 Options for applying a permissions boundary to all IAM Roles and Users created within this Stage.
 
+Be aware that this feature uses Aspects, and the Aspects are applied at the
+Stack level with a priority of `MUTATING` (if the feature flag
+`@aws-cdk/core:aspectPrioritiesMutating` is set) or `DEFAULT` (if the flag
+is not set). This is relevant if you are both using your own Aspects to
+assign Permissions Boundaries, as well as specifying this property.  The
+Aspect added by this property will overwrite the Permissions Boundary
+assigned by your own Aspect if both: (a) your Aspect has a lower or equal
+priority to the automatic Aspect, and (b) your Aspect is applied *above*
+the Stack level.  If either of those conditions are not true, your own
+Aspect will win.
+
+We recommend assigning Permissions Boundaries only using the provided APIs,
+and not using custom Aspects.
+
 ---
 
 ##### `policyValidationBeta1`<sup>Optional</sup> <a name="policyValidationBeta1" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.policyValidationBeta1"></a>
@@ -2382,6 +2411,19 @@ Validation plugins to run during synthesis.
 
 If any plugin reports any violation,
 synthesis will be interrupted and the report displayed to the user.
+
+---
+
+##### `propertyInjectors`<sup>Optional</sup> <a name="propertyInjectors" id="@mavogel/cdk-hugo-pipeline.HugoPageStageProps.property.propertyInjectors"></a>
+
+```typescript
+public readonly propertyInjectors: IPropertyInjector[];
+```
+
+- *Type:* aws-cdk-lib.IPropertyInjector[]
+- *Default:* no PropertyInjectors
+
+A list of IPropertyInjector attached to this Stage.
 
 ---
 

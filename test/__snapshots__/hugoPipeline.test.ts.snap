@@ -25,7 +25,7 @@ Object {
         "Cache": Object {
           "Type": "NO_CACHE",
         },
-        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset1",
+        "Description": "Pipeline step testStack/Pipeline/Assets/testStack_hugoPipeline_dev-stage_hugo-blog-stf14c5c603AutoDeleteObjectsCustomResourceProvider_Code",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
@@ -69,7 +69,7 @@ Object {
         "Cache": Object {
           "Type": "NO_CACHE",
         },
-        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset2",
+        "Description": "Pipeline step testStack/Pipeline/Assets/static-hosting_SiteCertificate_CertificateRequestorFunction_Code",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
@@ -113,7 +113,7 @@ Object {
         "Cache": Object {
           "Type": "NO_CACHE",
         },
-        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset3",
+        "Description": "Pipeline step testStack/Pipeline/Assets/static-hosting_frontend-deployment_AwsCliLayer_Code",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
@@ -139,7 +139,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"12c225b94e04fc999a2a54d77987738c403683fd92a548c30fd9ef5bcae80afb:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"8a84a8f465fbe0c48af2c256847ec9abfe095d23781b749728b998315f3ad732:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
@@ -157,7 +157,7 @@ Object {
         "Cache": Object {
           "Type": "NO_CACHE",
         },
-        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset4",
+        "Description": "Pipeline step testStack/Pipeline/Assets/Custom_CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C_Code",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
@@ -183,7 +183,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"c6358465bf49dfae556bb430bf9c81fa578c221b82c308e3707901b1dd654762:1234-us-east-1\\\\\\"\\"
+        \\"cdk-assets --path \\\\\\"assembly-testStack-hugoPipeline-dev-stage/testStackhugoPipelinedevstagehugoblogstack9EF84A58.assets.json\\\\\\" --verbose publish \\\\\\"9a1fcb4a7ecba81ad70e9d3fb241f6794497da945dae5f25924e4dd002b65f2d:1234-us-east-1\\\\\\"\\"
       ]
     }
   }
@@ -201,7 +201,7 @@ Object {
         "Cache": Object {
           "Type": "NO_CACHE",
         },
-        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset5",
+        "Description": "Pipeline step testStack/Pipeline/Assets/static-hosting_frontend-deployment_Asset1",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
@@ -245,7 +245,7 @@ Object {
         "Cache": Object {
           "Type": "NO_CACHE",
         },
-        "Description": "Pipeline step testStack/Pipeline/Assets/FileAsset6",
+        "Description": "Pipeline step testStack/Pipeline/Assets/static-hosting_frontend-deployment_Asset12",
         "EncryptionKey": "alias/aws/s3",
         "Environment": Object {
           "ComputeType": "BUILD_GENERAL1_SMALL",
@@ -731,7 +731,7 @@ Object {
                     "Name": "Synth_Output",
                   },
                 ],
-                "Name": "FileAsset1",
+                "Name": "testStack_hugoPipeline_dev-stage_hugo-blog-stf14c5c603AutoDeleteObjectsCustomResourceProvider_Code",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
                     "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
@@ -757,7 +757,7 @@ Object {
                     "Name": "Synth_Output",
                   },
                 ],
-                "Name": "FileAsset2",
+                "Name": "static-hosting_SiteCertificate_CertificateRequestorFunction_Code",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
                     "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
@@ -783,7 +783,7 @@ Object {
                     "Name": "Synth_Output",
                   },
                 ],
-                "Name": "FileAsset3",
+                "Name": "static-hosting_frontend-deployment_AwsCliLayer_Code",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
                     "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
@@ -809,7 +809,7 @@ Object {
                     "Name": "Synth_Output",
                   },
                 ],
-                "Name": "FileAsset4",
+                "Name": "Custom_CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C_Code",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
                     "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
@@ -835,7 +835,7 @@ Object {
                     "Name": "Synth_Output",
                   },
                 ],
-                "Name": "FileAsset5",
+                "Name": "static-hosting_frontend-deployment_Asset1",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
                     "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
@@ -861,7 +861,7 @@ Object {
                     "Name": "Synth_Output",
                   },
                 ],
-                "Name": "FileAsset6",
+                "Name": "static-hosting_frontend-deployment_Asset12",
                 "RoleArn": Object {
                   "Fn::GetAtt": Array [
                     "hugoPipelinehugoblogpipelineCodeBuildActionRoleF21F60B4",
@@ -1592,15 +1592,9 @@ Object {
               "Effect": "Allow",
               "Principal": Object {
                 "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
+                  "Fn::GetAtt": Array [
+                    "hugoPipelinehugoblogpipelinePipelineRoleF157B64B",
+                    "Arn",
                   ],
                 },
               },
@@ -2048,15 +2042,9 @@ Object {
               "Effect": "Allow",
               "Principal": Object {
                 "AWS": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::1234:root",
-                    ],
+                  "Fn::GetAtt": Array [
+                    "hugoPipelinehugoblogpipelinePipelineRoleF157B64B",
+                    "Arn",
                   ],
                 },
               },

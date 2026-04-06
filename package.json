@@ -28,7 +28,7 @@
     "projen": "npx projen",
     "prepare": "husky",
     "awslint": "awslint",
-    "integ-test": "integ-runner --directory ./integ-tests undefined --update-on-failed,"
+    "integ-test": "integ-runner --directory ./integ-tests --parallel-regions eu-west-1 --parallel-regions eu-west-2 --update-on-failed"
   },
   "author": {
     "name": "Manuel Vogel",
@@ -36,17 +36,17 @@
     "organization": true
   },
   "devDependencies": {
-    "@aws-cdk/integ-runner": "^2.177.0-alpha.0",
-    "@aws-cdk/integ-tests-alpha": "^2.177.0-alpha.0",
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
+    "@aws-cdk/integ-runner": "2.197.0",
+    "@aws-cdk/integ-tests-alpha": "2.197.0-alpha.0",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@stylistic/eslint-plugin": "^2",
     "@types/jest": "^27",
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "aws-cdk-lib": "2.177.0",
-    "awslint": "^2.72.1",
+    "aws-cdk-lib": "2.197.0",
+    "awslint": "2.197.0-alpha.0",
     "commit-and-tag-version": "^12",
     "eslint": "^9",
     "eslint-import-resolver-typescript": "^3.7.0",
@@ -65,12 +65,12 @@
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.177.0",
-    "constructs": "^10.0.5"
+    "aws-cdk-lib": "^2.197.0",
+    "constructs": "^10.5.1"
   },
   "dependencies": {
-    "@mavogel/mvc-projen": "^0.0.1",
-    "cdk-nag": "^2.35.0",
+    "@mavogel/mvc-projen": "0.0.21",
+    "cdk-nag": "^2.37.55",
     "constructs": "^10.4.2"
   },
   "keywords": [
@@ -79,7 +79,14 @@
     "hugo"
   ],
   "engines": {
-    "node": ">= 20.x"
+    "node": ">= 22.x"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "yarn",
+      "version": "<2.0.0",
+      "onFail": "ignore"
+    }
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",

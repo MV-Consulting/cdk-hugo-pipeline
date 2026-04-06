@@ -2,22 +2,22 @@
   "dependencies": [
     {
       "name": "@aws-cdk/integ-runner",
-      "version": "^2.177.0-alpha.0",
+      "version": "2.197.0",
       "type": "build"
     },
     {
       "name": "@aws-cdk/integ-tests-alpha",
-      "version": "^2.177.0-alpha.0",
+      "version": "2.197.0-alpha.0",
       "type": "build"
     },
     {
       "name": "@commitlint/cli",
-      "version": "^19.6.1",
+      "version": "^20.1.0",
       "type": "build"
     },
     {
       "name": "@commitlint/config-conventional",
-      "version": "^19.6.0",
+      "version": "^20.0.0",
       "type": "build"
     },
     {
@@ -31,7 +31,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^20",
+      "version": "^22",
       "type": "build"
     },
     {
@@ -46,7 +46,7 @@
     },
     {
       "name": "awslint",
-      "version": "^2.72.1",
+      "version": "2.197.0-alpha.0",
       "type": "build"
     },
     {
@@ -122,21 +122,22 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.177.0",
+      "version": "^2.197.0",
       "type": "peer"
     },
     {
       "name": "constructs",
-      "version": "^10.0.5",
+      "version": "^10.5.1",
       "type": "peer"
     },
     {
       "name": "@mavogel/mvc-projen",
+      "version": "0.0.21",
       "type": "runtime"
     },
     {
       "name": "cdk-nag",
-      "version": "^2.35.0",
+      "version": "^2.37.55",
       "type": "runtime"
     },
     {
