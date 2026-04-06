@@ -250,12 +250,14 @@ new HugoHostingStack(scope: Construct, id: string, props: HugoHostingStackProps)
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.addMetadata">addMetadata</a></code> | Adds an arbitrary key-value pair, with information you want to record about the stack. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.addStackTag">addStackTag</a></code> | Configure a stack tag. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.exportStringListValue">exportStringListValue</a></code> | Create a CloudFormation Export for a string list value. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a string value. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.formatArn">formatArn</a></code> | Creates an ARN from components. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.regionalFact">regionalFact</a></code> | Look up a fact value for the given fact for the region of this stack. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.removeStackTag">removeStackTag</a></code> | Remove a stack tag. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.renameLogicalId">renameLogicalId</a></code> | Rename a generated logical identities. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.reportMissingContextKey">reportMissingContextKey</a></code> | Indicate that a context key was expected. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
@@ -289,8 +291,6 @@ constructs.
 ###### `mixins`<sup>Required</sup> <a name="mixins" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.with.parameter.mixins"></a>
 
 - *Type:* ...constructs.IMixin[]
-
-The mixins to apply.
 
 ---
 
@@ -338,6 +338,28 @@ These get translated to the Metadata section of the generated template.
 ###### `value`<sup>Required</sup> <a name="value" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.addMetadata.parameter.value"></a>
 
 - *Type:* any
+
+---
+
+##### `addStackTag` <a name="addStackTag" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.addStackTag"></a>
+
+```typescript
+public addStackTag(tagName: string, tagValue: string): void
+```
+
+Configure a stack tag.
+
+At deploy time, CloudFormation will automatically apply all stack tags to all resources in the stack.
+
+###### `tagName`<sup>Required</sup> <a name="tagName" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.addStackTag.parameter.tagName"></a>
+
+- *Type:* string
+
+---
+
+###### `tagValue`<sup>Required</sup> <a name="tagValue" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.addStackTag.parameter.tagValue"></a>
+
+- *Type:* string
 
 ---
 
@@ -557,6 +579,22 @@ the given region.
 
 ---
 
+##### `removeStackTag` <a name="removeStackTag" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.removeStackTag"></a>
+
+```typescript
+public removeStackTag(tagName: string): void
+```
+
+Remove a stack tag.
+
+At deploy time, CloudFormation will automatically apply all stack tags to all resources in the stack.
+
+###### `tagName`<sup>Required</sup> <a name="tagName" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.removeStackTag.parameter.tagName"></a>
+
+- *Type:* string
+
+---
+
 ##### `renameLogicalId` <a name="renameLogicalId" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.renameLogicalId"></a>
 
 ```typescript
@@ -748,6 +786,8 @@ Looks up the first stack scope in which `construct` is defined.
 
 Fails if there is no stack up the tree.
 
+Will return the closest containing `Stack` or `NestedStack`.
+
 ###### `construct`<sup>Required</sup> <a name="construct" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.of.parameter.construct"></a>
 
 - *Type:* constructs.IConstruct
@@ -766,8 +806,9 @@ The construct to start the search from.
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.availabilityZones">availabilityZones</a></code> | <code>string[]</code> | Returns the list of AZs that are available in the AWS environment (account/region) associated with this stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.bundlingRequired">bundlingRequired</a></code> | <code>boolean</code> | Indicates whether the stack requires bundling or not. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.dependencies">dependencies</a></code> | <code>aws-cdk-lib.Stack[]</code> | Return the stacks this stack depends on. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.env">env</a></code> | <code>aws-cdk-lib.interfaces.ResourceEnvironment</code> | The environment this Stack deploys to. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.environment">environment</a></code> | <code>string</code> | The environment coordinates in which this stack is deployed. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.nested">nested</a></code> | <code>boolean</code> | Indicates if this is a nested stack, in which case `parentStack` will include a reference to it's parent. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.nested">nested</a></code> | <code>boolean</code> | Indicates if this is a nested stack, in which case `parentStack` will include a reference to its parent. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.notificationArns">notificationArns</a></code> | <code>string[]</code> | Returns the list of notification Amazon Resource Names (ARNs) for the current stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.partition">partition</a></code> | <code>string</code> | The partition in which this stack is defined. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.region">region</a></code> | <code>string</code> | The AWS region into which this stack will be deployed (e.g. `us-west-2`). |
@@ -778,7 +819,7 @@ The construct to start the search from.
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.templateFile">templateFile</a></code> | <code>string</code> | The name of the CloudFormation template file emitted to the output directory during synthesis. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.templateOptions">templateOptions</a></code> | <code>aws-cdk-lib.ITemplateOptions</code> | Options for CloudFormation template (like version, transform, description). |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.urlSuffix">urlSuffix</a></code> | <code>string</code> | The Amazon domain suffix for the region in which this stack is defined. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns its parent stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.staticSiteURL">staticSiteURL</a></code> | <code>aws-cdk-lib.CfnOutput</code> | staticSiteURL. |
@@ -885,6 +926,18 @@ Return the stacks this stack depends on.
 
 ---
 
+##### `env`<sup>Required</sup> <a name="env" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.env"></a>
+
+```typescript
+public readonly env: ResourceEnvironment;
+```
+
+- *Type:* aws-cdk-lib.interfaces.ResourceEnvironment
+
+The environment this Stack deploys to.
+
+---
+
 ##### `environment`<sup>Required</sup> <a name="environment" id="@mavogel/cdk-hugo-pipeline.HugoHostingStack.property.environment"></a>
 
 ```typescript
@@ -917,7 +970,7 @@ public readonly nested: boolean;
 
 - *Type:* boolean
 
-Indicates if this is a nested stack, in which case `parentStack` will include a reference to it's parent.
+Indicates if this is a nested stack, in which case `parentStack` will include a reference to its parent.
 
 ---
 
@@ -1085,7 +1138,7 @@ public readonly nestedStackParent: Stack;
 
 - *Type:* aws-cdk-lib.Stack
 
-If this is a nested stack, returns it's parent stack.
+If this is a nested stack, returns its parent stack.
 
 ---
 
@@ -1853,7 +1906,7 @@ const hugoHostingStackProps: HugoHostingStackProps = { ... }
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.stackName">stackName</a></code> | <code>string</code> | Name to deploy the stack with. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.suppressTemplateIndentation">suppressTemplateIndentation</a></code> | <code>boolean</code> | Enable this flag to suppress indentation in generated CloudFormation templates. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method to use while deploying this stack. |
-| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Stack tags that will be applied to all the taggable resources and the stack itself. |
+| <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags that will be applied to the Stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether to enable termination protection for this stack. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.buildStage">buildStage</a></code> | <code>string</code> | buildStage. |
 | <code><a href="#@mavogel/cdk-hugo-pipeline.HugoHostingStackProps.property.domainName">domainName</a></code> | <code>string</code> | domainName. |
@@ -1996,7 +2049,7 @@ public readonly notificationArns: string[];
 ```
 
 - *Type:* string[]
-- *Default:* no notfication arns.
+- *Default:* no notification arns.
 
 SNS Topic ARNs that will receive stack events.
 
@@ -2090,7 +2143,15 @@ public readonly tags: {[ key: string ]: string};
 - *Type:* {[ key: string ]: string}
 - *Default:* {}
 
-Stack tags that will be applied to all the taggable resources and the stack itself.
+Tags that will be applied to the Stack.
+
+These tags are applied to the CloudFormation Stack itself. They will not
+appear in the CloudFormation template.
+
+However, at deployment time, CloudFormation will apply these tags to all
+resources in the stack that support tagging. You will not be able to exempt
+resources from tagging (using the `excludeResourceTypes` property of
+`Tags.of(...).add()`) for tags applied in this way.
 
 ---
 

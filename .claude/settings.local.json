@@ -6,7 +6,9 @@
       "Bash(gh pr:*)",
       "Bash(gh run:*)",
       "Bash(node:*)",
-      "Bash(npx projen:*)"
+      "Bash(npx projen:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm view:*)"
     ],
     "deny": [],
     "ask": []

@@ -36,8 +36,8 @@
     "organization": true
   },
   "devDependencies": {
-    "@aws-cdk/integ-runner": "2.197.0",
-    "@aws-cdk/integ-tests-alpha": "2.197.0-alpha.0",
+    "@aws-cdk/integ-runner": "2.197.12",
+    "@aws-cdk/integ-tests-alpha": "2.248.0-alpha.0",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@stylistic/eslint-plugin": "^2",
@@ -45,8 +45,8 @@
     "@types/node": "^22",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "aws-cdk-lib": "2.197.0",
-    "awslint": "2.197.0-alpha.0",
+    "aws-cdk-lib": "2.248.0",
+    "awslint": "2.248.0-alpha.0",
     "commit-and-tag-version": "^12",
     "eslint": "^9",
     "eslint-import-resolver-typescript": "^3.7.0",
@@ -65,7 +65,7 @@
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.197.0",
+    "aws-cdk-lib": "^2.248.0",
     "constructs": "^10.5.1"
   },
   "dependencies": {

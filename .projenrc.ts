@@ -4,7 +4,7 @@ import { NpmAccess } from 'projen/lib/javascript';
 const project = new MvcCdkConstructLibrary({
   author: 'Manuel Vogel',
   authorAddress: '8409778+mavogel@users.noreply.github.com',
-  cdkVersion: '2.197.0',
+  cdkVersion: '2.248.0',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.9.0',
   name: 'cdk-hugo-pipeline',
