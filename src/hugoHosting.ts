@@ -409,6 +409,7 @@ function handler(event) {
       destinationBucket: bucket,
       distribution,
       distributionPaths: ['/*'],
+      memoryLimit: 512,
     });
   }
 }
