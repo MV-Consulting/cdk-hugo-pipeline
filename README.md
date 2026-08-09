@@ -1,9 +1,9 @@
 # cdk-hugo-pipeline
-![Source](https://img.shields.io/github/stars/MV-Consulting/cdk-hugo-pipeline?logo=github&label=GitHub%20Stars)
-[![Build Status](https://github.com/MV-Consulting/cdk-hugo-pipeline/actions/workflows/build.yml/badge.svg)](https://github.com/MV-Consulting/cdk-hugo-pipeline/actions/workflows/build.yml)
+![Source](https://img.shields.io/github/stars/mavogel/cdk-hugo-pipeline?logo=github&label=GitHub%20Stars)
+[![Build Status](https://github.com/mavogel/cdk-hugo-pipeline/actions/workflows/build.yml/badge.svg)](https://github.com/mavogel/cdk-hugo-pipeline/actions/workflows/build.yml)
 [![ESLint Code Formatting](https://img.shields.io/badge/code_style-eslint-brightgreen.svg)](https://eslint.org)
-[![Latest release](https://img.shields.io/github/release/MV-Consulting/cdk-hugo-pipeline.svg)](https://github.com/MV-Consulting/cdk-hugo-pipeline/releases)
-![GitHub](https://img.shields.io/github/license/MV-Consulting/cdk-hugo-pipeline)
+[![Latest release](https://img.shields.io/github/release/mavogel/cdk-hugo-pipeline.svg)](https://github.com/mavogel/cdk-hugo-pipeline/releases)
+![GitHub](https://img.shields.io/github/license/mavogel/cdk-hugo-pipeline)
 [![npm](https://img.shields.io/npm/dt/@mavogel/cdk-hugo-pipeline?label=npm&color=orange)](https://www.npmjs.com/package/@mavogel/cdk-hugo-pipeline)
 [![typescript](https://img.shields.io/badge/jsii-typescript-blueviolet.svg)](https://www.npmjs.com/package/@mavogel/cdk-hugo-pipeline)
 [![cdk-constructs: experimental](https://img.shields.io/badge/cdk--constructs-experimental-yellow.svg)](https://constructs.dev/packages/@mavogel/cdk-hugo-pipeline)
@@ -130,7 +130,7 @@ export class MyStack extends Stack {
     });
 }
 ```
-and adapt the `main.test.ts` (yes, known issue. See [#40](https://github.com/MV-Consulting/cdk-hugo-pipeline/issues/40))
+and adapt the `main.test.ts` (yes, known issue. See [#40](https://github.com/mavogel/cdk-hugo-pipeline/issues/40))
 
 ```ts
 test('Snapshot', () => {
